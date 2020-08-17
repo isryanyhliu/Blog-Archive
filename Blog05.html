@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,运维," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建基于Hexo的网站遇到的一些坑（2020.04）">
+<meta property="og:url" content="http://ryanyhliu.com/Blog05.html">
+<meta property="og:site_name" content="刘永蘅 个人网站">
+<meta property="og:description" content="&amp;nbsp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/TwoConfigFiles.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/MarkDownPlugin.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/MarkDownPreview.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/MobileMode.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/MenuDisplay.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/AboutmePage.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/lizipiaofuPicture.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/Avatar.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog05/FooterRunTime.png">
+<meta property="article:published_time" content="2020-04-16T00:41:38.000Z">
+<meta property="article:modified_time" content="2020-08-17T03:09:05.857Z">
+<meta property="article:author" content="刘永蘅Ryan">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ryanyhliu.com//Blog05/TwoConfigFiles.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ryanyhliu.com/Blog05.html"/>
+
+
+
+
+
+  <title>搭建基于Hexo的网站遇到的一些坑（2020.04） | 刘永蘅 个人网站</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘永蘅 个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">看中就买，不行就分，多喝热水，重启试试</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog05.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">搭建基于Hexo的网站遇到的一些坑（2020.04）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-16T08:41:38+08:00">
+                2020-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&nbsp;</p>
+<a id="more"></a>
+
+<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font size="6">
+<center>可以通过左侧导航栏，更方便的进行阅读</center>
+</font>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" alt></p>
+<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" alt></p>
+<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g      &#x2F;&#x2F;generate，保存后执行该命令，以重新生成文件</span><br><span class="line">hexo s      &#x2F;&#x2F;server，  启动本地服务器，进行预览</span><br><span class="line">hexo d      &#x2F;&#x2F;deploy，  部署本地项目到远程服务器</span><br><span class="line">hexo clean  &#x2F;&#x2F;清除本地静态文件（db.json，根目录public文件夹）</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" alt></p>
+<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
+<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" alt></p>
+<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 关于菜单示例配置</span><br><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  about: &#x2F;about&#x2F;||user</span><br><span class="line">  tags: &#x2F;tags&#x2F;||tags  </span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br></pre></td></tr></table></figure>
+<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" alt><br>配置方法：执行该命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-nest</span><br></pre></td></tr></table></figure>
+
+<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
+
+<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # 是否在移动端显示</span><br><span class="line">  color: &#39;0,0,255&#39; # 动态背景中线条的 RGB 颜色</span><br><span class="line">  opacity: 0.5 # 动态背景中线条透明度</span><br><span class="line">  zIndex: -1 # 动态背景的 z-index 属性值</span><br><span class="line">  count: 99 # 动态背景中线条数量</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//默认展开标题</span><br><span class="line"><span class="selector-class">.post-toc</span> <span class="selector-class">.nav</span> <span class="selector-class">.nav-child</span> &#123; </span><br><span class="line">    <span class="attribute">display</span>: block; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;source&#x2F;uploads&#x2F;</span><br></pre></td></tr></table></figure>
+<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">    avatar: &#x2F;uploads&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" alt><br>在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</span><br></pre></td></tr></table></figure>
+<p>目录文件下，添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"04/06/2020 21:00:00"</span>);<span class="comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"我已在此等候你 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+       <div>
+         <div>
+  
+    <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+      <span>-------- 本文结束 </span>
+      <i class="fa fa-paw"></i>
+      <span> 感谢阅读 --------</span>
+    </div>
+  
+</div>
+       </div>
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    刘永蘅Ryan
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://ryanyhliu.com/Blog05.html" title="搭建基于Hexo的网站遇到的一些坑（2020.04）">http://ryanyhliu.com/Blog05.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tags"></i> Hexo</a>
+          
+            <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="fa fa-tags"></i> 运维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog04.html" rel="next" title="通过邻接表实现广度优先搜索（迷宫问题）">
+                <i class="fa fa-chevron-left"></i> 通过邻接表实现广度优先搜索（迷宫问题）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog06.html" rel="prev" title="个人网站SEO及其它优化">
+                个人网站SEO及其它优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.gif"
+                alt="刘永蘅Ryan" />
+            
+              <p class="site-author-name" itemprop="name">刘永蘅Ryan</p>
+              <p class="site-description motion-element" itemprop="description">&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ryanyhliu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://steamcommunity.com/id/ryanyhliu/" target="_blank" title="Steam">
+                      
+                        <i class="fa fa-fw fa-steam"></i>Steam</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/76577946" target="_blank" title="Bilibili">
+                      
+                        <i class="fa fa-fw fa-tv"></i>Bilibili</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://t.me/isryanyhliu" target="_blank" title="Telegram">
+                      
+                        <i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:isryanyhliu@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目配置文件-amp-主题配置文件"><span class="nav-number">1.</span> <span class="nav-text">项目配置文件&amp;主题配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#边写博客边预览"><span class="nav-number">2.</span> <span class="nav-text">边写博客边预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何在电脑上进行移动端预览"><span class="nav-number">3.</span> <span class="nav-text">如何在电脑上进行移动端预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-常用命令的含义"><span class="nav-number">4.</span> <span class="nav-text">Hexo 常用命令的含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#菜单显示、配置问题"><span class="nav-number">5.</span> <span class="nav-text">菜单显示、配置问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#粒子漂浮背景"><span class="nav-number">6.</span> <span class="nav-text">粒子漂浮背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何默认展开多级标题"><span class="nav-number">7.</span> <span class="nav-text">如何默认展开多级标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#侧边栏头像"><span class="nav-number">8.</span> <span class="nav-text">侧边栏头像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网站运行时间统计"><span class="nav-number">9.</span> <span class="nav-text">网站运行时间统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于版权声明、搞怪标题、站内搜索、网站访问量"><span class="nav-number">10.</span> <span class="nav-text">关于版权声明、搞怪标题、站内搜索、网站访问量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于文章结束标记、看板娘、鼠标点击特效"><span class="nav-number">11.</span> <span class="nav-text">关于文章结束标记、看板娘、鼠标点击特效</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+ <span class="author" itemprop="copyrightHolder">刘永蘅Ryan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">8.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/06/2020 21:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "我已在此等候你 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+</div>
+
+
+
+<div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+历经 <span id="busuanzi_value_site_pv"></span> 次回眸才与你相遇，
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+   
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "你不爱我了嘛 (｡•́︿•̀｡)ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "快去跪搓衣板 <(｀^´)>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+
+
+  <script src="/js/wobblewindow.js"></script>
+  <script>
+    //只在桌面版网页启用特效
+    if( window.innerWidth > 768  ){
+      $(document).ready(function () {
+        
+          $('#header').wobbleWindow({
+            radius: 50,
+            movementTop: false,
+            movementLeft: false,
+            movementRight: false,
+            debug: false,
+          });
+        
+
+        
+          $('#sidebar').wobbleWindow({
+            radius: 50,
+            movementLeft: false,
+            movementTop: false,
+            movementBottom: false,
+            position: 'fixed',
+            debug: false,
+          });
+        
+
+        
+          $('#footer').wobbleWindow({
+            radius: 50,
+            movementBottom: false,
+            movementLeft: false,
+            movementRight: false,
+            offsetX: ,
+            position: 'absolute',
+            debug: false,
+          });
+        
+      });
+    }
+  </script>
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>

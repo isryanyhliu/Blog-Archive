@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/Blog00.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+<center>This post is created for test
+
+<p>=_=</p>
+<br>
+
+<p>But, thanks for reading</p>
+<p>Wish u a nice day</p>
+</center>]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>与桂林某电子科技大学的校园网的防火墙斗智斗勇</title>
+    <url>/Blog01.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+
+
+<p>注：<br><br><em>请遵守中国大陆法律规定！</em><br><em>本文所记录的技术与过程仅为技术交流！切勿将其运用在其它地方！</em><br><em>若读者模仿并将其移用至别处，与本文作者无关！</em><br><em>感谢您的阅读和理解！</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近一直在玩一款名为部落冲突的手游，玩过的同学都知道，这个游戏到了中后期全靠肝。而作为一名优秀（懒得动手刷资源）的程序员，面对这种需要进行反复无意义的劳动时，就要有符合程序员核心价值观的意识——能用脚（本）解决的事情，就绝不动手！本来电脑开模拟器用脚本刷的开开心心，但是我最近由于某些个人原因，在一个月黑风高的夜晚，把电脑搬回了学校实验室。然后发现，游戏打开后就黑屏（进不去游戏）。<br><br><br><br>so——问题出现了，我们就要解决它！</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h1><p>首先要分析一下问题。<br></p>
+<p>部落冲突打不开了，可能的原因有好几种：<br></p>
+<p><strong>1.服务器坏了？</strong><br>没有。手机依然可以登陆；</p>
+<p><strong>2.客户端坏了？</strong><br>没有。各个商店里的各个版本我都尝试过，不太可能出现这种事故<br><em>（当你觉得全世界有问题的时候，不妨先想想是不是自己的问题）</em></p>
+<p>那么除却以上两点，出问题的可能就是网络了。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>打开模拟器的浏览器，发现一切正常。各种app也都可以使用，貌似只有部落冲突不能用。<br>到这里其实大家都应该有所感觉——会不会是这个游戏被屏蔽了呢？<br>验证的方法也很简单，如果学校要屏蔽游戏的话，那么首当其冲的肯定是</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src=".//Blog01/blog01_Gfat.png" alt><br><em>G胖：天天搞优惠亏钱就算了，到头来还要被屏蔽</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>果然<br><img src=".//Blog01/blog01_Steam.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>那么问题的所在就一目了然了——是学校的防火墙从中作梗！<br><img src=".//Blog01/blog01_Traitor.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>从原理上来说，我只要穿透这个防火墙就可以了<br>大家都听说过翻墙，只不过我现在要翻的是SchoolFireWall</p>
+<p>既然要翻墙，那么首先需要搭一个代理服务器（俗称梯子）<br>我想了一圈，宿舍那边入户的网线没有屏蔽掉Steam，而且如果可以用的话，时延比起来外网的vps要小很多。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>于是我找到我宿舍的同学，让他帮我搭一个Linux虚拟机。<br>那么整体的网络架构应该是如下图所示的<br><img src=".//Blog01/blog01_Net.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>同学用的虚拟机是Windows10的子系统Ubuntu（Win10应用商店里的那个）<br>我查了一下，这个虚拟机和真机共享IP，即vmware的默认网卡模式（下图）<br><img src=".//Blog01/blog01_VMware.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>同学在虚拟机中部署好ssh并启动，把虚拟机用户帐密发给我，我在实验室进行连接并控制<br>这里为了避免与QQ抢端口，建议将其端口号改为23<br>那么网络架构图中右下角部分就算是打通了。</p>
+<p>与此同时，我让同学使用windows cmd中的<strong>tracert ip</strong>命令，查询到了宿舍路由器的ip<br>（该命令可以跟踪数据包所经过的网关的ip）</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>在下图这个例子中，<strong>第二个跃点为外网分配给路由器的ip</strong><br><img src=".//Blog01/blog01_TraceIP.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>我在实验室ping了一下第二个跃点（宿舍路由器）的ip，可以ping通<br>那么接下来只需要解决从路由器到同学的pc这一段即可</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>登陆路由器管理界面，找到高级设置中的DMZ功能（IP映射）<br>这个功能可以理解为将该路由器内网中的某一设备的ip映射到自己身上<br>也就是外网数据包发送到路由器的IP时，路由器会自动转发其到内网某一指定设备<br><img src=".//Blog01/blog01_MIwifi.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>最后，测试可以从实验室ssh连接到寝室的代理服务器。<br>当然，这个只是测试，总不能一直让同学开着虚拟机给我当代理服务器。<br>日后只需要用手里现成的树莓派3B就可以了。</p>
+<p>代理服务器的问题已经解决了，我在电脑上信心满满的打开ShadowSocks客户端<br>连上代理服务器，切换为全局模式，双击steam图标，经过紧张的等待后</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src=".//Blog01/blog01_bqb.png" alt></p>
+<p>还是上不去steam</p>
+<p>很正常，生活嘛，总是起起落落落落落落落落落。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h1><p>经过我冷静的分析（划掉），以及google公司的鼎力相助<br></p>
+<p>原来ShadowSocks客户端的全局模式并不是类似于VPN那种，可以代理本地的所有流量。<br>ShadowSocks的全局代理只是sock5代理，即只有http和socks数据会走代理</p>
+<p>游戏有很多是udp，而大部分http都是用的tcp，所以我猜测steam和部落冲突的流量并没有走代理</p>
+<p>解决方法是使用一个由<a href="https://www.zhihu.com/people/tao-neng-yi" target="_blank" rel="noopener">@AHaLa</a> 这位大佬提供的工具—— <a href="https://baike.baidu.com/item/proxifier/10859305" target="_blank" rel="noopener">proxifier_百度百科</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>通过网上的教程，使用ShadowSocks和proxifier将本机网络指定走代理（vpn）化之后<br>我兴奋的搓起了手，那感觉就像是革命胜利的前夕，不会再有压迫了！</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>但是，革命这种事情，总是一波三折<br></p>
+<p>学校的防火墙除了防火墙最基本的IP封锁之外，还有另一个功能——DNS污染<br>在我尝试了指定DNS服务器以及修改hosts的方法发现二者均行不通</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>不过还好，proxifier提供了远程DNS解析<br><img src=".//Blog01/blog01_proxifierDNS.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>在看了几篇缺斤少两的博客之后，找到了一篇正确的<a href="https://lollogit.gitbooks.io/help/ssdian_nao_xi_tong_quan_ju_dai_li_jiao_cheng/shi_yong_proxifier_ba_ss_zhuan_wei_quan_ju_jia_su_.html" target="_blank" rel="noopener">proxifier和ShadowSocks将本地网络vpn化</a>教程（除了开启远程解析，还要把小飞机代理的的端口填入直连名单）最终，我成功的连上了steam网络！</p>
+<p>看吧，只要思想不滑坡，方法总比困难多（wdnmd劳资csgo新买的皮肤还没好好看几眼）</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其实过程到这里就差不多结束了，但是吧~~</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h1><p>我来到实验室之后，发现昨天成功启动了脚本的部落冲突居然没有正常运行。仔细一看发现，我的电脑没网络了。一拍脑袋想到，学校的上网是要登陆的，每天晚上会把在线的强制下线。所以，要让它自动上线才可以</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>我google了一下相关的资料，在看过好多大神的思路之后，下载了一个名为<strong>Fiddler</strong>的抓包软件。Wireshark之前上计网的实验课倒是用过，但是比较复杂，杀鸡何用宰牛刀（其实是我忘了怎么用）<br><img src=".//Blog01/blog01_Fidder.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>通过抓取数据包，我发现学校的登陆系统是通过GET方式直接发送数据包，这就大大降低了难度，因为Get方式发送的话，用户名和密码是明文写在url里的。我发现登陆过程中一共产生了3个数据包，而第三个数据包就是名为login的登录信息，把它的url复制，存到txt里<br><img src=".//Blog01/blog01_TXT.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>只要把图中的DDDDD和upass换成自己的学号和密码就可以了，于是我手动注销，然后用浏览器直接访问改好的url。果然，并不需要经过登陆页面，直接就登陆成功了。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>那么接下来要做的，就是编写一个程序，实现这个功能。<br></p>
+<p>大概的思路是，一直ping 8.8.8.8，如果可以ping通，则可以访问；如果不能ping通，则代表账户已被下线，需要访问指定的url。这里我使用python来实现。最后，再加上死循环让程序一直检测就好了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ping</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(os.system(<span class="string">'ping -c 8.8.8.8'</span>) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Connect SUCCESS'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Connect FALSE'</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        s = urllib2.urlopen(<span class="string">'此处为txt中修改好的URL'</span>)</span><br><span class="line">    <span class="keyword">except</span> urllib2.HTTPError, e:</span><br><span class="line">        <span class="keyword">print</span> e.code</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        ping()</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
+
+
+<p>本地测试之后发现一切正常，我便把它丢到树莓派上运行了，这样就可以保证我路由器下的所有子设备都可以保持7*24在线。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>大概就是这样了，第二天就可以看到全部刷满的资源（斜眼笑）。其实我本来想用树莓派直接搭全局代理，但是现在的资料貌似有点过时，树莓派的openwrt一直不出，lede的ss框架也不太好用，部署的证书都是过期的，pc基本没法用。如果走过路过的看官有相关资料的，还望指点迷津~</p>
+<p>感谢阅读，以上</p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>python</tag>
+        <tag>防火墙</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>变量名是否占用内存</title>
+    <url>/Blog03.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>想看结论的直接拖到最后</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>变量名究竟是否占用内存呢？</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>今天在网上看见这么一张图，里边有这么一句话不是很理解<br><img src=".//Blog03/blog03.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>为什么这样会浪费内存空间呢，我花了三个小时在网上查了些资料，整理了一下，具体如下：</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>变量名编译后，变成一个内存地址</p>
+<p>这个内存地址一般是直接存在于<font color="#00AB6F"><strong>代码段</strong></font>中</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>那么什么是<font color="#00AB6F"><strong>代码段</strong></font>呢？</p>
+<p>一般把程序所占的主存空间分为（从低到高）：<br></p>
+<p>1.<font color="#00AB6F"><strong>代码段</strong></font><br><br>2.数据段<br></p>
+<p>3.栈<br><br>4.堆<br></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其中，<font color="#00AB6F"><strong>代码段</strong></font>和数据段 是 <font color="#FF4900"><strong>编译期间</strong></font>就确定的</p>
+<p>所以在整个程序编译期间，都占用内存空间</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>程序又分为<font color="#FF4900"><strong>编译期间</strong></font>和运行期间</p>
+<p>变量名是在<font color="#FF4900"><strong>编译期间</strong></font>占用内存（所以那张截图里没说错）<br><br>而大多情况下，我们讨论的是运行期间</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>结论：</p>
+<p>变量名 在  运行期间  是    不占内存的<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在  编译期间  是        占内存的</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>相关资料：<br><br><a href="http://blog.csdn.net/qianqin_2014/article/details/51114105" target="_blank" rel="noopener">http://blog.csdn.net/qianqin_2014/article/details/51114105</a><br><br><a href="http://bbs.csdn.net/topics/70123909" target="_blank" rel="noopener">http://bbs.csdn.net/topics/70123909</a></p>
+]]></content>
+      <tags>
+        <tag>编译原理</tag>
+        <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建基于Hexo的网站遇到的一些坑（2020.04）</title>
+    <url>/Blog05.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font size="6">
+<center>可以通过左侧导航栏，更方便的进行阅读</center>
+</font>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" alt></p>
+<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" alt></p>
+<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g      &#x2F;&#x2F;generate，保存后执行该命令，以重新生成文件</span><br><span class="line">hexo s      &#x2F;&#x2F;server，  启动本地服务器，进行预览</span><br><span class="line">hexo d      &#x2F;&#x2F;deploy，  部署本地项目到远程服务器</span><br><span class="line">hexo clean  &#x2F;&#x2F;清除本地静态文件（db.json，根目录public文件夹）</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" alt></p>
+<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
+<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" alt></p>
+<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 关于菜单示例配置</span><br><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  about: &#x2F;about&#x2F;||user</span><br><span class="line">  tags: &#x2F;tags&#x2F;||tags  </span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br></pre></td></tr></table></figure>
+<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" alt><br>配置方法：执行该命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-nest</span><br></pre></td></tr></table></figure>
+
+<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
+
+<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # 是否在移动端显示</span><br><span class="line">  color: &#39;0,0,255&#39; # 动态背景中线条的 RGB 颜色</span><br><span class="line">  opacity: 0.5 # 动态背景中线条透明度</span><br><span class="line">  zIndex: -1 # 动态背景的 z-index 属性值</span><br><span class="line">  count: 99 # 动态背景中线条数量</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//默认展开标题</span><br><span class="line"><span class="selector-class">.post-toc</span> <span class="selector-class">.nav</span> <span class="selector-class">.nav-child</span> &#123; </span><br><span class="line">    <span class="attribute">display</span>: block; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;source&#x2F;uploads&#x2F;</span><br></pre></td></tr></table></figure>
+<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">    avatar: &#x2F;uploads&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" alt><br>在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</span><br></pre></td></tr></table></figure>
+<p>目录文件下，添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"04/06/2020 21:00:00"</span>);<span class="comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"我已在此等候你 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人网站SEO及其它优化</title>
+    <url>/Blog06.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+<p>SEO，是Search Engine Optimization的缩写，中文意思是搜索引擎优化。通俗的说，就是如何让你自己的网站更容易的被搜索引擎收录，并且取得一个较为靠前的排名，让别人更容易地搜索到你，为自己的网站增加更多的曝光率与点击率。</p>
+<p>&nbsp;</p>
+<center>如下图所示，网站在直接搜索名字的情况下，排名第五</center>
+<center>（排在前边的自然是Facebook，Linkin这种，希望有朝一日能干掉他们hhhh）</center>
+
+<p><img src=".//Blog06/ggSearchResult_name.png" alt></p>
+<p>&nbsp;</p>
+<center>在搜索站内博客的情况下（全网无重复），排名第三</center>
+
+<p><img src=".//Blog06/ggSearchResult_blog.png" alt></p>
+<p>&nbsp;</p>
+<center>在搜索网站Title的情况下，排名第一、第二</center>
+
+<p><img src=".//Blog06/ggSearchResult_title.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>上边是优化后，进行Google搜索的结果展示。可以看到，无论是网站标题，还是站内二级博客，二级Tag，Google均对其进行了索引与收录。由于Baidu站长提交过程等待时间过长，我的网站还未被收录，这里就不进行展示了，不然还要等好久。下边就介绍一下我做了哪些优化</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Baidu收录"><a href="#Baidu收录" class="headerlink" title="Baidu收录"></a>Baidu收录</h1><p>首先是Baidu收录。作为国内最大的搜索引擎，纵然千般不爱，还是要</p>
+<p><img src=".//Blog06/ditou.png" alt></p>
+<p>在提交链接到Baidu之前，首先需要购买一个属于自己的域名，不可以直接用Github Page提供的形如xxx.github.io这个域名。因为Github不允许Baidu的spider爬取自己的信息（例如Taobao）</p>
+<p><img src=".//Blog06/Taobao.png" alt></p>
+<p>注册完域名之后，绑定到自己的网站/Github Page的IP，这里就不赘述了，网上教程一大把。在浏览器测试可以访问后，就可以开始Baidu的优化了</p>
+<p>&nbsp;</p>
+<p>首先呢，要注册一个Baidu站长的账号，然后在站长工具里提交绑定了你网站的域名。由于我这边早就已经做完这个流程，这里就不进行复现了。各位可以直接<a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">点击此处</a>，提交链接到Baidu，如下图所示，填入自己网站URL，点击提交。</p>
+<p><img src=".//Blog06/LinkSubmit_Baidu.png" alt></p>
+<p>提交完之后，要证明网站的所有权，才能把其绑定到自己的Baidu账户下，方便日后通过站长工具进行分析、管理数据等操作。这里Baidu提供了三种验证方法，分别是<br>1.文件验证<br>2.html标签验证<br>3.CNAME验证</p>
+<p>这里我选择的是CNAME验证，如下图：<br><img src=".//Blog06/CNAME_Baidu.png" alt><br>然后在域名服务提供商那里，添加一条解析记录就可以生效。我的域名服务提供商是腾讯云<br><img src=".//Blog06/CNAME.png" alt></p>
+<p>好啦，到这里就算是收录完成。之后还可以通过站点地图进行优化，后边我会说到。接下来让我们进行Google的收录</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Google收录"><a href="#Google收录" class="headerlink" title="Google收录"></a>Google收录</h1><p>Google的收录需要各位自行准备梯子，请自觉遵守中国大陆法律法规。<br>和Baidu一样，首先要准备一个Google账户，然后<a href="https://search.google.com/search-console/about#utm_source=zh-CN-wmxmsg&utm_medium=wmxmsg&utm_campaign=bm&authuser=0" target="_blank" rel="noopener">点此链接进入GoogleSearchConsole</a>，点击添加资源，如下图。如果你使用的域名服务提供商是GoDaddy或NameCheap，则可以通过左边的网域选项，去验证所有权。我的域名服务提供商是腾讯云，只能通过右边的选项进行验证，在右边横线处填入你网站的完整URL。<br><img src=".//Blog06/ggSearchConsole01.png" alt><br>然后点击继续，如下所示<br><img src=".//Blog06/ggSearchConsole02.png" alt><br>下载GoogleSearchConsole提供给你的那个html文件，将其<code>git push</code>到你网站的根目录下，然后<strong>回来点击验证</strong>，验证成功即可证明所有权，方便日后的分析、管理数据等操作。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Site-Map"><a href="#Site-Map" class="headerlink" title="Site Map"></a>Site Map</h1><center>
+
+<p><a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99%E5%9C%B0%E5%9C%96" target="_blank" rel="noopener">Sitemap的定义(Wikipedia)</a> || <a href="https://en.wikipedia.org/wiki/Site_map" target="_blank" rel="noopener">Definition of Sitemap (Wikipedia)</a></p>
+</center>
+SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider更好的抓取网站，理解网站结构与内容，优化通过搜索引擎搜索到站内内容等等好处。其实顾名思义，网站地图，有了这个地图就可以随便逛你的网站，不会迷路。就像外出旅游，景区发给游客的指南一样，是不是一下子就理解了~~
+
+<p>&nbsp;</p>
+<p>那么第一步，我们要做的就是</p>
+<h2 id="生成SiteMap"><a href="#生成SiteMap" class="headerlink" title="生成SiteMap"></a>生成SiteMap</h2><p>使用npm自动生成网站的SiteMap，然后将生成的SiteMap提交到Baidu和Google<br>执行如下两条命令，安装SiteMap生成插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>然后，在项目配置文件中，修改下图中的URL：<br><img src=".//Blog06/URLModify.png" alt><br>最后<code>Ctrl S</code>保存，<code>hexo g</code>重新生成，<code>hexo d</code>部署到服务器上即可。接下来就是</p>
+<h2 id="提交到搜索引擎"><a href="#提交到搜索引擎" class="headerlink" title="提交到搜索引擎"></a>提交到搜索引擎</h2><h3 id="提交到Baidu"><a href="#提交到Baidu" class="headerlink" title="提交到Baidu"></a>提交到Baidu</h3><p>百度提供了三种提交的方式，分别是主动推送、自动推送、Sitemap。其中主动提交更新的效果比较好，并且一次设置好，以后就可以自动执行。<br><img src=".//Blog06/SiteMap_Baidu01.png" alt><br><img src=".//Blog06/SiteMap_Baidu02.png" alt></p>
+<p>通过如下命令下载插件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure>
+<p>然后在项目配置文件中，添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_url_submit:</span><br><span class="line">  count: 100</span><br><span class="line">  host:  # 在百度站长平台中验证的域名</span><br><span class="line">  token:  # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!</span><br><span class="line">  path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里</span><br></pre></td></tr></table></figure>
+<p>并且依旧在项目配置文件中，如下添加一条deploy的type<br><img src=".//Blog06/SiteMap_Baidu03.png" alt></p>
+<p>接着，是设置自动推送。在主题配置文件中，设置baidu_push: true，如下图<br><img src=".//Blog06/SiteMap_Baidu04.png" alt></p>
+<p>然后修改如下路径文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;layout&#x2F;_scripts&#x2F;baidu_push.swig</span><br></pre></td></tr></table></figure>
+<p>添加代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.baidu_push %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> bp = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> curProtocol = <span class="built_in">window</span>.location.protocol.split(<span class="string">':'</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">if</span> (curProtocol === <span class="string">'https'</span>) &#123;</span></span><br><span class="line"><span class="actionscript">        bp.src = <span class="string">'https://zz.bdstatic.com/linksubmit/push.js'</span>;        </span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="actionscript">    <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">        bp.src = <span class="string">'http://push.zhanzhang.baidu.com/push.js'</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span></span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后回到Baidu站长平台，提交网站文件，如下图<br><img src=".//Blog06/SiteMap_Baidu05.png" alt></p>
+<p>到此，Baidu的优化就算是告一段落。但是Baidu的收录特别慢，一般都得是半个月左右，耐心等待吧。</p>
+<p>接下来就是</p>
+<h3 id="提交到Google"><a href="#提交到Google" class="headerlink" title="提交到Google"></a>提交到Google</h3><p>提交到Google的方法和百度原理相同，过程简单很多。访问GoogleSearchConsole，然后添加即可，如下：<br><img src=".//Blog06/SiteMap_Google01.png" alt><br>Google的收录速度非常快，我部署完Baidu又部署Google，晚上10点才弄完。第二天早上7点醒来发现Google已经成功收录</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="网站内URL优化"><a href="#网站内URL优化" class="headerlink" title="网站内URL优化"></a>网站内URL优化</h1><p>Hexo默认博客的URL是<code>sitename/year/mounth/day/title</code>这样一个四级结构。结构越深越不利于搜索引擎的爬取，一般都以三级以下为较好的深度。</p>
+<center>如下两图所示，优化后，这篇博客是一个二级目录，有助于搜索引擎爬取，搜索结果排名第三</center>
+
+<p><img src=".//Blog06/InSiteURL.png" alt><br><img src=".//Blog06/ggSearchResult_blog.png" alt></p>
+<p>具体优化步骤如下：<br>打开项目配置文件，找到<code>permalink</code>，如下第五行进行修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &#39;http:&#x2F;&#x2F;yoursite.com&#x2F;child&#39; and root as &#39;&#x2F;child&#x2F;&#39;</span><br><span class="line">url: http:&#x2F;&#x2F;ryanyhliu.com</span><br><span class="line">root: &#x2F;</span><br><span class="line">permalink: :title.html</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks</span><br><span class="line">  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks</span><br></pre></td></tr></table></figure>
+<p>之后<code>Ctrl S</code>保存，<code>hexo g</code>重新生成，<code>hexo d</code>部署到服务器上即可。</p>
+<p>PS：我个人在此处遇到了一些别的问题，即图片无法显示。在浏览器端按下<code>F12</code>，打开开发人员工具，发现图片链接有误，生成静态页面的时候多加了一条反斜杠，如下图所示<br><img src=".//Blog06/PictureWrongURL.png" alt><br>我的解决方法也很暴力，直接在源码里多加一条反斜杠。<br><img src=".//Blog06/PictureWrongURLCode.png" alt><br>如果各位看官有什么更好的解决之道，望不吝赐教。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CDN的全称是Content Delivery NetWork，即内容分发网络。举个栗子，在大家刷抖音短视频时，向抖音服务器发送一条请求，抖音服务器基于推荐算法向你分发一条你可能感兴趣的短视频，那么大概的网络拓扑应该是如下图所示<br><img src=".//Blog06/example01.png" alt><br>可以看到，这么多客户端同时连接根服务器的话，根服务器需要一个十分可观的带宽进行支持，就好比很多车辆一起汇入主干路，那么这条主干路一定要十分宽敞。但是一条已经建成的马路，对其进行扩容是十分复杂的工程，并且考虑到高峰期，资源浪费十分严重，再就是较高的带宽的预算也非常高。以百度云盘为例，存储设施、电费等，均不及带宽服务费所占的支出，这也是为什么百度云盘限速厉害，吃相如此难看的本因。</p>
+<p>&nbsp;</p>
+<p>那么CDN的运作原理，如下图所示<br><img src=".//Blog06/example02.png" alt><br>在服务器与客户端之间，多了一层代理服务器。它们起到了分流的作用，就好比汇入主干路的匝道。也许你会想，那反正都要汇入主干路，根服务器的带宽要求岂不是并没有降低？这里又要涉及到CDN的另一个作用，就是本地缓存。这些代理服务器也是服务器，那么它们也一样拥有本地存储能力。抖音视频文件存储的时候会基于文件内容生成一个哈希串，哈希串是一个文件的ID，根据它可以判断出文件的一致性。比如用户A刷到了一条视频，这个视频首先从根服务器传输到代理服务器，再从代理服务器传输到用户手里。那么用户B也刷到这条视频的时候，还需要重复上述过程吗，并不是。该视频已经缓存在代理服务器中，直接从代理服务器给用户B进行分发即可，无需浪费根服务器带宽。就好比汽车加油，大家不是亲自去中东抗油桶，而是在家附近的加油站加油，是这样一个分销的过程。</p>
+<p>好说了这么多，我们言归正传，介绍一下CDN技术是如何对我们的个人网页进行优化的吧。网站是基于Github Page搭建的，Github服务器架设在美国，由于GFW的原因，Github服务器在国内访问并不是很顺畅，而且还不稳定（参考Google）。我们这里采用CDN，无需连接到Github服务器，而是连接到CDN的服务器，不用担心GFW的影响。下面就开始正式的部署教程</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>我们选择的是<a href="https://www.cloudflare.com/zh-cn/" target="_blank" rel="noopener">Cloudflare</a>这个CDN提供商，它的主要优势就是：对个人<strong>免费</strong>。首先，就是点击该链接：<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Cloudflare注册</a>，进行注册，然后添加站点<br><img src=".//Blog06/addSite.png" alt></p>
+<p>方案选择免费方案<br><img src=".//Blog06/choosePlan.png" alt></p>
+<p>然后添加DNS记录，这里Cloudflare会自动扫描你的域名解析。此处我们无需进行更改，点击继续即可（如下面两幅图，腾讯云控制台只有一条www的解析记录，会被Cloudflare扫描出来并自动添加）。由于我的<code>ryanyhliu.com</code>已经添加，这里就用另外一个域名做示范。<br><img src=".//Blog06/CloudTencent.png" alt><br><img src=".//Blog06/DNSRecord.png" alt></p>
+<p>这里选择左边的默认方法<br><img src=".//Blog06/addSiteTemp.png" alt></p>
+<p>然后来到下图<br><img src=".//Blog06/changeDNSServer.png" alt><br>这里我们需要在域名服务提供商处，修改域名的DNS解析服务器，改为图中Cloudflare提供的DNS服务器。由于我使用的是腾讯云，这里就用腾讯云配置进行示范。切换到腾讯云域名服务页面，点击管理（下图红色箭头指向）<br><img src=".//Blog06/DNS01.png" alt><br>进入如下页面，然后接着按图操作，点击修改，按照Cloudflare中给出的DNS服务器域名进行修改，用<code>rayne.ns.cloudflare.com</code> | <code>ridge.ns.cloudflare.com</code> 替换 <code>f1g1ns1.dnspod.net</code> | <code>f1g1ns2.dnspod.net</code>， 之后回到Cloudflare页面，点击“完成，检查名称服务器”<br><img src=".//Blog06/DNS02.png" alt><br><img src=".//Blog06/DNS03.png" alt><br>之后，来到下图所示页面<br><img src=".//Blog06/Setting.png" alt><br>把https打开，然后点击完成，即成功添加站点。稍后我们可以在Cloudflare管理页面进行更多设置。下图为Cloudflare站点管理页面<br><img src=".//Blog06/CloudflareConsole.png" alt><br>如图红框所示，还有很多很多的自定义配置可供选择，这里我就不展开细讲了，大家感兴趣的话可以自行搜索设置中的关键词去查询，修行在个人~（我实在是写吐了，不想写了，艹）</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+        <tag>SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过邻接表实现广度优先搜索（迷宫问题）</title>
+    <url>/Blog04.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>“Talk is cheap. Show me the code.”  — Linus Torvalds</strong><br></p>
+<p>直接上代码，如下</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">            问题：迷宫问题 </span></span><br><span class="line"><span class="comment">            算法：广度优先搜索 </span></span><br><span class="line"><span class="comment">         数据结构：邻接表 </span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R 7 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Branch</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Branch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Root</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Root * nextRoot;</span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Root;</span><br><span class="line"></span><br><span class="line"><span class="comment">/////////////////////////////全局变量 </span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[R][R];<span class="comment">//迷宫 </span></span><br><span class="line">Root treeRoot;<span class="comment">//树根 </span></span><br><span class="line"><span class="keyword">int</span> level = <span class="number">1</span>;<span class="comment">//第几层 </span></span><br><span class="line"><span class="comment">/////////////////////// </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n---------------------------------------------------------------------\n"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; R; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; R; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">map</span>[i][j] == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t□"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t%d"</span>, <span class="built_in">map</span>[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Branch <span class="title">findBranch</span><span class="params">(Root tempRoot, <span class="keyword">int</span> templevel)</span><span class="comment">//寻路 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));	</span><br><span class="line">	<span class="keyword">int</span> tempRow = tempRoot -&gt; row;</span><br><span class="line">	<span class="keyword">int</span> tempColumn = tempRoot -&gt; column;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//up</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow - <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;<span class="comment">//等于当前的层数加一 </span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">9</span>)<span class="comment">//出口是9 </span></span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;<span class="comment">//找到了出口，把当前层数变成0，并返回NULL </span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//right</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//down</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow + <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//left</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn - <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addRoot</span><span class="params">(Branch tempBranch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Root tempBranchRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	<span class="comment">//初始化 </span></span><br><span class="line">	&#123; </span><br><span class="line">		tempBranchRoot -&gt; row = tempBranch -&gt; row;</span><br><span class="line">		tempBranchRoot -&gt; column = tempBranch -&gt; column;</span><br><span class="line">		tempBranchRoot -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">		tempBranchRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line">	<span class="keyword">while</span> (tempRoot -&gt; nextRoot != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;</span><br><span class="line">	&#125;</span><br><span class="line">	tempRoot -&gt; nextRoot = tempBranchRoot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createRoot</span><span class="params">(Root tempRoot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	tempBranch = tempRoot -&gt; nextBranch;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		addRoot(tempBranch);<span class="comment">//把当前branch变成root </span></span><br><span class="line">		tempBranch = tempBranch -&gt; nextBranch;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	Branch lastBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	</span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (level != <span class="number">0</span>)<span class="comment">//标识符，如果为0就代表找到了出口 </span></span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">		<span class="comment">//为当前root建立branch </span></span><br><span class="line">		<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)<span class="comment">//如果还有branch </span></span><br><span class="line">		&#123;</span><br><span class="line">			tempBranch -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">			tempRoot -&gt; nextBranch = tempBranch;</span><br><span class="line">			lastBranch = tempBranch;</span><br><span class="line"></span><br><span class="line">			tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				lastBranch -&gt; nextBranch = tempBranch;</span><br><span class="line">				lastBranch = tempBranch;</span><br><span class="line">				tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		createRoot(tempRoot);<span class="comment">//把当前root的branch创建成root，放在表尾 </span></span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;<span class="comment">//接着寻找下一个root </span></span><br><span class="line"></span><br><span class="line">		printMap();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">1</span>] =  <span class="number">1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">4</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">1</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">5</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">5</span>] =  <span class="number">9</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">6</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">6</span>] = <span class="number">-1</span>; </span><br><span class="line">	printMap();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化根 </span></span><br><span class="line">	&#123;</span><br><span class="line">		treeRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">		treeRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">		treeRoot -&gt; row = <span class="number">1</span>;</span><br><span class="line">		treeRoot -&gt; column = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	createTree();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+        <tag>迷宫问题</tag>
+        <tag>广度优先</tag>
+        <tag>邻接表</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过Live2D让自己的头像动起来</title>
+    <url>/Blog07.html</url>
+    <content><![CDATA[<center>内含GIF图，网站没配置动态加载，载入较慢，见谅！</center>
+<center>待完成（不想写博客不想写博客不想写博客!!!）</center>
+&nbsp;
+<a id="more"></a>
+
+<p>最近由于疫情的原因，使用电脑摄像头的频率大幅提高。但是作为一名颜值主播，订阅没过500万是不能轻易露脸的(<a href="https://baike.baidu.com/item/%E4%B9%94%E7%A2%A7%E8%90%9D%E6%AE%BF%E4%B8%8B/23642693" target="_blank" rel="noopener">梗出处</a>)。我的解决方法就是生成一个属于自己的虚拟形象，废话不多说，先看效果图：</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src=".//Blog07/preview.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>正文开始。首先我们需要准备好FaceRig这款应用，<a href="https://store.steampowered.com/app/274920/FaceRig/" target="_blank" rel="noopener">该应用在Steam平台上有售</a>。其作用是通过2D摄像头进行实时的人脸识别追踪，通过识别并提取眼睛、眉毛、鼻子、嘴巴、脸部边缘的特征值，来将自己的面部行为映射到虚拟形象上。</p>
+<p>这里放一张从网络上找来的效果预览图，非up本人，侵删。<br><img src=".//Blog07/facerigPreview.png" alt></p>
+<p>下载好Facerig之后，还需要下载其Live2D支持的DLC拓展包，在Steam平台上搜索如下：<br><img src=".//Blog07/steamShortcut.png" alt><br>该DLC是一个对Live2D提供支持的插件，可以把通过Live2D创作好的虚拟形象导入到Facerig中使用。通过Live2D的官方开发工具，将做好的模型通过该DLC导入进Facerig中，就可以自动进行映射匹配。即Facerig会自动把用户创作的模型中的五官等元素进行链接与映射，用户只需在Live2D的工具中专心建模即可。</p>
+<p>接下来的部分就是如何通过Live2D技术来进行建模了，即创建一个虚拟形象。</p>
+]]></content>
+      <tags>
+        <tag>Live2D</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>祝各位国际劳动节快乐</title>
+    <url>/Blog08.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<center>
+
+<p>1886年5月1日，在美国举行了约35万人参加的罢工和示威游行<br>示威者要求改善劳动条件，实行<strong>八小时工作制</strong>。</p>
+<p>&nbsp;</p>
+<p>5月3日政府出动警察镇压，向人群开枪，杀害了四个人，受伤者无数</p>
+<p>&nbsp;</p>
+<p>5月4日各工会于干草市广场举行群众大会，遭警察包围。<br>突发爆炸事件，场面大乱，双方均死伤惨重</p>
+<p>&nbsp;</p>
+<p>事后警察与媒体咬定劳工领袖引起爆炸，以谋杀罪起诉八人<br>但其中五人均有不在场证明</p>
+<p>&nbsp;</p>
+<p>审判最后，<strong>一人被判十五年，二人被判无期，五人被判死刑</strong></p>
+<p>&nbsp;</p>
+<p>死刑之一工会领袖 奥古斯都·史比斯 临刑前说<br>“总有一天，我们的沉默，会远比今天你们所要压制的言论更为洪亮有力”</p>
+<p>&nbsp;</p>
+<p>1889年，巴黎第二次国际大会通过决议，将5月1日定为国际劳动节<br>要求全世界劳工共同努力，为实现八小时工作制而奋斗</p>
+<p>&nbsp;</p>
+<p>1894年，小罗斯福总统执政时，确立美国法律八小时工作制</p>
+</center>]]></content>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Title还没想好</title>
+    <url>/Blog09.html</url>
+    <content><![CDATA[<center>待完成（不想写博客不想写博客不想写博客!!!）</center>
+&nbsp;
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>esp8226</tag>
+        <tag>Android</tag>
+        <tag>嵌入式</tag>
+      </tags>
+  </entry>
+</search>
