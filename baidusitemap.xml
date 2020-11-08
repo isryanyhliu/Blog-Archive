@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://ryanyhliu.com/Blog10.html</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>  <url>
+    <loc>http://ryanyhliu.com/Blog04.html</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>  <url>
     <loc>http://ryanyhliu.com/Blog09.html</loc>
     <lastmod>2020-11-08</lastmod>
   </url>  <url>
@@ -14,9 +20,6 @@
     <lastmod>2020-08-17</lastmod>
   </url>  <url>
     <loc>http://ryanyhliu.com/Blog05.html</loc>
-    <lastmod>2020-08-17</lastmod>
-  </url>  <url>
-    <loc>http://ryanyhliu.com/Blog04.html</loc>
     <lastmod>2020-08-17</lastmod>
   </url>  <url>
     <loc>http://ryanyhliu.com/Blog03.html</loc>
