@@ -492,9 +492,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>二者最大的区别即图中蓝框所示的部分。在Java1.8之后，“方法区”改名为“元空间”，且放入直接内存（系统内存）中，不再属于JVM内存，相关介绍在本文方法区部分有讲。<del>大部分面试是以Java1.8之前的版本来进行考量</del>。</p>
 <p>&nbsp;</p>
 <p>接下来我们分别来介绍JVM内存组成部分。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <h2 id="Java虚拟机栈（VM-Stack）"><a href="#Java虚拟机栈（VM-Stack）" class="headerlink" title="Java虚拟机栈（VM Stack）"></a>Java虚拟机栈（VM Stack）</h2><p>虚拟机栈是为Java字节码相关功能服务的。（我的理解是服务于Java代码相关部分）。</p>
 <p>虚拟机栈<strong>结构</strong>包括</p>
 <ul>
@@ -506,9 +503,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>其中，局部变量表 负责存放各种数据类型（int，byte，char … ）以及对象的引用（reference类型）</p>
 <p>虚拟机栈的<strong>生命周期</strong>由其线程生命周期决定（很好理解，虚拟机栈就是属于某个线程）。</p>
 <p>虚拟机栈的两种异常：<br>1.StackOverFlowError：Stack不支持动态拓展，Stack 用完了<br>2.OutOfMemoryError  ：Stack  支持动态拓展，Memory用完了</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈只为Native方法服务（Native方法：非Java代码实现的方法）。</p>
 <p>本地方法栈的<strong>结构</strong>、<strong>生命周期</strong>、<strong>异常</strong>与虚拟机栈类似，此处不赘述。</p>
 <p>&nbsp;</p>
@@ -516,7 +510,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>&nbsp;</p>
 <h2 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h2><p>堆是JVM中最大的一块内存，<strong>只存放</strong> 对象实例 以及 数组。</p>
 <p><em>是垃圾收集器管理的主要区域，因此也被称为“GC堆”</em></p>
-<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survior区。Survior区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
+<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survivor区。Survivor区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -586,56 +580,56 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>Java集合可大致分为两大类：Collection（单列集合）以及Map（双列集合）。<br>先来看一下大体的关系图（并没有完全列举，仅常用）</p>
 <p>Collection：<br><img src=".//Blog10/Collection.png" alt></p>
 <p>Map：<br><img src=".//Blog10/Map.png" alt></p>
-<h2 id="接口介绍"><a href="#接口介绍" class="headerlink" title="接口介绍"></a>接口介绍</h2><p>接下来详细介绍一下上图各个接口。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>有序，可重复，可插入多个null值，元素都有索引。</p>
-<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>动态数组，同步（线程安全）</p>
-<h5 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h5><p>继承自Vector，提供了5个额外方法，来实现堆栈操作</p>
+<h2 id="1-接口介绍"><a href="#1-接口介绍" class="headerlink" title="1 接口介绍"></a>1 接口介绍</h2><p>接下来详细介绍一下上图各个接口。</p>
+<h3 id="1-1-List"><a href="#1-1-List" class="headerlink" title="1.1 List"></a>1.1 List</h3><p>有序，可重复，可插入多个null值，元素都有索引。</p>
+<h4 id="1-1-1-Vector"><a href="#1-1-1-Vector" class="headerlink" title="1.1.1 Vector"></a>1.1.1 Vector</h4><p>动态数组，同步（线程安全）</p>
+<h5 id="1-1-1-1-Stack"><a href="#1-1-1-1-Stack" class="headerlink" title="1.1.1.1 Stack"></a>1.1.1.1 Stack</h5><p>继承自Vector，提供了5个额外方法，来实现堆栈操作</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">push() pop() peek() empty() search()</span><br></pre></td></tr></table></figure>
 
-<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>动态数组，线程不安全，查找效率高（O(1)时间复杂度），增加、删除效率较低。</p>
-<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><p>双向循环链表，查找效率较低，增加、删除效率较高。</p>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>（原则上）无序，不可重复，只允许有一个null值。</p>
-<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><p>基于HashMap实现</p>
-<h5 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h5><p>基于LinkedHashMap实现，<strong>有序（维护各个元素插入时的顺序）</strong>。</p>
-<h4 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h4><p>在Set的基础上，<strong>有序（维护各个元素值的大小的顺序）</strong>。</p>
-<h5 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h5><p>在SortedSet的基础上，基于TreeMap实现。</p>
-<h4 id="EnumSet"><a href="#EnumSet" class="headerlink" title="EnumSet"></a>EnumSet</h4><p>有序，不允许有null值，<strong>性能最好</strong></p>
+<h4 id="1-1-2-ArrayList"><a href="#1-1-2-ArrayList" class="headerlink" title="1.1.2 ArrayList"></a>1.1.2 ArrayList</h4><p>动态数组，线程不安全，查找效率高（O(1)时间复杂度），增加、删除效率较低。</p>
+<h4 id="1-1-3-LinkedList"><a href="#1-1-3-LinkedList" class="headerlink" title="1.1.3 LinkedList"></a>1.1.3 LinkedList</h4><p>双向循环链表，查找效率较低，增加、删除效率较高。</p>
+<h3 id="1-2-Set"><a href="#1-2-Set" class="headerlink" title="1.2 Set"></a>1.2 Set</h3><p>（原则上）无序，不可重复，只允许有一个null值。</p>
+<h4 id="1-2-1-HashSet"><a href="#1-2-1-HashSet" class="headerlink" title="1.2.1 HashSet"></a>1.2.1 HashSet</h4><p>基于HashMap实现</p>
+<h5 id="1-2-1-1-LinkedHashSet"><a href="#1-2-1-1-LinkedHashSet" class="headerlink" title="1.2.1.1 LinkedHashSet"></a>1.2.1.1 LinkedHashSet</h5><p>基于LinkedHashMap实现，<strong>有序（维护各个元素插入时的顺序）</strong>。</p>
+<h4 id="1-2-2-SortedSet"><a href="#1-2-2-SortedSet" class="headerlink" title="1.2.2 SortedSet"></a>1.2.2 SortedSet</h4><p>在Set的基础上，<strong>有序（维护各个元素值的大小的顺序）</strong>。</p>
+<h5 id="1-2-2-1-TreeSet"><a href="#1-2-2-1-TreeSet" class="headerlink" title="1.2.2.1 TreeSet"></a>1.2.2.1 TreeSet</h5><p>在SortedSet的基础上，基于TreeMap实现。</p>
+<h4 id="1-2-3-EnumSet"><a href="#1-2-3-EnumSet" class="headerlink" title="1.2.3 EnumSet"></a>1.2.3 EnumSet</h4><p>有序，不允许有null值，<strong>性能最好</strong></p>
 <p>&nbsp;</p>
-<h3 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h3><p>线程安全，结构为 数组+链表（同HashMap）。 K、V均不能为null。</p>
-<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><p>在HashTable的基础上，K、V均为字符串。</p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>线程不安全，无序，K、V均可为null，但K至多有一个可以为null。</p>
+<h3 id="1-3-HashTable"><a href="#1-3-HashTable" class="headerlink" title="1.3 HashTable"></a>1.3 HashTable</h3><p>线程安全，结构为 数组+链表（同HashMap）。 K、V均不能为null。</p>
+<h4 id="1-3-1-Properties"><a href="#1-3-1-Properties" class="headerlink" title="1.3.1 Properties"></a>1.3.1 Properties</h4><p>在HashTable的基础上，K、V均为字符串。</p>
+<h3 id="1-4-HashMap"><a href="#1-4-HashMap" class="headerlink" title="1.4 HashMap"></a>1.4 HashMap</h3><p>线程不安全，无序，K、V均可为null，但K至多有一个可以为null。</p>
 <ul>
 <li>在Java1.8之前：由 数组+链表 组成。其中，数组为主体用于存放数据，链表负责解决哈希冲突（“拉链法”，效率为O(n)）。</li>
 <li>在Java1.8之后：当 <strong>链表节点&gt;8 &amp;&amp; 数组长度&gt;64</strong> 时，结构自动转换为<strong>红黑树</strong>（效率变为O(logn)）。</li>
 </ul>
-<h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h4><p>有序，继承自HashMap。增加了一条双链表，可以保持KV对的顺序。</p>
-<h3 id="SortedMap"><a href="#SortedMap" class="headerlink" title="SortedMap"></a>SortedMap</h3><p>只是一个Interface，TreeMap是其实现类。</p>
-<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>有序，K不能为null，V可以为null。默认按Key排序，也可以在创建TreeMap时，重写Comparator实现自定义排序。基于<strong>红黑树</strong>实现。</p>
-<h3 id="WeakHashMap"><a href="#WeakHashMap" class="headerlink" title="WeakHashMap"></a>WeakHashMap</h3><p>一种改进的HashMap，对Key弱引用，若Key不再被使用则会被GC。</p>
-<h2 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h2><h3 id="线程安全的集合类"><a href="#线程安全的集合类" class="headerlink" title="线程安全的集合类"></a>线程安全的集合类</h3><p>1.Vector：比ArrayList多了个同步机制。效率较低，不推荐使用。<br>2.Stack：栈数据结构，先进后出（FILO）。<br>3.HashTable：比HashMap多了同步机制（线程安全）。<br>4.Enumeration：枚举，作用相当于迭代器。</p>
-<h3 id="创建只读集合"><a href="#创建只读集合" class="headerlink" title="创建只读集合"></a>创建只读集合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Collections.unmodifiableCollection(Collection C)</span><br></pre></td></tr></table></figure>
+<h4 id="1-4-1-LinkedHashMap"><a href="#1-4-1-LinkedHashMap" class="headerlink" title="1.4.1 LinkedHashMap"></a>1.4.1 LinkedHashMap</h4><p>有序，继承自HashMap。增加了一条双链表，可以保持KV对的顺序。</p>
+<h3 id="1-5-SortedMap"><a href="#1-5-SortedMap" class="headerlink" title="1.5 SortedMap"></a>1.5 SortedMap</h3><p>只是一个Interface，TreeMap是其实现类。</p>
+<h4 id="1-5-1-TreeMap"><a href="#1-5-1-TreeMap" class="headerlink" title="1.5.1 TreeMap"></a>1.5.1 TreeMap</h4><p>有序，K不能为null，V可以为null。默认按Key排序，也可以在创建TreeMap时，重写Comparator实现自定义排序。基于<strong>红黑树</strong>实现。</p>
+<h3 id="1-6-WeakHashMap"><a href="#1-6-WeakHashMap" class="headerlink" title="1.6 WeakHashMap"></a>1.6 WeakHashMap</h3><p>一种改进的HashMap，对Key弱引用，若Key不再被使用则会被GC。</p>
+<h2 id="2-知识点补充"><a href="#2-知识点补充" class="headerlink" title="2 知识点补充"></a>2 知识点补充</h2><h3 id="2-1-线程安全的集合类"><a href="#2-1-线程安全的集合类" class="headerlink" title="2.1 线程安全的集合类"></a>2.1 线程安全的集合类</h3><p>1.Vector：比ArrayList多了个同步机制。效率较低，不推荐使用。<br>2.Stack：栈数据结构，先进后出（FILO）。<br>3.HashTable：比HashMap多了同步机制（线程安全）。<br>4.Enumeration：枚举，作用相当于迭代器。</p>
+<h3 id="2-2-创建只读集合"><a href="#2-2-创建只读集合" class="headerlink" title="2.2 创建只读集合"></a>2.2 创建只读集合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Collections.unmodifiableCollection(Collection C)</span><br></pre></td></tr></table></figure>
 
-<h3 id="Iterator-迭代器"><a href="#Iterator-迭代器" class="headerlink" title="Iterator 迭代器"></a>Iterator 迭代器</h3><p>提供遍历任何Collection的接口，取代了Java集合框架中的Enumeration，并允许在迭代过程中删除元素（<code>Iterator.remove()</code>）。<br>其中，ListIterator在Iterator的基础上增加了 增，改 的功能，并且支持双向遍历。</p>
+<h3 id="2-3-Iterator-迭代器"><a href="#2-3-Iterator-迭代器" class="headerlink" title="2.3 Iterator 迭代器"></a>2.3 Iterator 迭代器</h3><p>提供遍历任何Collection的接口，取代了Java集合框架中的Enumeration，并允许在迭代过程中删除元素（<code>Iterator.remove()</code>）。<br>其中，ListIterator在Iterator的基础上增加了 增，改 的功能，并且支持双向遍历。</p>
 <p><strong>遍历一个List的三种方式</strong><br>1.for循环<br>2.Iterator<br>3.foreach（foreach的内部依然是Iterator。优点：简洁；缺点：只能遍历，不能删除）</p>
-<h3 id="fail-fast-快速失败机制"><a href="#fail-fast-快速失败机制" class="headerlink" title="fail-fast 快速失败机制"></a>fail-fast 快速失败机制</h3><p>当Iterator <em>A</em> 在遍历集合时，某个线程 <em>B</em> 修改了集合的结构，此时会触发fail-fast机制。</p>
+<h3 id="2-4-fail-fast-快速失败机制"><a href="#2-4-fail-fast-快速失败机制" class="headerlink" title="2.4 fail-fast 快速失败机制"></a>2.4 fail-fast 快速失败机制</h3><p>当Iterator <em>A</em> 在遍历集合时，某个线程 <em>B</em> 修改了集合的结构，此时会触发fail-fast机制。</p>
 <p><em>属于java.util包</em></p>
 <p><strong>原理</strong>：Iterator使用一个名为modCount的变量，实时计算集合内容。每当Iterator调用<code>hasNext()</code>/<code>next()</code>时，就把modCount的值与当前集合内容计算的值进行比对。若一致则继续运行，反之则抛出异常。</p>
 <p><strong>解决</strong>：把涉及modCount的代码加上Synchronized修饰，或者使用CopyOnWriteArrayList替换ArrayList。</p>
 <p>Iterator只能单向遍历，但是由于有了fail-fast的存在，使其比较安全。</p>
-<h3 id="fail-safe-安全失败机制"><a href="#fail-safe-安全失败机制" class="headerlink" title="fail-safe 安全失败机制"></a>fail-safe 安全失败机制</h3><p>当对集合的结构做出改变时，fail-fast机制会抛出异常，而fail-safe不会。</p>
+<h3 id="2-5-fail-safe-安全失败机制"><a href="#2-5-fail-safe-安全失败机制" class="headerlink" title="2.5 fail-safe 安全失败机制"></a>2.5 fail-safe 安全失败机制</h3><p>当对集合的结构做出改变时，fail-fast机制会抛出异常，而fail-safe不会。</p>
 <p><em>属于java.util.concurrent包</em></p>
 <p><strong>原理</strong>：fail-safe机制实质上会把集合的内容做一份拷贝，在拷贝出的副本集合上进行遍历操作。</p>
 <p><strong>缺点</strong>：显而易见，需要另外的时空间开销，并且不能保证遍历的内容是实时（最新）的。</p>
-<h3 id="Random-Access接口"><a href="#Random-Access接口" class="headerlink" title="Random Access接口"></a>Random Access接口</h3><p>用来标记List是否支持Random Access（随机访问）。即支持O(1)时间复杂度的查找，比如ArrayList就支持，LinkedList就不支持。</p>
-<h3 id="Array-与-List-转换"><a href="#Array-与-List-转换" class="headerlink" title="Array 与 List 转换"></a>Array 与 List 转换</h3><p>Array -&gt; List:</p>
+<h3 id="2-6-Random-Access接口"><a href="#2-6-Random-Access接口" class="headerlink" title="2.6 Random Access接口"></a>2.6 Random Access接口</h3><p>用来标记List是否支持Random Access（随机访问）。即支持O(1)时间复杂度的查找，比如ArrayList就支持，LinkedList就不支持。</p>
+<h3 id="2-7-Array-与-List-转换"><a href="#2-7-Array-与-List-转换" class="headerlink" title="2.7 Array 与 List 转换"></a>2.7 Array 与 List 转换</h3><p>Array -&gt; List:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Array.asList(arr)</span><br></pre></td></tr></table></figure>
 
 <p>List -&gt; Array:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list.toArray()</span><br></pre></td></tr></table></figure>
 
-<h3 id="HashSet如何保证不重复"><a href="#HashSet如何保证不重复" class="headerlink" title="HashSet如何保证不重复"></a>HashSet如何保证不重复</h3><p>HashSet基于HashMap实现。即把Value存入HashMap的Key中（Key若相同，则覆盖）。使用<code>add()</code>时，相当于对Key进行比较（先<code>hashcode()</code>再<code>equals()</code>）。</p>
-<h3 id="HashMap哈希冲突"><a href="#HashMap哈希冲突" class="headerlink" title="HashMap哈希冲突"></a>HashMap哈希冲突</h3><p>直接放我的笔记吧：<br><img src=".//Blog10/HashMap01.png" alt></p>
-<h3 id="自动扩容"><a href="#自动扩容" class="headerlink" title="自动扩容"></a>自动扩容</h3><p>直接放我的笔记吧：<br><img src=".//Blog10/Expansion.png" alt></p>
+<h3 id="2-8-HashSet如何保证不重复"><a href="#2-8-HashSet如何保证不重复" class="headerlink" title="2.8 HashSet如何保证不重复"></a>2.8 HashSet如何保证不重复</h3><p>HashSet基于HashMap实现。即把Value存入HashMap的Key中（Key若相同，则覆盖）。使用<code>add()</code>时，相当于对Key进行比较（先<code>hashcode()</code>再<code>equals()</code>）。</p>
+<h3 id="2-9-HashMap哈希冲突"><a href="#2-9-HashMap哈希冲突" class="headerlink" title="2.9 HashMap哈希冲突"></a>2.9 HashMap哈希冲突</h3><p>直接放我的笔记吧：<br><img src=".//Blog10/HashMap01.png" alt></p>
+<h3 id="2-10-自动扩容"><a href="#2-10-自动扩容" class="headerlink" title="2.10 自动扩容"></a>2.10 自动扩容</h3><p>直接放我的笔记吧：<br><img src=".//Blog10/Expansion.png" alt></p>
 ]]></content>
       <tags>
         <tag>数据结构</tag>
@@ -651,18 +645,21 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 
 <p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
 <p>&nbsp;</p>
-<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0.前记"></a>0.前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
-<h2 id="0-1-常量池GC"><a href="#0-1-常量池GC" class="headerlink" title="0.1 常量池GC"></a>0.1 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
-<h2 id="0-2-方法区GC"><a href="#0-2-方法区GC" class="headerlink" title="0.2 方法区GC"></a>0.2 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
-<h1 id="判断对象是否存活の算法"><a href="#判断对象是否存活の算法" class="headerlink" title="判断对象是否存活の算法"></a>判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
-<h2 id="1-引用计数法："><a href="#1-引用计数法：" class="headerlink" title="1. 引用计数法："></a>1. 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
-<h2 id="2-可达性分析算法："><a href="#2-可达性分析算法：" class="headerlink" title="2. 可达性分析算法："></a>2. 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
+<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区指代的PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
+<h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
+<h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="1-判断对象是否存活の算法"><a href="#1-判断对象是否存活の算法" class="headerlink" title="1 判断对象是否存活の算法"></a>1 判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
+<h2 id="1-1-引用计数法："><a href="#1-1-引用计数法：" class="headerlink" title="1.1 引用计数法："></a>1.1 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
+<h2 id="1-2-可达性分析算法："><a href="#1-2-可达性分析算法：" class="headerlink" title="1.2 可达性分析算法："></a>1.2 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
 <p>   <strong>可作为GC Roots的有：</strong><br>   1.虚拟机栈中引用的对象<br>   2.本地方法栈中引用的对象<br>   3.方法区常量引用的对象<br>   4.方法区类静态属性引用的对象</p>
 <p>   如下图所示，Object 03、04、05 与 GC Roots 之间无 Reference Chain，故会被GC。而Object 01、02 会继续存活。<br><img src=".//Blog11/GCRoots.png" alt></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h1 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
+<h1 id="2-四种引用"><a href="#2-四种引用" class="headerlink" title="2 四种引用"></a>2 四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
 <ol>
 <li>强引用：=，new就是强引用。GC Roots可达，不会被回收。</li>
 <li>软引用：<strong>有用但非必须</strong>。OS在将要OutOfMemory之前，GC才会回收当前对象。</li>
@@ -672,6 +669,49 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<h1 id="3-对象的访问定位（对象的引用）"><a href="#3-对象的访问定位（对象的引用）" class="headerlink" title="3 对象的访问定位（对象的引用）"></a>3 对象的访问定位（对象的引用）</h1><p>要GC某对象，首先要找到它。这里也是有两种算法可供了解：</p>
+<ol>
+<li>句柄法</li>
+<li>直接指针</li>
+</ol>
+<p>这两种方法都是通过栈中的引用（reference），来操作堆上的对象。</p>
+<h2 id="3-1-句柄法"><a href="#3-1-句柄法" class="headerlink" title="3.1 句柄法"></a>3.1 句柄法</h2><p>从堆内存中，划分出一块区域作为句柄池。</p>
+<p><strong>reference中存放 对象的句柄地址</strong>。<br><strong>句柄中存放的是对象的 实例数据 与 类型数据 各自的地址</strong>。</p>
+<p>句柄法<strong>优点</strong>：对象被移动时，只需修改 实例数据的指针，reference无需修改。</p>
+<p><img src=".//Blog11/JUBING.jpg" alt></p>
+<h2 id="3-2-直接指针"><a href="#3-2-直接指针" class="headerlink" title="3.2 直接指针"></a>3.2 直接指针</h2><p><em>HotSpot（全称为Java HotSpot Virtual Machine。一种较新版本的JVM，用来代替JIT，性能较高。是Sun JDK 和 Open JDK中自带的VM）使用该方法访问对象。</em></p>
+<p><strong>reference中存放 对象的地址</strong>。<br><strong>对象中存放 实例数据 和 类型数据的地址</strong>。</p>
+<p>直接指针<strong>优点</strong>：速度快，节省了一次指针定位的时间。</p>
+<p><img src=".//Blog11/ZHIJIEZHIZHEN.jpg" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="4-垃圾回收の算法"><a href="#4-垃圾回收の算法" class="headerlink" title="4 垃圾回收の算法"></a>4 垃圾回收の算法</h1><p>对象的存亡判断，访问定位等问题已经解决了。万事俱备，亟待回收，接下来就该重头戏——GC算法登场！</p>
+<h2 id="4-1-标记-清除算法"><a href="#4-1-标记-清除算法" class="headerlink" title="4.1 标记-清除算法"></a>4.1 标记-清除算法</h2><p>先标记，再清除。最基本的GC算法，其它算法都是由它改进而来。有两个缺点：</p>
+<ol>
+<li>效率低下</li>
+<li>空间问题（碎片化：清理后的内存空间零零散散，不连续）</li>
+</ol>
+<h2 id="4-2-复制算法"><a href="#4-2-复制算法" class="headerlink" title="4.2 复制算法"></a>4.2 复制算法</h2><p>基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>它将内存分为大小相同的两块，每次使用其中一块。当该块内存满了便触发GC，将存活的对象整理到另外一半内存中，再将刚刚使用的内存完全擦除。下图可以强化理解：</p>
+<p><img src=".//Blog11/FUZHI.jpg" alt></p>
+<h2 id="4-3-标记-整理算法"><a href="#4-3-标记-整理算法" class="headerlink" title="4.3 标记-整理算法"></a>4.3 标记-整理算法</h2><p>同上，基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>标记之后，清除掉死亡的对象，再将存活的对象连续放在一起。</p>
+<h2 id="4-4-分代垃圾回收算法"><a href="#4-4-分代垃圾回收算法" class="headerlink" title="4.4 分代垃圾回收算法"></a>4.4 分代垃圾回收算法</h2><p>目前的JVM都在用这个，综合了上述各算法，更好的提升了GC效率。</p>
+<p><strong>Eden和Survivor一起使用复制算法，Tenured（老年代）使用标记-整理算法</strong></p>
+<h3 id="4-4-1-划分"><a href="#4-4-1-划分" class="headerlink" title="4.4.1 划分"></a>4.4.1 划分</h3><p>堆内存分为 <code>年轻代（Young Generation）</code> 和 <code>老年代（Old Generation）</code><br>年轻代又分为 <code>Eden区</code> 和 <code>Survivor区</code><br>Survivor区又分为 <code>From区</code> 和 <code>To区</code>（HotSpot官方说法，民间常用的说法有分为S0/S1区，S1/S2区，都是一个意思）。</p>
+<h3 id="4-4-2-垃圾回收——年轻代"><a href="#4-4-2-垃圾回收——年轻代" class="headerlink" title="4.4.2 垃圾回收——年轻代"></a>4.4.2 垃圾回收——年轻代</h3><p>对于年轻代的垃圾回收，有一个专属的名词<strong>“Minor GC”</strong>。</p>
+<p><strong>触发条件</strong>：当新对象生成，且在Eden区分配内存失败时，触发Minor GC。</p>
+<p>在整个年轻代中，每个对象都有一个“年龄”。每触发一次Minor GC，年龄+1，且会被挪动（拷贝）到另外一个Survivor区域。</p>
+<p><strong>举个例子，假如，我们使用了Eden区和From Survivor区，那么To Survivor区就是空的。此时触发一次Minor GC，所有对象年龄+1。标记清除掉无引用的垃圾对象。再进行一次判断，若对象的年龄达到了15，则将其送入老年代。剩下的对象（存活，且年龄介于0和15之间），送入To Survivor区，此时From Survivor区就变成空的了。等到下一次触发Minor GC时，则再挪入From Survivor区中，空出To Survivor区，以此循环往复。</strong></p>
+<h3 id="4-4-3-垃圾回收——老年代"><a href="#4-4-3-垃圾回收——老年代" class="headerlink" title="4.4.3 垃圾回收——老年代"></a>4.4.3 垃圾回收——老年代</h3><p>对于老年代的垃圾回收，也有”一个”专属的名词<strong>“Full GC”</strong>（也有称为Major GC的 =_= ）。</p>
+<p><strong>触发条件</strong>：Full GC 通常由当前JVM的<strong>垃圾收集器</strong>来决定。</p>
+<p><strong>每一次Full GC 通常都会触发至少一次 Minor GC</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="5-常见的垃圾收集器"><a href="#5-常见的垃圾收集器" class="headerlink" title="5 常见的垃圾收集器"></a>5 常见的垃圾收集器</h1><p>在 4.4.3 中提到了在何种情况下，会使用到垃圾收集器。</p>
+<p><img src=".//Blog11/LAJISHOUJIQI.jpg" alt></p>
 ]]></content>
       <tags>
         <tag>算法</tag>

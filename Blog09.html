@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ryanyhliu.com//Blog09/JVM01.png">
 <meta property="og:image" content="http://ryanyhliu.com//Blog09/JVM02.png">
 <meta property="article:published_time" content="2020-07-28T07:16:51.000Z">
-<meta property="article:modified_time" content="2020-11-08T06:57:45.829Z">
+<meta property="article:modified_time" content="2020-11-08T15:15:34.423Z">
 <meta property="article:author" content="刘永蘅Ryan">
 <meta property="article:tag" content="内存">
 <meta property="article:tag" content="Java">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  644
+                  638
                 </span>
               
 
@@ -404,9 +404,6 @@
 <p>二者最大的区别即图中蓝框所示的部分。在Java1.8之后，“方法区”改名为“元空间”，且放入直接内存（系统内存）中，不再属于JVM内存，相关介绍在本文方法区部分有讲。<del>大部分面试是以Java1.8之前的版本来进行考量</del>。</p>
 <p>&nbsp;</p>
 <p>接下来我们分别来介绍JVM内存组成部分。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <h2 id="Java虚拟机栈（VM-Stack）"><a href="#Java虚拟机栈（VM-Stack）" class="headerlink" title="Java虚拟机栈（VM Stack）"></a>Java虚拟机栈（VM Stack）</h2><p>虚拟机栈是为Java字节码相关功能服务的。（我的理解是服务于Java代码相关部分）。</p>
 <p>虚拟机栈<strong>结构</strong>包括</p>
 <ul>
@@ -418,9 +415,6 @@
 <p>其中，局部变量表 负责存放各种数据类型（int，byte，char … ）以及对象的引用（reference类型）</p>
 <p>虚拟机栈的<strong>生命周期</strong>由其线程生命周期决定（很好理解，虚拟机栈就是属于某个线程）。</p>
 <p>虚拟机栈的两种异常：<br>1.StackOverFlowError：Stack不支持动态拓展，Stack 用完了<br>2.OutOfMemoryError  ：Stack  支持动态拓展，Memory用完了</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈只为Native方法服务（Native方法：非Java代码实现的方法）。</p>
 <p>本地方法栈的<strong>结构</strong>、<strong>生命周期</strong>、<strong>异常</strong>与虚拟机栈类似，此处不赘述。</p>
 <p>&nbsp;</p>
@@ -428,7 +422,7 @@
 <p>&nbsp;</p>
 <h2 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h2><p>堆是JVM中最大的一块内存，<strong>只存放</strong> 对象实例 以及 数组。</p>
 <p><em>是垃圾收集器管理的主要区域，因此也被称为“GC堆”</em></p>
-<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survior区。Survior区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
+<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survivor区。Survivor区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -729,7 +723,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.2k</span>
+    <span title="Site words total count">13.2k</span>
   
 </div>
 

@@ -94,8 +94,12 @@
 <meta property="og:description" content="&amp;nbsp;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://ryanyhliu.com//Blog11/GCRoots.png">
+<meta property="og:image" content="http://ryanyhliu.com//Blog11/JUBING.jpg">
+<meta property="og:image" content="http://ryanyhliu.com//Blog11/ZHIJIEZHIZHEN.jpg">
+<meta property="og:image" content="http://ryanyhliu.com//Blog11/FUZHI.jpg">
+<meta property="og:image" content="http://ryanyhliu.com//Blog11/LAJISHOUJIQI.jpg">
 <meta property="article:published_time" content="2020-08-14T04:06:02.000Z">
-<meta property="article:modified_time" content="2020-11-08T14:08:27.747Z">
+<meta property="article:modified_time" content="2020-11-08T15:50:15.213Z">
 <meta property="article:author" content="刘永蘅Ryan">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Java">
@@ -359,7 +363,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  665
+                  1.7k
                 </span>
               
 
@@ -375,7 +379,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  6
                 </span>
               
             </div>
@@ -401,18 +405,21 @@
 
 <p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
 <p>&nbsp;</p>
-<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0.前记"></a>0.前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
-<h2 id="0-1-常量池GC"><a href="#0-1-常量池GC" class="headerlink" title="0.1 常量池GC"></a>0.1 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
-<h2 id="0-2-方法区GC"><a href="#0-2-方法区GC" class="headerlink" title="0.2 方法区GC"></a>0.2 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
-<h1 id="判断对象是否存活の算法"><a href="#判断对象是否存活の算法" class="headerlink" title="判断对象是否存活の算法"></a>判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
-<h2 id="1-引用计数法："><a href="#1-引用计数法：" class="headerlink" title="1. 引用计数法："></a>1. 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
-<h2 id="2-可达性分析算法："><a href="#2-可达性分析算法：" class="headerlink" title="2. 可达性分析算法："></a>2. 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
+<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区指代的PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
+<h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
+<h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="1-判断对象是否存活の算法"><a href="#1-判断对象是否存活の算法" class="headerlink" title="1 判断对象是否存活の算法"></a>1 判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
+<h2 id="1-1-引用计数法："><a href="#1-1-引用计数法：" class="headerlink" title="1.1 引用计数法："></a>1.1 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
+<h2 id="1-2-可达性分析算法："><a href="#1-2-可达性分析算法：" class="headerlink" title="1.2 可达性分析算法："></a>1.2 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
 <p>   <strong>可作为GC Roots的有：</strong><br>   1.虚拟机栈中引用的对象<br>   2.本地方法栈中引用的对象<br>   3.方法区常量引用的对象<br>   4.方法区类静态属性引用的对象</p>
 <p>   如下图所示，Object 03、04、05 与 GC Roots 之间无 Reference Chain，故会被GC。而Object 01、02 会继续存活。<br><img src=".//Blog11/GCRoots.png" alt></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h1 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
+<h1 id="2-四种引用"><a href="#2-四种引用" class="headerlink" title="2 四种引用"></a>2 四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
 <ol>
 <li>强引用：=，new就是强引用。GC Roots可达，不会被回收。</li>
 <li>软引用：<strong>有用但非必须</strong>。OS在将要OutOfMemory之前，GC才会回收当前对象。</li>
@@ -422,6 +429,49 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<h1 id="3-对象的访问定位（对象的引用）"><a href="#3-对象的访问定位（对象的引用）" class="headerlink" title="3 对象的访问定位（对象的引用）"></a>3 对象的访问定位（对象的引用）</h1><p>要GC某对象，首先要找到它。这里也是有两种算法可供了解：</p>
+<ol>
+<li>句柄法</li>
+<li>直接指针</li>
+</ol>
+<p>这两种方法都是通过栈中的引用（reference），来操作堆上的对象。</p>
+<h2 id="3-1-句柄法"><a href="#3-1-句柄法" class="headerlink" title="3.1 句柄法"></a>3.1 句柄法</h2><p>从堆内存中，划分出一块区域作为句柄池。</p>
+<p><strong>reference中存放 对象的句柄地址</strong>。<br><strong>句柄中存放的是对象的 实例数据 与 类型数据 各自的地址</strong>。</p>
+<p>句柄法<strong>优点</strong>：对象被移动时，只需修改 实例数据的指针，reference无需修改。</p>
+<p><img src=".//Blog11/JUBING.jpg" alt></p>
+<h2 id="3-2-直接指针"><a href="#3-2-直接指针" class="headerlink" title="3.2 直接指针"></a>3.2 直接指针</h2><p><em>HotSpot（全称为Java HotSpot Virtual Machine。一种较新版本的JVM，用来代替JIT，性能较高。是Sun JDK 和 Open JDK中自带的VM）使用该方法访问对象。</em></p>
+<p><strong>reference中存放 对象的地址</strong>。<br><strong>对象中存放 实例数据 和 类型数据的地址</strong>。</p>
+<p>直接指针<strong>优点</strong>：速度快，节省了一次指针定位的时间。</p>
+<p><img src=".//Blog11/ZHIJIEZHIZHEN.jpg" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="4-垃圾回收の算法"><a href="#4-垃圾回收の算法" class="headerlink" title="4 垃圾回收の算法"></a>4 垃圾回收の算法</h1><p>对象的存亡判断，访问定位等问题已经解决了。万事俱备，亟待回收，接下来就该重头戏——GC算法登场！</p>
+<h2 id="4-1-标记-清除算法"><a href="#4-1-标记-清除算法" class="headerlink" title="4.1 标记-清除算法"></a>4.1 标记-清除算法</h2><p>先标记，再清除。最基本的GC算法，其它算法都是由它改进而来。有两个缺点：</p>
+<ol>
+<li>效率低下</li>
+<li>空间问题（碎片化：清理后的内存空间零零散散，不连续）</li>
+</ol>
+<h2 id="4-2-复制算法"><a href="#4-2-复制算法" class="headerlink" title="4.2 复制算法"></a>4.2 复制算法</h2><p>基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>它将内存分为大小相同的两块，每次使用其中一块。当该块内存满了便触发GC，将存活的对象整理到另外一半内存中，再将刚刚使用的内存完全擦除。下图可以强化理解：</p>
+<p><img src=".//Blog11/FUZHI.jpg" alt></p>
+<h2 id="4-3-标记-整理算法"><a href="#4-3-标记-整理算法" class="headerlink" title="4.3 标记-整理算法"></a>4.3 标记-整理算法</h2><p>同上，基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>标记之后，清除掉死亡的对象，再将存活的对象连续放在一起。</p>
+<h2 id="4-4-分代垃圾回收算法"><a href="#4-4-分代垃圾回收算法" class="headerlink" title="4.4 分代垃圾回收算法"></a>4.4 分代垃圾回收算法</h2><p>目前的JVM都在用这个，综合了上述各算法，更好的提升了GC效率。</p>
+<p><strong>Eden和Survivor一起使用复制算法，Tenured（老年代）使用标记-整理算法</strong></p>
+<h3 id="4-4-1-划分"><a href="#4-4-1-划分" class="headerlink" title="4.4.1 划分"></a>4.4.1 划分</h3><p>堆内存分为 <code>年轻代（Young Generation）</code> 和 <code>老年代（Old Generation）</code><br>年轻代又分为 <code>Eden区</code> 和 <code>Survivor区</code><br>Survivor区又分为 <code>From区</code> 和 <code>To区</code>（HotSpot官方说法，民间常用的说法有分为S0/S1区，S1/S2区，都是一个意思）。</p>
+<h3 id="4-4-2-垃圾回收——年轻代"><a href="#4-4-2-垃圾回收——年轻代" class="headerlink" title="4.4.2 垃圾回收——年轻代"></a>4.4.2 垃圾回收——年轻代</h3><p>对于年轻代的垃圾回收，有一个专属的名词<strong>“Minor GC”</strong>。</p>
+<p><strong>触发条件</strong>：当新对象生成，且在Eden区分配内存失败时，触发Minor GC。</p>
+<p>在整个年轻代中，每个对象都有一个“年龄”。每触发一次Minor GC，年龄+1，且会被挪动（拷贝）到另外一个Survivor区域。</p>
+<p><strong>举个例子，假如，我们使用了Eden区和From Survivor区，那么To Survivor区就是空的。此时触发一次Minor GC，所有对象年龄+1。标记清除掉无引用的垃圾对象。再进行一次判断，若对象的年龄达到了15，则将其送入老年代。剩下的对象（存活，且年龄介于0和15之间），送入To Survivor区，此时From Survivor区就变成空的了。等到下一次触发Minor GC时，则再挪入From Survivor区中，空出To Survivor区，以此循环往复。</strong></p>
+<h3 id="4-4-3-垃圾回收——老年代"><a href="#4-4-3-垃圾回收——老年代" class="headerlink" title="4.4.3 垃圾回收——老年代"></a>4.4.3 垃圾回收——老年代</h3><p>对于老年代的垃圾回收，也有”一个”专属的名词<strong>“Full GC”</strong>（也有称为Major GC的 =_= ）。</p>
+<p><strong>触发条件</strong>：Full GC 通常由当前JVM的<strong>垃圾收集器</strong>来决定。</p>
+<p><strong>每一次Full GC 通常都会触发至少一次 Minor GC</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="5-常见的垃圾收集器"><a href="#5-常见的垃圾收集器" class="headerlink" title="5 常见的垃圾收集器"></a>5 常见的垃圾收集器</h1><p>在 4.4.3 中提到了在何种情况下，会使用到垃圾收集器。</p>
+<p><img src=".//Blog11/LAJISHOUJIQI.jpg" alt></p>
 
       
     </div>
@@ -659,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-前记"><span class="nav-text">0.前记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-常量池GC"><span class="nav-text">0.1 常量池GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2-方法区GC"><span class="nav-text">0.2 方法区GC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断对象是否存活の算法"><span class="nav-text">判断对象是否存活の算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引用计数法："><span class="nav-text">1. 引用计数法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-可达性分析算法："><span class="nav-text">2. 可达性分析算法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四种引用"><span class="nav-text">四种引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-前记"><span class="nav-text">0 前记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1-方法区GC"><span class="nav-text">0.1 方法区GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2-常量池GC"><span class="nav-text">0.2 常量池GC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-判断对象是否存活の算法"><span class="nav-text">1 判断对象是否存活の算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-引用计数法："><span class="nav-text">1.1 引用计数法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-可达性分析算法："><span class="nav-text">1.2 可达性分析算法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-四种引用"><span class="nav-text">2 四种引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-对象的访问定位（对象的引用）"><span class="nav-text">3 对象的访问定位（对象的引用）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-句柄法"><span class="nav-text">3.1 句柄法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-直接指针"><span class="nav-text">3.2 直接指针</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-垃圾回收の算法"><span class="nav-text">4 垃圾回收の算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-标记-清除算法"><span class="nav-text">4.1 标记-清除算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-复制算法"><span class="nav-text">4.2 复制算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-标记-整理算法"><span class="nav-text">4.3 标记-整理算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-分代垃圾回收算法"><span class="nav-text">4.4 分代垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-划分"><span class="nav-text">4.4.1 划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-垃圾回收——年轻代"><span class="nav-text">4.4.2 垃圾回收——年轻代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-3-垃圾回收——老年代"><span class="nav-text">4.4.3 垃圾回收——老年代</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-常见的垃圾收集器"><span class="nav-text">5 常见的垃圾收集器</span></a></li></ol></div>
             
 
           </div>
@@ -693,7 +743,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.2k</span>
+    <span title="Site words total count">13.2k</span>
   
 </div>
 
