@@ -716,6 +716,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>算法</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
         <tag>GC</tag>
       </tags>
   </entry>
