@@ -645,7 +645,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 
 <p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
 <p>&nbsp;</p>
-<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区指代的PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
+<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区的永久代PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
 <h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
 <h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
 <p>&nbsp;</p>
@@ -718,6 +718,51 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>Java</tag>
         <tag>JVM</tag>
         <tag>GC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP三次握手与四次挥手</title>
+    <url>/Blog12.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><p>先看一下我的笔记吧。</p>
+<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/ThreewayHandshake.jpg" alt></p>
+<p>三次握手中，“三次”的含义是建立TCP连接的过程中，一共有三个数据包。通过对三个数据包的合理使用，即可在C/S之间建立起可靠的数据传输通道。</p>
+<p>如果要确认在C/S间建立起可靠连接，需要确认以下四点：</p>
+<ol>
+<li>Client端 发送功能正常</li>
+<li>Client端 接收功能正常</li>
+<li>Server端 发送功能正常</li>
+<li>Server端 接收功能正常</li>
+</ol>
+<p>经过历史的淘汰，技术人员的精简，最后呈现在我们面前的就是这三个短小精悍的数据包。也就是说，三次握手的三个数据包，通过精妙的安排，分别证明了上述的四个功能，这三个数据包缺一不可。</p>
+<p><strong>那么，这三个数据包的作用分别是：</strong><br><strong>第一个数据包（Server端成功接收）：证明了Client发送功能正常。</strong><br><strong>第二个数据包（Client端成功接收）：证明了Server接收功能正常、Server发送功能正常。</strong><br><strong>第三个数据包（Server端成功接收）：证明了Client接收功能正常。</strong></p>
+<p>其它补充：<br>SYN与ACK对应，ACK的作用是确认收到（Acknowledgement）。<br>第三次握手在技术上就可以携带数据了（但实际上并没有）。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h1><p>还是先看一下我的笔记吧。</p>
+<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/FourwayHandwave.jpg" alt></p>
+<p>四次挥手的大概过程与原理，大家仔细分析一下上图就可以看明白，没什么特别之处值得详说。但是有一处值得注意：<strong>图中红色字体的部分</strong>。</p>
+<p>让我们仔细来分析一下，为什么Client端的TIME WAIT状态需要等待2MSL（2个最大包存活时间）？</p>
+<p>首先，我们看一下在这个时间点，TCP四次挥手此时正在发生的事情。</p>
+<ol>
+<li>若Server收到了第四个包，即可正常关闭连接。</li>
+<li>若Server没有收到第四个包，则会重发一个ACK（第三个包）。</li>
+</ol>
+<p>在Server端发送完第三个包之后，需要收到Client端发送的第四个包，才会进入CLOSED状态。假如第四个包由于网络波动等原因loss掉（丢包），Server就会在等待了<strong>一段时间</strong>之后重新发送第三个包。这个Server端等待的<strong>一段时间</strong>，实际上就是一个包在网络中存活的最大时间（1MSL）。那么Server端重发的第三个包传递到Client端，又需要1MSL。这样加起来，总共需要2MSL。</p>
+<p>所以，如果发生了坏情况（第四个包loss），需要经过2MSL（等待第四个包1MSL + 重发第三个包1MSL），Client端才会接收到Server端重发的第三个包。</p>
+<p><font color="FF0000"><strong>补充！</strong></font><br>如果你在百度上检索这个2MSL，会发现很多回答都是“放空网络中的旧请求报文”。很多答案都闪烁其辞且相互抄袭，经过我个人查证，这种说法来源于《Unix网络编程卷1》中的一段解读：</p>
+<p><em>“假设该Socket在关闭连接之后又打开，如果在关闭（四次挥手）的时候发生了波动（拥塞，延迟等），导致三次握手之后才收到上次连接的挥手数据包，就会产生不可预料的影响。为了避免出现这种情况，此处设置了2MSL用来放空所有四次挥手时的数据包。”</em></p>
+<p><strong>但是，在原文中（下图红色批注）的原意是：2MSL足以放空！</strong>所以实际上，1MSL就足够进行数据包的放空。换句话说，2MSL并不是用来放空数据包，只是顺手做到了而已！</p>
+<p><img src=".//Blog12/Unix01.jpg" alt></p>
+<div style="text-align:right">——节选自《UNIX网络编程卷1》</div>
+
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>TCP</tag>
       </tags>
   </entry>
 </search>

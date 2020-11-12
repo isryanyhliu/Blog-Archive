@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://ryanyhliu.com//Blog11/FUZHI.jpg">
 <meta property="og:image" content="http://ryanyhliu.com//Blog11/LAJISHOUJIQI.jpg">
 <meta property="article:published_time" content="2020-08-14T04:06:02.000Z">
-<meta property="article:modified_time" content="2020-11-11T16:28:20.456Z">
+<meta property="article:modified_time" content="2020-11-12T03:03:21.815Z">
 <meta property="article:author" content="刘永蘅Ryan">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Java">
@@ -406,7 +406,7 @@
 
 <p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
 <p>&nbsp;</p>
-<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区指代的PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
+<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区的永久代PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
 <h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
 <h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
 <p>&nbsp;</p>
@@ -551,6 +551,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/Blog12.html" rel="prev" title="TCP三次握手与四次挥手">
+                TCP三次握手与四次挥手 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -632,7 +636,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -645,7 +649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -746,7 +750,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.2k</span>
+    <span title="Site words total count">14.2k</span>
   
 </div>
 
