@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ryanyhliu.com/about/index.html</loc>
+    
+    <lastmod>2020-11-12T06:23:55.552Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ryanyhliu.com/Blog12.html</loc>
     
-    <lastmod>2020-11-12T06:06:29.035Z</lastmod>
+    <lastmod>2020-11-12T06:17:34.278Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://ryanyhliu.com/Blog08.html</loc>
     
     <lastmod>2020-11-07T05:23:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ryanyhliu.com/about/index.html</loc>
-    
-    <lastmod>2020-11-06T11:15:17.554Z</lastmod>
     
   </url>
   
