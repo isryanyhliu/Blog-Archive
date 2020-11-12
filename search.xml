@@ -766,4 +766,93 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>网络协议</tag>
       </tags>
   </entry>
+  <entry>
+    <title>TCP与UDP</title>
+    <url>/Blog13.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="TCP与UDP的对比"><a href="#TCP与UDP的对比" class="headerlink" title="TCP与UDP的对比"></a>TCP与UDP的对比</h1><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">是否面向连接</th>
+<th align="center">是否可靠</th>
+<th align="center">传输形式</th>
+<th align="center">传输效率</th>
+<th align="center">所需资源</th>
+<th align="center">应用场景</th>
+<th align="center">支持</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TCP</td>
+<td align="center">面向连接</td>
+<td align="center">可靠</td>
+<td align="center">字节流</td>
+<td align="center">低</td>
+<td align="center">多</td>
+<td align="center">要求通信数据可靠</td>
+<td align="center">单播</td>
+</tr>
+<tr>
+<td align="center">UDP</td>
+<td align="center">无连接</td>
+<td align="center">不可靠</td>
+<td align="center">数据报文段</td>
+<td align="center">高</td>
+<td align="center">少</td>
+<td align="center">要求通信速率高</td>
+<td align="center">广播、多播</td>
+</tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="TCP如何保证可靠性"><a href="#TCP如何保证可靠性" class="headerlink" title="TCP如何保证可靠性"></a>TCP如何保证可靠性</h1><ol>
+<li>数据包编号排序。发送方给包编号，接收方给包排序。</li>
+<li>校验和。若一组数据包校验和有误，则丢弃整组数据包。</li>
+<li>接收端丢弃重复数据。</li>
+<li>流量控制（滑动窗口算法）</li>
+<li>拥塞控制</li>
+<li>自动重传（ARQ协议）</li>
+<li>超时重传</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="TCP-ARQ协议"><a href="#TCP-ARQ协议" class="headerlink" title="TCP ARQ协议"></a>TCP ARQ协议</h1><p>ARQ协议分为两种，一种是<code>停止等待ARQ</code>，另一种是<code>连续ARQ</code>。</p>
+<p>停止等待ARQ：发完一个分组，便等待接收方确认。优点是简单，但是信道的利用率低，且等待时间长。</p>
+<p>连续ARQ：连续发送分组，接收方对<strong>按序的最后一个发送</strong>进行确认。举个栗子，收到了编号为1，2，4，5的数据包，则需重发3，4，5数据包。优点是信道的利用率高，丢失不需要全部重传。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="TCP-拥塞控制"><a href="#TCP-拥塞控制" class="headerlink" title="TCP 拥塞控制"></a>TCP 拥塞控制</h1><p>拥塞：网络中分组过多，使得整体性能下降。</p>
+<p>TCP拥塞控制：慢开始、拥塞避免、快重传+快恢复。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="TCP-粘包、拆包"><a href="#TCP-粘包、拆包" class="headerlink" title="TCP 粘包、拆包"></a>TCP 粘包、拆包</h1><p>举个栗子：Socket接收消息时，多个字符串粘在一起；一个字符串被拆开。</p>
+<p>解决：可以用Netty自带的解码器解决。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="TCP-长连接-短连接，心跳机制"><a href="#TCP-长连接-短连接，心跳机制" class="headerlink" title="TCP 长连接/短连接，心跳机制"></a>TCP 长连接/短连接，心跳机制</h1><p>短连接：Client与Server读写完就关闭连接。<br>长连接：Client与Server读写玩不关闭连接。</p>
+<p>若Client与Server<strong>保持长连接</strong>，且<strong>一段时间无数据交互</strong>，它们是无法发现对方是否仍然在线，即无法保证TCP的可靠性。为了解决这个问题，引入了心跳机制。</p>
+<p><strong>心跳包</strong>：双方一段时间无交互时，一方就会主动发送一个特殊数据包，另一方收到之后也会回复一个特殊数据包。双方收到即可确认彼此在线（亦称作PING-PONG交互）。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1><p>待深入。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>TCP</tag>
+        <tag>网络协议</tag>
+        <tag>UDP</tag>
+      </tags>
+  </entry>
 </search>
