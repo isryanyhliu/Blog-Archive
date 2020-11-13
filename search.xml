@@ -855,4 +855,184 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>UDP</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java创建对象的过程（包含类加载）</title>
+    <url>/Blog14.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>在Java中，说到创建对象，我们大多数情况下使用的都是new指令。那么明面上一条new指令，暗地里经过JVM多少处理呢？</p>
+<h1 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1 类加载检查"></a>1 类加载检查</h1><p>当JVM遇到一条new指令时，先检查其参数能否在常量池中定位到该类的符号引用。再检查该符号引用是否被加载过、解析过、初始化过。</p>
+<p><em>注：符号引用相当于自定义的变量名等；引用除了符号引用以外，还有直接引用。直接引用指的是指针、偏移量之类的东西。</em></p>
+<p><em>JVM并不是编译时，就加载所有类进内存。而是第一次运行某个类时才加载，且只加载这一次。</em></p>
+<p>若有，则直接进行第二步分配内存。若没有，则执行<strong>类加载</strong>。</p>
+<p>类加载的过程分为三步：<strong>加载 -&gt; 链接 -&gt; 初始化</strong>。<br>而链接又分为三步：<strong>验证 -&gt; 准备 -&gt; 解析</strong>。</p>
+<p><em>加载和链接实际上是交叉进行的。加载未结束，链接已开始。</em></p>
+<p><em>不妨多了解一点，<strong>类的生命周期</strong>：加载 -&gt; 链接 -&gt; 初始化 -&gt; 使用 -&gt; 卸载</em></p>
+<h2 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h2><p>加载这一步的内容是，把class文件装入内存。</p>
+<p>在JVM中，内置的类加载器（ClassLoader）有三层，自顶向下分别是</p>
+<ol>
+<li>BootstrapClassLoader 启动类加载器（最顶层的ClassLoader，由C++实现）</li>
+<li>ExtensionClassLoader 扩展类加载器</li>
+<li>AppClassLoader 应用程序类加载器</li>
+</ol>
+<p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
+<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。<em>PS：这里的“双亲”指的是“父母那一辈”的意思。</em></p>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>什么是双亲委派模型？在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。</p>
+<p>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。</p>
+<p>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
+<p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
+<p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
+<p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
+<h2 id="1-2-验证"><a href="#1-2-验证" class="headerlink" title="1.2 验证"></a>1.2 验证</h2><p>保证加载的字节流符合规范。</p>
+<h2 id="1-3-准备"><a href="#1-3-准备" class="headerlink" title="1.3 准备"></a>1.3 准备</h2><p>为static变量（非实例变量）分配内存，并赋值。</p>
+<h2 id="1-4-解析"><a href="#1-4-解析" class="headerlink" title="1.4 解析"></a>1.4 解析</h2><p>将常量池的符号引用替换为直接引用。</p>
+<h2 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h2><p>初始化static代码块，构造器等。</p>
+<h1 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2 分配内存"></a>2 分配内存</h1><p>所需的内存大小，在类加载完成后，便可以确定。</p>
+<p>内存分配的方式有两种，分别是<strong>指针碰撞法</strong>以及<strong>空闲列表法</strong></p>
+<p><img src=".//Blog14/FENPEINEICUN.jpg" alt></p>
+<p><strong>分配完内存，就会在内存上创建实例化对象。</strong></p>
+<p>JVM在创建对象时，必须保证线程安全，通常用两种方法保证。</p>
+<ol>
+<li><p>CAS + 失败重试机制<br>CAS是乐观锁（乐观锁是一种思想，没有实际的锁。它假设不会出现冲突，所以不用加锁，直接去申请资源，失败就重试，直到成功为止）。CAS + 失败重试 可以保证操作的原子性，从而线程安全。</p>
+</li>
+<li><p>TLAB<br>全称ThreadLocalAllocBuffer，于 HotSpot1.6 引入，原理与指针碰撞法类似。在每个线程初始化时，同时申请一块指定大小的内存绑定给它。当线程需要内存时，就在自己的这块内存上分配，若容量不够，再去Eden区正常申请。<strong>优点</strong>：每个线程都有自己的专属指针，性能高。<img src=".//Blog14/TLAB.jpg" alt></p>
+</li>
+</ol>
+<h1 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3 初始化零值"></a>3 初始化零值</h1><p>分配内存完成后，要把这些内存初始化为0。<br><strong>所以成员变量可以不用初始化</strong></p>
+<h1 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4 设置对象头"></a>4 设置对象头</h1><p>初始化零值后，JVM要对对象实例进行设置。例如：</p>
+<ol>
+<li>该对象是哪个类的实例</li>
+<li>如何找到该类的元数据</li>
+<li>对象的HashCode</li>
+<li>对象的GC年龄</li>
+<li>锁状态标识</li>
+</ol>
+<p>这些信息都存放在对象头中。<em>PS：实例对象分为三个部分：对象头、实例数据、对齐填充（非必须）</em></p>
+<h1 id="5-执行init-方法"><a href="#5-执行init-方法" class="headerlink" title="5 执行init()方法"></a>5 执行init()方法</h1><p>从JVM的角度来看，执行完上述4步，一个新对象已经产生。</p>
+<p>执行完new指令后紧接着执行init()，才能完成对象实例的初始化（成员变量、成员方法等）。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>对象创建</tag>
+        <tag>类加载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP相关 &amp;&amp; 对称/非对称加密简述</title>
+    <url>/Blog15.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>HTTP的底层是TCP，所以，TCP的一些特性在HTTP中得以保留。由于TCP中存在长连接与短连接，所以HTTP中也存在长连接与短连接。</p>
+<h1 id="HTTP的长连接"><a href="#HTTP的长连接" class="headerlink" title="HTTP的长连接"></a>HTTP的长连接</h1><p>HTTP的长连接是基于TCP长连接做出的封装处理。HTTP长连接我们称之为<strong>Keep-Alive机制</strong>，其内容是：若长连接在2个小时（保活定时）内无任何反应，Server便向Client发送探测报文段，此时可能有4种结果：</p>
+<ol>
+<li><p>Client正常运行，且正常响应：<br>则Server保活定时复位（Reset）。</p>
+</li>
+<li><p>Client崩溃/重启，，无法响应：<br>Server继续每隔75秒发送一次探测报文段，共发送10次。若Client仍然没有响应，则关闭连接（CLOSED）。</p>
+</li>
+<li><p>Client崩溃后重启，一开始无响应，后来正常：<br>重启连接（连接已经中断，物是人非）。</p>
+</li>
+<li><p>Client正常运行，但探测报文段不可达（Client无响应）：<br>同第二点。</p>
+</li>
+</ol>
+<h1 id="HTTP的短连接"><a href="#HTTP的短连接" class="headerlink" title="HTTP的短连接"></a>HTTP的短连接</h1><p>HTTP的短连接实际上是由于HTTP的特性（无连接）决定的。</p>
+<p>所以，让我们引入HTTP的两个特性：无连接、无状态。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP是无连接的"><a href="#HTTP是无连接的" class="headerlink" title="HTTP是无连接的"></a>HTTP是无连接的</h1><p>每次只处理一个请求，处理完（收到Client应答）就断开。<br><strong>解决</strong>：Keep-Alive机制。</p>
+<h1 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h1><p>每一次打开网页都完全独立。</p>
+<p><strong>解决</strong>：</p>
+<ol>
+<li><p>Cookie：<br>存储在浏览器（Bowser）中，由Server生成<br>下一次请求该网站时，会把该Cookie发送给Server<br>不安全（在Server之外被非法读写）</p>
+</li>
+<li><p>Session<br>存储在Server，较安全<br>但是Server需要Client提供Session_id才能找到对应Session<br>Session_id通常使用Cookie存储</p>
+</li>
+<li><p>Token<br>可抵抗<a href="https://zh.wikipedia.org/zh/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0" target="_blank" rel="noopener">CSRF（跨站请求伪造）</a> </p>
+</li>
+<li><p>JWT</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTP的端口默认是80；HTTPS则是443。</p>
+<p>HTTP基于TCP，明文传输；HTTPS基于HTTP + <strong>SSL</strong>，通过对称加密与非对称加密传输。下面我顺便简单介绍一下对称加密以及非对称加密，不感兴趣的同学可以直接跳过此部分。</p>
+<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>只有一个密钥，同时负责加密、解密，很好理解。</p>
+<p><strong>常见算法</strong>：DES、AES等。</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>有成对的密钥，称为 公钥 + 私钥，<strong>无法相互推导</strong>。一个加密，另一个解密。</p>
+<p><strong>常见算法</strong>：RSA、DSA等。</p>
+<p>这里举个栗子，强化大家的理解，是一个非常有趣的数学算法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先，我们需要知道这样一件事：</span><br><span class="line"></span><br><span class="line">一个8位数，与 4 0000 0001 做乘法运算，</span><br><span class="line">得出的运算结果的后八位，就是那个8位数的值。</span><br><span class="line"></span><br><span class="line">比如 12345678 * 400000001 &#x3D; 4938271212345678</span><br><span class="line"></span><br><span class="line">好了，准备完成。接下来，就是非对称加密的部分了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server取其任意一对因数，比如 19801 与 20201</span><br><span class="line">（19801 * 20201 &#x3D; 400000001）</span><br><span class="line"></span><br><span class="line">我们设公钥为 19801， 私钥为 20201</span><br><span class="line">私钥存储在Server中，严格确保不外泄</span><br><span class="line">把公钥公开到网络中，并且附送上加密算法：</span><br><span class="line"></span><br><span class="line">密文 * 公钥，再取其后八位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">假设，Client A想要传输内容为“12345678”的数据包给Server</span><br><span class="line">Client A获取到Server公开的公钥 19801</span><br><span class="line">12345678 * 19801 &#x3D; 244456770078，取后八位56770078</span><br><span class="line">Client A将56770078传输给Server</span><br><span class="line"></span><br><span class="line">在Client A向Server传输56770078时</span><br><span class="line">Client B通过抓包解包等技术手段，获取到该加密内容56770078</span><br><span class="line">由于加密算法是一个有损算法（舍弃了前4位）</span><br><span class="line">所以Client B即便知道加密过程，也无法还原数据</span><br><span class="line"></span><br><span class="line">好，此时Server也获取到了Client A的数据包</span><br><span class="line">Server 把 密文 * 私钥</span><br><span class="line">（56770078 * 20201 &#x3D; 1146812345678）</span><br><span class="line">再取其后8位，得到原文“12345678”</span><br></pre></td></tr></table></figure>
+<p>怎么样，是不是非常简单易懂~ 这就是非对称加密的核心内容。这只是一个非常简单的示例，可能放在今天，随随便便的一台个人计算机就可以根据公钥20201破解出私钥19801。但是在没有计算机的年代，靠大量人工的算力也无法通过公钥破解出私钥。随着学者在数学领域的探索，非对称加密的实际应用早已结合了各种前沿的数学运算。当然了，这些都不是我等搬砖狗深究之事<del>~</del></p>
+<h2 id="SSL原理"><a href="#SSL原理" class="headerlink" title="SSL原理"></a>SSL原理</h2><p>非对称加密虽然十分安全，但是性能比起对称加密则十分低下。而Bowser与Server之间的数据交互十分频繁，采用非对称加密显然不合适。</p>
+<p>在SSL中，采用了非对称加密与对称加密相结合的方式。即<strong>Server通过非对称加密，把对称加密所使用的密钥，递交给Client</strong>。具体的过程，如下图所示：</p>
+<p><img src=".//Blog15/SSL.jpg" alt></p>
+<p>其中证书验证的环节，我们暂且不细究。此处涉及到的并非纯粹的技术问题，而是类似于互联网规章制度，感兴趣的同学可以自行了解一下。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="与Server的四种交互"><a href="#与Server的四种交互" class="headerlink" title="与Server的四种交互"></a>与Server的四种交互</h1><ol>
+<li>GET    查询</li>
+<li>POST   修改</li>
+<li>PUT    增加</li>
+<li>DELETE 删除</li>
+</ol>
+<p>实际上，单独的 GET / POST 就可以实现增删改查。</p>
+<p>GET是幂等的（对同一个URL，多个请求返回相同结果）。</p>
+<p>POST使用必须用到表单Form（所以很多人偷懒使用GET）。</p>
+<p><strong>GET与POST的区别</strong>：</p>
+<ol>
+<li><p>GET提交的数据明文放在URL后边，不安全。<br>而POST则是把提交的数据放在HTTP包中加密传输，较为安全。</p>
+</li>
+<li><p>GET提交的数据量较小（最多1024字节）。<br>POST理论上无限制。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP请求、响应"><a href="#HTTP请求、响应" class="headerlink" title="HTTP请求、响应"></a>HTTP请求、响应</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包含</p>
+<ol>
+<li>请求方法（GET/POST）</li>
+<li>请求头<br>（空一行，表示请求头结束）</li>
+<li>请求正文</li>
+</ol>
+<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包含</p>
+<ol>
+<li>状态行（包含<strong>状态码</strong>）</li>
+<li>响应头<br>（空一行，表示响应头结束）</li>
+<li>响应正文</li>
+</ol>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><p><strong>信息码。</strong>Server已接收，Client可继续。</p>
+<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><p><strong>成功码。</strong>Server已接收并处理。</p>
+<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><p><strong>重定向码。</strong>服务器要求客户端重定向。</p>
+<p>重定向：亦称URL转发，用于当前资源（页面）迁移到新URL。</p>
+<h5 id="301"><a href="#301" class="headerlink" title="301"></a>301</h5><p><strong>永久重定向。</strong>例如<code>www.google.com</code>迁移到<code>google.com</code><br>优点：</p>
+<ul>
+<li>可以减少DNS的缓存（提高缓存友好型）</li>
+<li>防止访问量分散（提高网站竞价排名）</li>
+</ul>
+<h5 id="302"><a href="#302" class="headerlink" title="302"></a>302</h5><p><strong>临时重定向。</strong>旧资源仍可访问，但临时跳转访问新资源。<br>优点：</p>
+<ul>
+<li>搜索引擎不会更新资源的链接，比301更利于SEO</li>
+</ul>
+<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><p><strong>客户端错误码。</strong>Client的请求有非法内容。</p>
+<h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求有语法错误。</p>
+<h5 id="401"><a href="#401" class="headerlink" title="401"></a>401</h5><p>请求未经授权。</p>
+<h5 id="403"><a href="#403" class="headerlink" title="403"></a>403</h5><p>Server收到，但拒绝提供服务（原因会写在响应正文中）。</p>
+<h5 id="404"><a href="#404" class="headerlink" title="404"></a>404</h5><p>请求的资源不存在。</p>
+<h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4><p><strong>服务器错误码。</strong>Server未能正常处理请求。</p>
+<h5 id="500"><a href="#500" class="headerlink" title="500"></a>500</h5><p>服务器Error。</p>
+<h5 id="503"><a href="#503" class="headerlink" title="503"></a>503</h5><p>服务器当前无法处理（过段时间可能恢复）。</p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>网络协议</tag>
+        <tag>HTTP</tag>
+        <tag>对称加密</tag>
+        <tag>非对称加密</tag>
+        <tag>状态码</tag>
+      </tags>
+  </entry>
 </search>
