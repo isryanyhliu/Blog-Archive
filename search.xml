@@ -215,6 +215,7 @@
         <tag>计算机网络</tag>
         <tag>python</tag>
         <tag>防火墙</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -330,7 +331,7 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
-        <tag>运维</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -433,8 +434,8 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>&nbsp;</p>
 ]]></content>
       <tags>
-        <tag>运维</tag>
         <tag>SEO</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -1033,6 +1034,169 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>对称加密</tag>
         <tag>非对称加密</tag>
         <tag>状态码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 操作系统-进程与线程</title>
+    <url>/Blog16.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h1><ol>
+<li><p>匿名管道：<br>用于具有亲缘关系（父子、兄弟）的进程之间通信。</p>
+</li>
+<li><p>有名管道：<br>FIFO，任意两个进程。</p>
+</li>
+<li><p>信号：<br>用于<strong>通知某个进程</strong>发生了某事件。</p>
+</li>
+<li><p>消息队列：<br>FIFO，也可以随即查询，更灵活。<br>克服了信号信息承载量少的缺点。<br>克服了管道只支持字节流，缓冲区大小受限的缺点。</p>
+</li>
+<li><p>信号量：<br>是一个计数器，用于<strong>多进程访问共享数据</strong>，帮助进程间同步。</p>
+</li>
+<li><p>共享内存：<br>依赖于<strong>同步</strong>操作，<strong>最有用的</strong>进程间通信方式。</p>
+</li>
+<li><p>套接字：<br><strong>Client与Server的进程之间</strong>进行通信</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="线程间同步"><a href="#线程间同步" class="headerlink" title="线程间同步"></a>线程间同步</h1><ol>
+<li><p>互斥量（MuteX）：<br>采用<strong>互斥对象机制</strong>(把对象加上互斥锁)，拥有互斥对象的线程才能访问。例如Java的Synchronized关键字及其各种锁。</p>
+</li>
+<li><p>信号量：<br>允许同一时刻，多个线程访问统一资源。但需控制最大线程数量。</p>
+</li>
+<li><p>事件（Event）：<br>wait() / notify()：通过通知操作，来保持多线程同步，还能实现优先级比较。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="进程的调度算法"><a href="#进程的调度算法" class="headerlink" title="进程的调度算法"></a>进程的调度算法</h1><ol>
+<li><p>先到先服务（FCFS）：<br>顾名思义，不解释。</p>
+</li>
+<li><p>短作业优先（SJF）：<br>顾名思义，不解释。</p>
+</li>
+<li><p>时间片轮转：<br>最古老、最公平、最简单、使用最广。</p>
+</li>
+<li><p>多级反馈队列：<br>高优先级 &amp;&amp; 短作业 的进程优先处理。公认效果较好，Unix用的就是这种调度算法。</p>
+</li>
+<li><p>优先级调度：<br>顾名思义，不解释。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="OS内存管理"><a href="#OS内存管理" class="headerlink" title="OS内存管理"></a>OS内存管理</h1><h2 id="OS内存管理的内容"><a href="#OS内存管理的内容" class="headerlink" title="OS内存管理的内容"></a>OS内存管理的内容</h2><p>分配、回收、逻辑地址与物理地址的转换。</p>
+<h2 id="OS内存管理的机制"><a href="#OS内存管理的机制" class="headerlink" title="OS内存管理的机制"></a>OS内存管理的机制</h2><ul>
+<li><p>连续分配</p>
+<ul>
+<li>块式管理：<br>非常古老，把内存分为几个固定大小的块，每个块只存放一个进程。<br>&nbsp;</li>
+</ul>
+</li>
+<li><p>非连续分配</p>
+<ul>
+<li><p>页式管理：<br>把内存划分为一页一页，页较小，比块式分配粒度更大，减少了碎片。通过页表中的映射，来管理逻辑与物理地址的转换。</p>
+</li>
+<li><p>段式管理：<br>粒度更小，进一步减少了碎片。每个段都定义了信息。</p>
+</li>
+<li><p>段页式管理：<br>内存先分成段，再分成页，并提高了运行时的安全性。<br>&nbsp;</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>分页与分段<br>相同处：提高内存利用率，减少了碎片。离散存储，但每个段/页都是连续的。<br>不同处：页的大小是固定的，段的大小取决于程序而变化。分页满足OS的性能需求，分段满足用户的动态需求。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="CPU寻址（虚拟寻址）"><a href="#CPU寻址（虚拟寻址）" class="headerlink" title="CPU寻址（虚拟寻址）"></a>CPU寻址（虚拟寻址）</h1><p>CPU将虚拟地址翻译为物理地址。这个过程需要CPU中的内存管理单元。</p>
+<p>若无虚拟地址的存在（早期OS）的影响：程序可访问任意内存，不安全。且容易造成数据覆盖，很难同时运行多个程序。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><p>可以让程序拥有超出物理内存实际大小的空间，且为每个进程提供一致的、私有的空间。管理高效，减少出错。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h1><ul>
+<li>时间局部性：执行了一条指令，通常不久后会再次执行。</li>
+<li>空间局部性：访问了一个数据，通常不久后会再次访问。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>OS</tag>
+        <tag>进程</tag>
+        <tag>线程</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式-前序</title>
+    <url>/Blog17.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>设计模式（Design Patterns），用于解决“设计”上的问题（非算法、架构等）。其有四位作者，被称为“四人帮”（Gang Of Four），所以也用GOF代指设计模式。</p>
+<p><strong>目的</strong>为了可重用代码，提高可扩展性和可维护性。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>六大原则</strong></p>
+<ol>
+<li><p>开闭原则：<br>对扩展开放，对修改关闭。</p>
+</li>
+<li><p>里氏代换原则：<br>面向对象的基本原则之一。任何父类可以出现的地方，子类也一定可以出现。</p>
+</li>
+<li><p>依赖倒转原则：<br>针对接口编程，依赖于抽象而不依赖于具体。</p>
+</li>
+<li><p>接口隔离原则：<br>使用多个接口好于使用单个接口（解耦）。</p>
+</li>
+<li><p>迪米特法则（最少知道原则）：<br>实体之间减少相互作用，各功能模块相对独立。</p>
+</li>
+<li><p>合成服用原则：<br>尽量使用组合，而非继承。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>细分</strong></p>
+<ul>
+<li>创建型：提供创建对象 同时 隐藏创建逻辑 的方式。<ul>
+<li>工厂与抽象工厂</li>
+<li>单例</li>
+<li>建造者</li>
+<li>原型<br>&nbsp;</li>
+</ul>
+</li>
+<li>结构型：关注类和对象的组合。<ul>
+<li>适配器</li>
+<li>装饰器</li>
+<li>桥接</li>
+<li>外观</li>
+<li>代理</li>
+<li>过滤器</li>
+<li>组合</li>
+<li>享元<br>&nbsp;</li>
+</ul>
+</li>
+<li>行为型：关注对象之间的通信。<ul>
+<li>责任链</li>
+<li>观察者</li>
+<li>模板</li>
+<li>命令</li>
+<li>解释器</li>
+<li>迭代器</li>
+<li>中介者</li>
+<li>策略</li>
+<li>状态</li>
+<li>备忘录</li>
+<li>空对象</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>设计模式</tag>
       </tags>
   </entry>
 </search>
