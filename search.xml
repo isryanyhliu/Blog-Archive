@@ -214,7 +214,6 @@
       <tags>
         <tag>计算机网络</tag>
         <tag>python</tag>
-        <tag>防火墙</tag>
         <tag>Web</tag>
       </tags>
   </entry>
@@ -232,7 +231,6 @@
         <tag>算法</tag>
         <tag>迷宫问题</tag>
         <tag>广度优先</tag>
-        <tag>邻接表</tag>
         <tag>C语言</tag>
         <tag>数据结构</tag>
       </tags>
@@ -1197,6 +1195,74 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 ]]></content>
       <tags>
         <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OSI网络模型</title>
+    <url>/Blog18.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>关于网络协议的分层，在网上流传着各种版本，其对应关系如下图所示：<br><img src=".//Blog18/compare.jpg" alt></p>
+<p>接下来的部分，我会以最常用的五层协议来介绍。</p>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><p><strong>数据单位</strong>：报文</p>
+<p><strong>作用</strong>：直接为应用的进程提供服务（例如电子邮件，文件传输等）。</p>
+<p><strong>常见协议</strong>：</p>
+<ol>
+<li>HTTP：超文本传输协议（HyperText Transfer Protocol）</li>
+<li>DNS：域名系统（Domain Name System）</li>
+<li>FTP：文件传输协议（File Transfer Protocol）</li>
+<li>SMTP：简单邮件传输协议（Simple Mail Transfer Protocol）</li>
+<li>Telnet：远程终端协议（远程控制服务器的方法）</li>
+</ol>
+<h1 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h1><p><strong>数据单位</strong>：报文段（Segment）</p>
+<p><strong>作用</strong>：向两个主机之间的进程提供服务，由于一个主机有多个进程，所以运输层有<strong>分用</strong>和<strong>复用</strong>两种功能。</p>
+<ul>
+<li><p>分用：把运输层Segment中的信息分别发送给相应的Socket服务（运输层把收到的信息分别交付到应用层相关的进程）。</p>
+</li>
+<li><p>复用：把Socket中的数据集中，加头封装，发到网络层中（多个应用层进程同时使用运输层的服务）。</p>
+</li>
+</ul>
+<p><strong>常见协议</strong>：</p>
+<ol>
+<li>TCP：传输控制协议（Transmission Control Protocol）</li>
+<li>UDP：用户数据报协议（User Datagram Protocol）</li>
+</ol>
+<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p><strong>数据单位</strong>：IP数据报</p>
+<p><strong>作用</strong>：选择合适的网间路由和交换节点。网络层把运输层产生的Segment装入IP数据报。</p>
+<p><strong>常见协议</strong>：</p>
+<ol>
+<li>IP：网际互连协议（Internet Protocol）</li>
+<li>ICMP：Internet控制报文协议（Internet Control Message Protocol）</li>
+<li>ARP：地址解析协议（Address Resolution Protocol）</li>
+</ol>
+<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p><strong>数据单位</strong>：帧</p>
+<p><strong>作用</strong>：把网络层交下来的IP数据报组装成帧，以及检测/纠错帧中的错误。即数据链路层提供了两个功能：帧编码 和 差错纠正控制。</p>
+<p><strong>常见协议</strong>：Ethernet</p>
+<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p><strong>数据单位</strong>：比特（bit）</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="常见协议及端口号"><a href="#常见协议及端口号" class="headerlink" title="常见协议及端口号"></a>常见协议及端口号</h1><ul>
+<li>DHCP Server：67</li>
+<li>DHCP Client：68<br>&nbsp;</li>
+<li>POP3（邮件接收协议）：110</li>
+<li>SMTP（邮件发送协议）：25<br>&nbsp;</li>
+<li>Telnet：23<br>&nbsp;</li>
+<li>FTP 数据传输：20</li>
+<li>FTP 指令传输：21<br>&nbsp;</li>
+<li>TFTP：69<br>&nbsp;</li>
+<li>HTTP：80</li>
+<li>HTTPS：443</li>
+<li>DNS：53<br>&nbsp;</li>
+<li>SSH：22<br>&nbsp;</li>
+<li>MySQL：3306</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>网络协议</tag>
+        <tag>OSI</tag>
       </tags>
   </entry>
 </search>
