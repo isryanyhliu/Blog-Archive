@@ -543,7 +543,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>祝各位国际劳动节快乐</title>
+    <title>【杂记】 祝各位国际劳动节快乐</title>
     <url>/Blog08.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
@@ -1263,6 +1263,153 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>计算机网络</tag>
         <tag>网络协议</tag>
         <tag>OSI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 Java异常机制</title>
+    <url>/Blog19.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="整体框架图"><a href="#整体框架图" class="headerlink" title="整体框架图"></a>整体框架图</h1><p><img src=".//Blog19/Frame.jpg" alt></p>
+<h1 id="什么情况下finally不执行"><a href="#什么情况下finally不执行" class="headerlink" title="什么情况下finally不执行"></a>什么情况下finally不执行</h1><ul>
+<li>finally第一行出错</li>
+<li>其前面的代码用<code>System.exit()</code>推出程序</li>
+<li>所在的线程死亡</li>
+<li>CPU关闭</li>
+</ul>
+<h1 id="若try和finally中都有return"><a href="#若try和finally中都有return" class="headerlink" title="若try和finally中都有return"></a>若try和finally中都有return</h1><p>执行顺序：</p>
+<ol>
+<li>try中常规语句</li>
+<li>finally中常规语句</li>
+<li>finally中return</li>
+<li>try中return</li>
+</ol>
+<h1 id="Throw-Throws"><a href="#Throw-Throws" class="headerlink" title="Throw/Throws"></a>Throw/Throws</h1><p>二者都是消极处理<br>Throw：抛出一个异常，出现在<strong>函数体</strong>。<br>Throws：<strong>声明</strong>方法可能抛出异常，出现在<strong>函数头</strong>。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+        <tag>异常机制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 ==与equals</title>
+    <url>/Blog20.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><img src=".//Blog20/01.jpg" alt></p>
+<p>换一种理解方式：<br><img src=".//Blog20/02.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 接口与抽象类</title>
+    <url>/Blog21.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th align="center">接口</th>
+<th align="center">抽象类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">like-a</td>
+<td align="center">is-a</td>
+</tr>
+<tr>
+<td align="center">修饰符是public或default</td>
+<td align="center">修饰符是public，protected，default</td>
+</tr>
+<tr>
+<td align="center">变量修饰必须是static，final</td>
+<td align="center">随便</td>
+</tr>
+<tr>
+<td align="center">可以implements多个</td>
+<td align="center">只能extends一个</td>
+</tr>
+<tr>
+<td align="center">是对行为的抽象</td>
+<td align="center">是对类的抽象</td>
+</tr>
+<tr>
+<td align="center">是一种行为规范</td>
+<td align="center">是一种设计模板</td>
+</tr>
+<tr>
+<td align="center">不能有构造方法</td>
+<td align="center">可以有构造方法</td>
+</tr>
+</tbody></table>
+<p>ps：<strong>抽象类</strong>不能被实例化，只能被继承。实现了抽象类的抽象方法的子类 可实例化。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+        <tag>接口</tag>
+        <tag>抽象类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 Override与Overload</title>
+    <url>/Blog22.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><img src=".//Blog22/01.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java IO流</title>
+    <url>/Blog23.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
+<li>基于字节：InputStream / OutputStream</li>
+<li>基于字符：Reader / Writer</li>
+<li>磁盘操作：File</li>
+<li>网络操作：Socket</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="IO（BIO）"><a href="#IO（BIO）" class="headerlink" title="IO（BIO）"></a>IO（BIO）</h1><p>线程间是线性关系，效率低，易成为性能瓶颈。</p>
+<p><strong>面向流</strong></p>
+<p><strong>同步阻塞</strong></p>
+<h1 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h1><p>Java1.4引入。</p>
+<p>提供了新的三大特性：</p>
+<ol>
+<li>Buffer（数据）</li>
+<li>Channel（运输）</li>
+<li>Selector</li>
+</ol>
+<p><strong>面向缓冲区</strong></p>
+<p><strong>同步非阻塞</strong></p>
+<h1 id="AIO"><a href="#AIO" class="headerlink" title="AIO"></a>AIO</h1><p>Java1.7引入。</p>
+<p>提供了异步机制（基于回调）。</p>
+<p><strong>异步非阻塞</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h1><p>指的是<strong>Client</strong>。<br>阻塞：Client发出请求，在得到回应前只能等待。<br>非阻塞：Client发出请求，在得到回应前可以做别的事（例如发送别的请求）。</p>
+<h1 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h1><p>指的是<strong>Server</strong>。<br>同步：Server接收请求，在返回结果前不能接受其它请求。<br>异步：Server接收请求，在返回结果前可以接收其他请求。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>IO</tag>
       </tags>
   </entry>
 </search>
