@@ -162,24 +162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>通过邻接表实现广度优先搜索（迷宫问题）</title>
-    <url>/Blog04.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p><strong>“Talk is cheap. Show me the code.”  — Linus Torvalds</strong><br></p>
-<p>直接上代码，如下</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">            问题：迷宫问题 </span></span><br><span class="line"><span class="comment">            算法：广度优先搜索 </span></span><br><span class="line"><span class="comment">         数据结构：邻接表 </span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R 7 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Branch</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Branch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Root</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Root * nextRoot;</span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Root;</span><br><span class="line"></span><br><span class="line"><span class="comment">/////////////////////////////全局变量 </span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[R][R];<span class="comment">//迷宫 </span></span><br><span class="line">Root treeRoot;<span class="comment">//树根 </span></span><br><span class="line"><span class="keyword">int</span> level = <span class="number">1</span>;<span class="comment">//第几层 </span></span><br><span class="line"><span class="comment">/////////////////////// </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n---------------------------------------------------------------------\n"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; R; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; R; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">map</span>[i][j] == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t□"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t%d"</span>, <span class="built_in">map</span>[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Branch <span class="title">findBranch</span><span class="params">(Root tempRoot, <span class="keyword">int</span> templevel)</span><span class="comment">//寻路 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));	</span><br><span class="line">	<span class="keyword">int</span> tempRow = tempRoot -&gt; row;</span><br><span class="line">	<span class="keyword">int</span> tempColumn = tempRoot -&gt; column;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//up</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow - <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;<span class="comment">//等于当前的层数加一 </span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">9</span>)<span class="comment">//出口是9 </span></span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;<span class="comment">//找到了出口，把当前层数变成0，并返回NULL </span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//right</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//down</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow + <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//left</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn - <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addRoot</span><span class="params">(Branch tempBranch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Root tempBranchRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	<span class="comment">//初始化 </span></span><br><span class="line">	&#123; </span><br><span class="line">		tempBranchRoot -&gt; row = tempBranch -&gt; row;</span><br><span class="line">		tempBranchRoot -&gt; column = tempBranch -&gt; column;</span><br><span class="line">		tempBranchRoot -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">		tempBranchRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line">	<span class="keyword">while</span> (tempRoot -&gt; nextRoot != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;</span><br><span class="line">	&#125;</span><br><span class="line">	tempRoot -&gt; nextRoot = tempBranchRoot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createRoot</span><span class="params">(Root tempRoot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	tempBranch = tempRoot -&gt; nextBranch;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		addRoot(tempBranch);<span class="comment">//把当前branch变成root </span></span><br><span class="line">		tempBranch = tempBranch -&gt; nextBranch;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	Branch lastBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	</span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (level != <span class="number">0</span>)<span class="comment">//标识符，如果为0就代表找到了出口 </span></span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">		<span class="comment">//为当前root建立branch </span></span><br><span class="line">		<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)<span class="comment">//如果还有branch </span></span><br><span class="line">		&#123;</span><br><span class="line">			tempBranch -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">			tempRoot -&gt; nextBranch = tempBranch;</span><br><span class="line">			lastBranch = tempBranch;</span><br><span class="line"></span><br><span class="line">			tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				lastBranch -&gt; nextBranch = tempBranch;</span><br><span class="line">				lastBranch = tempBranch;</span><br><span class="line">				tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		createRoot(tempRoot);<span class="comment">//把当前root的branch创建成root，放在表尾 </span></span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;<span class="comment">//接着寻找下一个root </span></span><br><span class="line"></span><br><span class="line">		printMap();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">1</span>] =  <span class="number">1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">4</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">1</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">5</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">5</span>] =  <span class="number">9</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">6</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">6</span>] = <span class="number">-1</span>; </span><br><span class="line">	printMap();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化根 </span></span><br><span class="line">	&#123;</span><br><span class="line">		treeRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">		treeRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">		treeRoot -&gt; row = <span class="number">1</span>;</span><br><span class="line">		treeRoot -&gt; column = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	createTree();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-        <tag>广度优先</tag>
-        <tag>C语言</tag>
-        <tag>数据结构</tag>
-        <tag>迷宫问题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>变量名是否占用内存</title>
     <url>/Blog03.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -233,6 +215,69 @@
       <tags>
         <tag>编译原理</tag>
         <tag>内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过Live2D让自己的头像动起来</title>
+    <url>/Blog07.html</url>
+    <content><![CDATA[<center>内含GIF图，网站没配置动态加载，载入较慢，见谅！</center>
+&nbsp;
+<a id="more"></a>
+
+<p>最近由于疫情的原因，使用电脑摄像头的频率大幅提高。但是作为一名颜值主播，订阅没过500万是不能轻易露脸的(<a href="https://baike.baidu.com/item/%E4%B9%94%E7%A2%A7%E8%90%9D%E6%AE%BF%E4%B8%8B/23642693" target="_blank" rel="noopener">梗出处</a>)。我的解决方法就是生成一个属于自己的虚拟形象，废话不多说，先看效果图：</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src=".//Blog07/preview.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>正文开始。首先我们需要准备好FaceRig这款应用，<a href="https://store.steampowered.com/app/274920/FaceRig/" target="_blank" rel="noopener">该应用在Steam平台上有售</a>。其作用是通过2D摄像头进行实时的人脸识别追踪，通过识别并提取眼睛、眉毛、鼻子、嘴巴、脸部边缘的特征值，来将自己的面部行为映射到虚拟形象上。</p>
+<p>这里放一张从网络上找来的效果预览图，非up本人，侵删。<br><img src=".//Blog07/facerigPreview.png" alt></p>
+<p>下载好Facerig之后，还需要下载其Live2D支持的DLC拓展包，在Steam平台上搜索如下：<br><img src=".//Blog07/steamShortcut.png" alt><br>该DLC是一个对Live2D提供支持的插件，可以把通过Live2D创作好的虚拟形象导入到Facerig中使用。通过Live2D的官方开发工具，将做好的模型通过该DLC导入进Facerig中，就可以自动进行映射匹配。即Facerig会自动把用户创作的模型中的五官等元素进行链接与映射，用户只需在Live2D的工具中专心建模即可。</p>
+<p>&nbsp;</p>
+<p>接下来的部分就是如何通过Live2D技术来进行建模了，即创建一个虚拟形象。</p>
+<p>首先我们需要去<a href="http://www.live2d.com/en/download/" target="_blank" rel="noopener">Live2D官网</a>下载建模工具。（向下滚动页面，最下方有测试版本可供免费使用）<br><img src=".//Blog07/Live2D_DownloadPage.png" alt></p>
+<p>安装完毕之后，会显示两个图标。我们建模所使用到的是左边这个。<br><img src=".//Blog07/2Icons.png" alt></p>
+<p>该软件是用来将模型中的各个部分对应匹配到五官，进而被Facerig识别，进行面部捕捉的。所以在使用这个软件之前，我们还需要搞一个模型。在这里我选择用我的头像进行仿制。<br><img src=".//Blog07/Avatar.png" alt></p>
+<p>因为这个图画非常简单，所以在这里我使用的工具是PowerPoint。首先将原头像放进去，然后使用鼠标，像描字帖一样，画出一个拷贝版本，再把你描的这个新素材拖到旁边。这里需要注意的是，每一个部分（眼睛、嘴巴、脑袋）都是需要一笔成型。<br><img src=".//Blog07/PowerPoint.png" alt></p>
+<p>由于Live2D的工具支持psd格式文件的导入。所以我们要把刚刚通过PowerPoint画出来的素材导入到PhotoShop中，再通过PhotoShop另存为psd格式的文件<br><img src=".//Blog07/PhotoShop.png" alt></p>
+<p>保存之后，打开我们刚刚下载的Live2D工具，左上角File -&gt; Open，打开psd文件，工具会自动进行转制。<br><img src=".//Blog07/ToolImport.png" alt><br>导入成功之后如下图所示。<br><img src=".//Blog07/OverImport.png" alt></p>
+<p>然后我们就可以在下图中的红色方框部分进行器官与模型的匹配了。<br><img src=".//Blog07/Live2D01.png" alt></p>
+<p>这里我以整个头部的操作为例（其余部分操作类似，就不一个一个详细说了，大家自己摸索一下就能明白）。头部的运动分为XYZ三个轴方向上的运动，对应的是红色方框中最上边三行的绑定操作（如下图）。<br><img src=".//Blog07/Live2D02.png" alt></p>
+<p>由于头部的特殊性，这里我们可以通过Live2D工具自带的功能，把面部<a href="http://sites.cybernoids.jp/cubism2_cn/modeler/deformer/placement-curve" target="_blank" rel="noopener">球面化</a>。免费版本的Live2D的<a href="https://baike.baidu.com/item/%E6%9B%B2%E9%9D%A2%E7%BB%86%E5%88%86" target="_blank" rel="noopener">曲面细分</a>是有限制的，好在我们的模型比较简单，免费的也完全够用。先选中整个面部，再点击下图所示按钮，将选中的部分球面化。<br><img src=".//Blog07/Live2D03.png" alt></p>
+<p>对了在这里还有个操作提示。与写代码相类似，Live2D里的模型也是分各个层次的。比如面部和身体为并列关系，而五官则隶属面部。当创建好球面模型后，我们可以在下图所示的左下部分红色方框中，通过拖动操作，进行更方便的层次结构调整<br><img src=".//Blog07/Live2D04.png" alt></p>
+<p>面部球面化之后，会变成带有绿色标记点以及网格标记。通过拖动绿色标记点，就可以对面部进行球面变形。如下图所示，我们首先将角度X对应的轴拖到最左边，这里的映射关系是头部水平扭到最左边。然后再在右边的操作台上，通过调整绿色标记点，设定出你预想的模型对应的样子。<br><img src=".//Blog07/Live2D05.png" alt></p>
+<p>将模型设置好了之后，便剩下了最后的步骤，将制作好的模型导入到Facerig中（此处再次提醒，不要忘了购买支持Live2D的DLC）。首先还是在Live2D工具中，左上角 File -&gt; Export for runtime -&gt; Export as moc3 file ，如下图：<br><img src=".//Blog07/ExportAsMoc3.png" alt></p>
+<p>弹出的提示框我们不必改动，默认就好，然后点击OK即可。去输出的文件夹查看，一般为包含如下图的内容。<br><img src=".//Blog07/FilesInclude.png" alt></p>
+<p>最后，将整个文件夹放到以下路径中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Steam\steamapps\common\FaceRig\Mod\VP\PC_Common\Objects</span><br></pre></td></tr></table></figure>
+<p>与其它Facerig自带的默认模型放在一起，重启Facerig，在如下图所示的地方，即可找到你刚刚制作的新模型。<br><img src=".//Blog07/Facerig01.png" alt></p>
+]]></content>
+      <tags>
+        <tag>Live2D</tag>
+        <tag>Facerig</tag>
+        <tag>建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过邻接表实现广度优先搜索（迷宫问题）</title>
+    <url>/Blog04.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>“Talk is cheap. Show me the code.”  — Linus Torvalds</strong><br></p>
+<p>直接上代码，如下</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">            问题：迷宫问题 </span></span><br><span class="line"><span class="comment">            算法：广度优先搜索 </span></span><br><span class="line"><span class="comment">         数据结构：邻接表 </span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R 7 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Branch</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Branch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Root</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> row;</span><br><span class="line">	<span class="keyword">int</span> column;</span><br><span class="line"></span><br><span class="line">	_Root * nextRoot;</span><br><span class="line">	_Branch * nextBranch;</span><br><span class="line">&#125;</span><br><span class="line">* Root;</span><br><span class="line"></span><br><span class="line"><span class="comment">/////////////////////////////全局变量 </span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[R][R];<span class="comment">//迷宫 </span></span><br><span class="line">Root treeRoot;<span class="comment">//树根 </span></span><br><span class="line"><span class="keyword">int</span> level = <span class="number">1</span>;<span class="comment">//第几层 </span></span><br><span class="line"><span class="comment">/////////////////////// </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n---------------------------------------------------------------------\n"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; R; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; R; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">map</span>[i][j] == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t□"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t%d"</span>, <span class="built_in">map</span>[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Branch <span class="title">findBranch</span><span class="params">(Root tempRoot, <span class="keyword">int</span> templevel)</span><span class="comment">//寻路 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));	</span><br><span class="line">	<span class="keyword">int</span> tempRow = tempRoot -&gt; row;</span><br><span class="line">	<span class="keyword">int</span> tempColumn = tempRoot -&gt; column;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//up</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow - <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;<span class="comment">//等于当前的层数加一 </span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow - <span class="number">1</span>][tempColumn] == <span class="number">9</span>)<span class="comment">//出口是9 </span></span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;<span class="comment">//找到了出口，把当前层数变成0，并返回NULL </span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//right</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn + <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//down</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow + <span class="number">1</span>;</span><br><span class="line">		tempBranch -&gt; column = tempColumn;</span><br><span class="line">		<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow + <span class="number">1</span>][tempColumn] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//left</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch -&gt; row = tempRow;</span><br><span class="line">		tempBranch -&gt; column = tempColumn - <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] = templevel + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> tempBranch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[tempRow][tempColumn - <span class="number">1</span>] == <span class="number">9</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		level = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addRoot</span><span class="params">(Branch tempBranch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Root tempBranchRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	<span class="comment">//初始化 </span></span><br><span class="line">	&#123; </span><br><span class="line">		tempBranchRoot -&gt; row = tempBranch -&gt; row;</span><br><span class="line">		tempBranchRoot -&gt; column = tempBranch -&gt; column;</span><br><span class="line">		tempBranchRoot -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">		tempBranchRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line">	<span class="keyword">while</span> (tempRoot -&gt; nextRoot != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;</span><br><span class="line">	&#125;</span><br><span class="line">	tempRoot -&gt; nextRoot = tempBranchRoot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createRoot</span><span class="params">(Root tempRoot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	tempBranch = tempRoot -&gt; nextBranch;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		addRoot(tempBranch);<span class="comment">//把当前branch变成root </span></span><br><span class="line">		tempBranch = tempBranch -&gt; nextBranch;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Root tempRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">	Branch tempBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	Branch lastBranch = (struct _Branch *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct _Branch));</span><br><span class="line">	</span><br><span class="line">	tempRoot = treeRoot;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (level != <span class="number">0</span>)<span class="comment">//标识符，如果为0就代表找到了出口 </span></span><br><span class="line">	&#123;</span><br><span class="line">		tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">		<span class="comment">//为当前root建立branch </span></span><br><span class="line">		<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)<span class="comment">//如果还有branch </span></span><br><span class="line">		&#123;</span><br><span class="line">			tempBranch -&gt; nextBranch = <span class="literal">NULL</span>;</span><br><span class="line">			tempRoot -&gt; nextBranch = tempBranch;</span><br><span class="line">			lastBranch = tempBranch;</span><br><span class="line"></span><br><span class="line">			tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (tempBranch != <span class="literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				lastBranch -&gt; nextBranch = tempBranch;</span><br><span class="line">				lastBranch = tempBranch;</span><br><span class="line">				tempBranch = findBranch(tempRoot, <span class="built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		createRoot(tempRoot);<span class="comment">//把当前root的branch创建成root，放在表尾 </span></span><br><span class="line">		tempRoot = tempRoot -&gt; nextRoot;<span class="comment">//接着寻找下一个root </span></span><br><span class="line"></span><br><span class="line">		printMap();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">0</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">1</span>] =  <span class="number">1</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">1</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">2</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">3</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">4</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">1</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">2</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">4</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">5</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">4</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">5</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">3</span>] =  <span class="number">0</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">5</span>] =  <span class="number">9</span>; <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">6</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">map</span>[<span class="number">6</span>][<span class="number">0</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">1</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">2</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">3</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">4</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">5</span>] = <span class="number">-1</span>; <span class="built_in">map</span>[<span class="number">6</span>][<span class="number">6</span>] = <span class="number">-1</span>; </span><br><span class="line">	printMap();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化根 </span></span><br><span class="line">	&#123;</span><br><span class="line">		treeRoot = (struct _Root *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(struct _Root));</span><br><span class="line">		treeRoot -&gt; nextRoot = <span class="literal">NULL</span>;</span><br><span class="line">		treeRoot -&gt; row = <span class="number">1</span>;</span><br><span class="line">		treeRoot -&gt; column = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	createTree();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+        <tag>广度优先</tag>
+        <tag>C语言</tag>
+        <tag>数据结构</tag>
+        <tag>迷宫问题</tag>
       </tags>
   </entry>
   <entry>
@@ -330,6 +375,34 @@
       <tags>
         <tag>Web</tag>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【杂记】 祝各位国际劳动节快乐</title>
+    <url>/Blog08.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<center>
+
+<p>1886年5月1日，在美国举行了约35万人参加的罢工和示威游行<br>示威者要求改善劳动条件，实行<strong>八小时工作制</strong>。</p>
+<p>&nbsp;</p>
+<p>5月3日政府出动警察镇压，向人群开枪，杀害了四个人，受伤者无数</p>
+<p>&nbsp;</p>
+<p>5月4日各工会于干草市广场举行群众大会，遭警察包围。<br>突发爆炸事件，场面大乱，双方均死伤惨重</p>
+<p>&nbsp;</p>
+<p>事后警察与媒体咬定劳工领袖引起爆炸，以谋杀罪起诉八人<br>但其中五人均有不在场证明</p>
+<p>&nbsp;</p>
+<p>审判最后，<strong>一人被判十五年，二人被判无期，五人被判死刑</strong></p>
+<p>&nbsp;</p>
+<p>死刑之一工会领袖 奥古斯都·史比斯 临刑前说<br>“总有一天，我们的沉默，会远比今天你们所要压制的言论更为洪亮有力”</p>
+<p>&nbsp;</p>
+<p>1889年，巴黎第二次国际大会通过决议，将5月1日定为国际劳动节<br>要求全世界劳工共同努力，为实现八小时工作制而奋斗</p>
+<p>&nbsp;</p>
+<p>1894年，小罗斯福总统执政时，确立美国法律八小时工作制</p>
+</center>]]></content>
+      <tags>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -495,79 +568,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>内存</tag>
         <tag>Java</tag>
         <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【杂记】 祝各位国际劳动节快乐</title>
-    <url>/Blog08.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<center>
-
-<p>1886年5月1日，在美国举行了约35万人参加的罢工和示威游行<br>示威者要求改善劳动条件，实行<strong>八小时工作制</strong>。</p>
-<p>&nbsp;</p>
-<p>5月3日政府出动警察镇压，向人群开枪，杀害了四个人，受伤者无数</p>
-<p>&nbsp;</p>
-<p>5月4日各工会于干草市广场举行群众大会，遭警察包围。<br>突发爆炸事件，场面大乱，双方均死伤惨重</p>
-<p>&nbsp;</p>
-<p>事后警察与媒体咬定劳工领袖引起爆炸，以谋杀罪起诉八人<br>但其中五人均有不在场证明</p>
-<p>&nbsp;</p>
-<p>审判最后，<strong>一人被判十五年，二人被判无期，五人被判死刑</strong></p>
-<p>&nbsp;</p>
-<p>死刑之一工会领袖 奥古斯都·史比斯 临刑前说<br>“总有一天，我们的沉默，会远比今天你们所要压制的言论更为洪亮有力”</p>
-<p>&nbsp;</p>
-<p>1889年，巴黎第二次国际大会通过决议，将5月1日定为国际劳动节<br>要求全世界劳工共同努力，为实现八小时工作制而奋斗</p>
-<p>&nbsp;</p>
-<p>1894年，小罗斯福总统执政时，确立美国法律八小时工作制</p>
-</center>]]></content>
-      <tags>
-        <tag>杂记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通过Live2D让自己的头像动起来</title>
-    <url>/Blog07.html</url>
-    <content><![CDATA[<center>内含GIF图，网站没配置动态加载，载入较慢，见谅！</center>
-&nbsp;
-<a id="more"></a>
-
-<p>最近由于疫情的原因，使用电脑摄像头的频率大幅提高。但是作为一名颜值主播，订阅没过500万是不能轻易露脸的(<a href="https://baike.baidu.com/item/%E4%B9%94%E7%A2%A7%E8%90%9D%E6%AE%BF%E4%B8%8B/23642693" target="_blank" rel="noopener">梗出处</a>)。我的解决方法就是生成一个属于自己的虚拟形象，废话不多说，先看效果图：</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><img src=".//Blog07/preview.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>正文开始。首先我们需要准备好FaceRig这款应用，<a href="https://store.steampowered.com/app/274920/FaceRig/" target="_blank" rel="noopener">该应用在Steam平台上有售</a>。其作用是通过2D摄像头进行实时的人脸识别追踪，通过识别并提取眼睛、眉毛、鼻子、嘴巴、脸部边缘的特征值，来将自己的面部行为映射到虚拟形象上。</p>
-<p>这里放一张从网络上找来的效果预览图，非up本人，侵删。<br><img src=".//Blog07/facerigPreview.png" alt></p>
-<p>下载好Facerig之后，还需要下载其Live2D支持的DLC拓展包，在Steam平台上搜索如下：<br><img src=".//Blog07/steamShortcut.png" alt><br>该DLC是一个对Live2D提供支持的插件，可以把通过Live2D创作好的虚拟形象导入到Facerig中使用。通过Live2D的官方开发工具，将做好的模型通过该DLC导入进Facerig中，就可以自动进行映射匹配。即Facerig会自动把用户创作的模型中的五官等元素进行链接与映射，用户只需在Live2D的工具中专心建模即可。</p>
-<p>&nbsp;</p>
-<p>接下来的部分就是如何通过Live2D技术来进行建模了，即创建一个虚拟形象。</p>
-<p>首先我们需要去<a href="http://www.live2d.com/en/download/" target="_blank" rel="noopener">Live2D官网</a>下载建模工具。（向下滚动页面，最下方有测试版本可供免费使用）<br><img src=".//Blog07/Live2D_DownloadPage.png" alt></p>
-<p>安装完毕之后，会显示两个图标。我们建模所使用到的是左边这个。<br><img src=".//Blog07/2Icons.png" alt></p>
-<p>该软件是用来将模型中的各个部分对应匹配到五官，进而被Facerig识别，进行面部捕捉的。所以在使用这个软件之前，我们还需要搞一个模型。在这里我选择用我的头像进行仿制。<br><img src=".//Blog07/Avatar.png" alt></p>
-<p>因为这个图画非常简单，所以在这里我使用的工具是PowerPoint。首先将原头像放进去，然后使用鼠标，像描字帖一样，画出一个拷贝版本，再把你描的这个新素材拖到旁边。这里需要注意的是，每一个部分（眼睛、嘴巴、脑袋）都是需要一笔成型。<br><img src=".//Blog07/PowerPoint.png" alt></p>
-<p>由于Live2D的工具支持psd格式文件的导入。所以我们要把刚刚通过PowerPoint画出来的素材导入到PhotoShop中，再通过PhotoShop另存为psd格式的文件<br><img src=".//Blog07/PhotoShop.png" alt></p>
-<p>保存之后，打开我们刚刚下载的Live2D工具，左上角File -&gt; Open，打开psd文件，工具会自动进行转制。<br><img src=".//Blog07/ToolImport.png" alt><br>导入成功之后如下图所示。<br><img src=".//Blog07/OverImport.png" alt></p>
-<p>然后我们就可以在下图中的红色方框部分进行器官与模型的匹配了。<br><img src=".//Blog07/Live2D01.png" alt></p>
-<p>这里我以整个头部的操作为例（其余部分操作类似，就不一个一个详细说了，大家自己摸索一下就能明白）。头部的运动分为XYZ三个轴方向上的运动，对应的是红色方框中最上边三行的绑定操作（如下图）。<br><img src=".//Blog07/Live2D02.png" alt></p>
-<p>由于头部的特殊性，这里我们可以通过Live2D工具自带的功能，把面部<a href="http://sites.cybernoids.jp/cubism2_cn/modeler/deformer/placement-curve" target="_blank" rel="noopener">球面化</a>。免费版本的Live2D的<a href="https://baike.baidu.com/item/%E6%9B%B2%E9%9D%A2%E7%BB%86%E5%88%86" target="_blank" rel="noopener">曲面细分</a>是有限制的，好在我们的模型比较简单，免费的也完全够用。先选中整个面部，再点击下图所示按钮，将选中的部分球面化。<br><img src=".//Blog07/Live2D03.png" alt></p>
-<p>对了在这里还有个操作提示。与写代码相类似，Live2D里的模型也是分各个层次的。比如面部和身体为并列关系，而五官则隶属面部。当创建好球面模型后，我们可以在下图所示的左下部分红色方框中，通过拖动操作，进行更方便的层次结构调整<br><img src=".//Blog07/Live2D04.png" alt></p>
-<p>面部球面化之后，会变成带有绿色标记点以及网格标记。通过拖动绿色标记点，就可以对面部进行球面变形。如下图所示，我们首先将角度X对应的轴拖到最左边，这里的映射关系是头部水平扭到最左边。然后再在右边的操作台上，通过调整绿色标记点，设定出你预想的模型对应的样子。<br><img src=".//Blog07/Live2D05.png" alt></p>
-<p>将模型设置好了之后，便剩下了最后的步骤，将制作好的模型导入到Facerig中（此处再次提醒，不要忘了购买支持Live2D的DLC）。首先还是在Live2D工具中，左上角 File -&gt; Export for runtime -&gt; Export as moc3 file ，如下图：<br><img src=".//Blog07/ExportAsMoc3.png" alt></p>
-<p>弹出的提示框我们不必改动，默认就好，然后点击OK即可。去输出的文件夹查看，一般为包含如下图的内容。<br><img src=".//Blog07/FilesInclude.png" alt></p>
-<p>最后，将整个文件夹放到以下路径中</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Steam\steamapps\common\FaceRig\Mod\VP\PC_Common\Objects</span><br></pre></td></tr></table></figure>
-<p>与其它Facerig自带的默认模型放在一起，重启Facerig，在如下图所示的地方，即可找到你刚刚制作的新模型。<br><img src=".//Blog07/Facerig01.png" alt></p>
-]]></content>
-      <tags>
-        <tag>Live2D</tag>
-        <tag>Facerig</tag>
-        <tag>建模</tag>
       </tags>
   </entry>
   <entry>
@@ -1035,75 +1035,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>设计模式-前序</title>
-    <url>/Blog17.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>设计模式（Design Patterns），用于解决“设计”上的问题（非算法、架构等）。其有四位作者，被称为“四人帮”（Gang Of Four），所以也用GOF代指设计模式。</p>
-<p><strong>目的</strong>为了可重用代码，提高可扩展性和可维护性。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>六大原则</strong></p>
-<ol>
-<li><p>开闭原则：<br>对扩展开放，对修改关闭。</p>
-</li>
-<li><p>里氏代换原则：<br>面向对象的基本原则之一。任何父类可以出现的地方，子类也一定可以出现。</p>
-</li>
-<li><p>依赖倒转原则：<br>针对接口编程，依赖于抽象而不依赖于具体。</p>
-</li>
-<li><p>接口隔离原则：<br>使用多个接口好于使用单个接口（解耦）。</p>
-</li>
-<li><p>迪米特法则（最少知道原则）：<br>实体之间减少相互作用，各功能模块相对独立。</p>
-</li>
-<li><p>合成服用原则：<br>尽量使用组合，而非继承。</p>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>细分</strong></p>
-<ul>
-<li>创建型：提供创建对象 同时 隐藏创建逻辑 的方式。<ul>
-<li>工厂与抽象工厂</li>
-<li>单例</li>
-<li>建造者</li>
-<li>原型<br>&nbsp;</li>
-</ul>
-</li>
-<li>结构型：关注类和对象的组合。<ul>
-<li>适配器</li>
-<li>装饰器</li>
-<li>桥接</li>
-<li>外观</li>
-<li>代理</li>
-<li>过滤器</li>
-<li>组合</li>
-<li>享元<br>&nbsp;</li>
-</ul>
-</li>
-<li>行为型：关注对象之间的通信。<ul>
-<li>责任链</li>
-<li>观察者</li>
-<li>模板</li>
-<li>命令</li>
-<li>解释器</li>
-<li>迭代器</li>
-<li>中介者</li>
-<li>策略</li>
-<li>状态</li>
-<li>备忘录</li>
-<li>空对象</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【笔记】 操作系统-进程与线程</title>
     <url>/Blog16.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1198,6 +1129,103 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>设计模式-前序</title>
+    <url>/Blog17.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>设计模式（Design Patterns），用于解决“设计”上的问题（非算法、架构等）。其有四位作者，被称为“四人帮”（Gang Of Four），所以也用GOF代指设计模式。</p>
+<p><strong>目的</strong>为了可重用代码，提高可扩展性和可维护性。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>六大原则</strong></p>
+<ol>
+<li><p>开闭原则：<br>对扩展开放，对修改关闭。</p>
+</li>
+<li><p>里氏代换原则：<br>面向对象的基本原则之一。任何父类可以出现的地方，子类也一定可以出现。</p>
+</li>
+<li><p>依赖倒转原则：<br>针对接口编程，依赖于抽象而不依赖于具体。</p>
+</li>
+<li><p>接口隔离原则：<br>使用多个接口好于使用单个接口（解耦）。</p>
+</li>
+<li><p>迪米特法则（最少知道原则）：<br>实体之间减少相互作用，各功能模块相对独立。</p>
+</li>
+<li><p>合成服用原则：<br>尽量使用组合，而非继承。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>细分</strong></p>
+<ul>
+<li>创建型：提供创建对象 同时 隐藏创建逻辑 的方式。<ul>
+<li>工厂与抽象工厂</li>
+<li>单例</li>
+<li>建造者</li>
+<li>原型<br>&nbsp;</li>
+</ul>
+</li>
+<li>结构型：关注类和对象的组合。<ul>
+<li>适配器</li>
+<li>装饰器</li>
+<li>桥接</li>
+<li>外观</li>
+<li>代理</li>
+<li>过滤器</li>
+<li>组合</li>
+<li>享元<br>&nbsp;</li>
+</ul>
+</li>
+<li>行为型：关注对象之间的通信。<ul>
+<li>责任链</li>
+<li>观察者</li>
+<li>模板</li>
+<li>命令</li>
+<li>解释器</li>
+<li>迭代器</li>
+<li>中介者</li>
+<li>策略</li>
+<li>状态</li>
+<li>备忘录</li>
+<li>空对象</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 Java异常机制</title>
+    <url>/Blog19.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="整体框架图"><a href="#整体框架图" class="headerlink" title="整体框架图"></a>整体框架图</h1><p><img src=".//Blog19/Frame.jpg" alt></p>
+<h1 id="什么情况下finally不执行"><a href="#什么情况下finally不执行" class="headerlink" title="什么情况下finally不执行"></a>什么情况下finally不执行</h1><ul>
+<li>finally第一行出错</li>
+<li>其前面的代码用<code>System.exit()</code>推出程序</li>
+<li>所在的线程死亡</li>
+<li>CPU关闭</li>
+</ul>
+<h1 id="若try和finally中都有return"><a href="#若try和finally中都有return" class="headerlink" title="若try和finally中都有return"></a>若try和finally中都有return</h1><p>执行顺序：</p>
+<ol>
+<li>try中常规语句</li>
+<li>finally中常规语句</li>
+<li>finally中return</li>
+<li>try中return</li>
+</ol>
+<h1 id="Throw-Throws"><a href="#Throw-Throws" class="headerlink" title="Throw/Throws"></a>Throw/Throws</h1><p>二者都是消极处理<br>Throw：抛出一个异常，出现在<strong>函数体</strong>。<br>Throws：<strong>声明</strong>方法可能抛出异常，出现在<strong>函数头</strong>。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+        <tag>异常机制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OSI网络模型</title>
     <url>/Blog18.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1266,34 +1294,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>【笔记】 Java异常机制</title>
-    <url>/Blog19.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="整体框架图"><a href="#整体框架图" class="headerlink" title="整体框架图"></a>整体框架图</h1><p><img src=".//Blog19/Frame.jpg" alt></p>
-<h1 id="什么情况下finally不执行"><a href="#什么情况下finally不执行" class="headerlink" title="什么情况下finally不执行"></a>什么情况下finally不执行</h1><ul>
-<li>finally第一行出错</li>
-<li>其前面的代码用<code>System.exit()</code>推出程序</li>
-<li>所在的线程死亡</li>
-<li>CPU关闭</li>
-</ul>
-<h1 id="若try和finally中都有return"><a href="#若try和finally中都有return" class="headerlink" title="若try和finally中都有return"></a>若try和finally中都有return</h1><p>执行顺序：</p>
-<ol>
-<li>try中常规语句</li>
-<li>finally中常规语句</li>
-<li>finally中return</li>
-<li>try中return</li>
-</ol>
-<h1 id="Throw-Throws"><a href="#Throw-Throws" class="headerlink" title="Throw/Throws"></a>Throw/Throws</h1><p>二者都是消极处理<br>Throw：抛出一个异常，出现在<strong>函数体</strong>。<br>Throws：<strong>声明</strong>方法可能抛出异常，出现在<strong>函数头</strong>。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>笔记</tag>
-        <tag>异常机制</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【笔记】 ==与equals</title>
     <url>/Blog20.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1305,57 +1305,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>Java</tag>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【笔记】 接口与抽象类</title>
-    <url>/Blog21.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<table>
-<thead>
-<tr>
-<th align="center">接口</th>
-<th align="center">抽象类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">like-a</td>
-<td align="center">is-a</td>
-</tr>
-<tr>
-<td align="center">修饰符是public或default</td>
-<td align="center">修饰符是public，protected，default</td>
-</tr>
-<tr>
-<td align="center">变量修饰必须是static，final</td>
-<td align="center">随便</td>
-</tr>
-<tr>
-<td align="center">可以implements多个</td>
-<td align="center">只能extends一个</td>
-</tr>
-<tr>
-<td align="center">是对行为的抽象</td>
-<td align="center">是对类的抽象</td>
-</tr>
-<tr>
-<td align="center">是一种行为规范</td>
-<td align="center">是一种设计模板</td>
-</tr>
-<tr>
-<td align="center">不能有构造方法</td>
-<td align="center">可以有构造方法</td>
-</tr>
-</tbody></table>
-<p>ps：<strong>抽象类</strong>不能被实例化，只能被继承。实现了抽象类的抽象方法的子类 可实例化。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>笔记</tag>
-        <tag>接口</tag>
-        <tag>抽象类</tag>
       </tags>
   </entry>
   <entry>
@@ -1410,6 +1359,57 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>Java</tag>
         <tag>IO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【笔记】 接口与抽象类</title>
+    <url>/Blog21.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th align="center">接口</th>
+<th align="center">抽象类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">like-a</td>
+<td align="center">is-a</td>
+</tr>
+<tr>
+<td align="center">修饰符是public或default</td>
+<td align="center">修饰符是public，protected，default</td>
+</tr>
+<tr>
+<td align="center">变量修饰必须是static，final</td>
+<td align="center">随便</td>
+</tr>
+<tr>
+<td align="center">可以implements多个</td>
+<td align="center">只能extends一个</td>
+</tr>
+<tr>
+<td align="center">是对行为的抽象</td>
+<td align="center">是对类的抽象</td>
+</tr>
+<tr>
+<td align="center">是一种行为规范</td>
+<td align="center">是一种设计模板</td>
+</tr>
+<tr>
+<td align="center">不能有构造方法</td>
+<td align="center">可以有构造方法</td>
+</tr>
+</tbody></table>
+<p>ps：<strong>抽象类</strong>不能被实例化，只能被继承。实现了抽象类的抽象方法的子类 可实例化。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+        <tag>接口</tag>
+        <tag>抽象类</tag>
       </tags>
   </entry>
 </search>
