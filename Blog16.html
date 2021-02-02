@@ -88,19 +88,21 @@
 
 <meta name="description" content="&amp;nbsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【笔记】 操作系统-进程与线程">
+<meta property="og:title" content="【笔记】 进程与线程">
 <meta property="og:url" content="http://ryanyhliu.com/Blog16.html">
 <meta property="og:site_name" content="刘永蘅 个人网站">
 <meta property="og:description" content="&amp;nbsp;">
 <meta property="og:locale" content="undefined">
-<meta property="article:published_time" content="2020-09-03T02:56:33.000Z">
-<meta property="article:modified_time" content="2020-11-19T04:39:23.000Z">
+<meta property="og:image" content="http://ryanyhliu.com//Blog16/Lifecycle.jpg">
+<meta property="article:published_time" content="2020-11-08T02:56:33.000Z">
+<meta property="article:modified_time" content="2021-02-02T08:38:21.234Z">
 <meta property="article:author" content="刘永蘅Ryan">
 <meta property="article:tag" content="OS">
 <meta property="article:tag" content="进程">
 <meta property="article:tag" content="线程">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ryanyhliu.com//Blog16/Lifecycle.jpg">
 
 
 
@@ -136,7 +138,7 @@
 
 
 
-  <title>【笔记】 操作系统-进程与线程 | 刘永蘅 个人网站</title>
+  <title>【笔记】 进程与线程 | 刘永蘅 个人网站</title>
   
 
 
@@ -304,7 +306,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">【笔记】 操作系统-进程与线程</h2>
+          <h2 class="post-title" itemprop="name headline">【笔记】 进程与线程</h2>
         
 
         <div class="post-meta">
@@ -316,8 +318,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-03T10:56:33+08:00">
-                2020-09-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-08T10:56:33+08:00">
+                2020-11-08
               </time>
             
 
@@ -348,7 +350,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  833
+                  1.6k
                 </span>
               
 
@@ -364,7 +366,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  5
                 </span>
               
             </div>
@@ -467,7 +469,99 @@
 <h1 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h1><ul>
 <li>时间局部性：执行了一条指令，通常不久后会再次执行。</li>
 <li>空间局部性：访问了一个数据，通常不久后会再次访问。</li>
+<li>&nbsp;</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h1><ul>
+<li>并发：同一时间段，多任务执行。</li>
+<li>并行；同一时间点，多任务执行。<br>并行是并发的一个子集，着重于<strong>“同时”</strong>。</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h1><p><img src=".//Blog16/Lifecycle.jpg" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h1><p>一个线程的时间片用完，回到 <code>READY就绪态</code><br>把CPU让给其它线程使用<br>切换之前，先保存一下自己的状态<br>切换回来再加载这个状态</p>
+<p><em>上下文切换可能是OS中最耗时的操作</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><p><strong>产生死锁需要满足四个条件</strong></p>
+<ol>
+<li>该资源一次只能被一个线程占用</li>
+<li>阻塞时，不释放现有资源</li>
+<li>资源不能被剥夺，只能自己用完释放</li>
+<li>若干线程形成循环等待</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="sleep-和-wait"><a href="#sleep-和-wait" class="headerlink" title="sleep() 和 wait()"></a>sleep() 和 wait()</h1><ol>
+<li>都可以暂停线程</li>
+<li>sleep()不释放锁，wait()释放</li>
+<li>wait()常用于线程间通信，sleep()只是暂停线程</li>
+<li>wait()需要notify()唤醒，sleep()超时自动唤醒</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="调用start-执行run-与-直接调用run"><a href="#调用start-执行run-与-直接调用run" class="headerlink" title="调用start()执行run() 与 直接调用run()"></a>调用start()执行run() 与 直接调用run()</h1><p>start()是把线程转换为RUNNABLE状态，CPU自动运行，是真正的多线程。<br>run()只是一个普通调用，顺序执行的一个普通方法。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="ThreadLocal-线程局部变量"><a href="#ThreadLocal-线程局部变量" class="headerlink" title="ThreadLocal 线程局部变量"></a>ThreadLocal 线程局部变量</h1><p>创建一个ThreadLocal变量，每个访问该变量的线程都会保存它的本地副本。<br>get()获取其默认值，set()修改其本地副本的值。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="创建线程的四个方法"><a href="#创建线程的四个方法" class="headerlink" title="创建线程的四个方法"></a>创建线程的四个方法</h1><ol>
+<li>继承Thread类</li>
+<li>实现Runnable接口</li>
+<li>实现Callable接口</li>
+<li>从线程池中获取</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="终止线程"><a href="#终止线程" class="headerlink" title="终止线程"></a>终止线程</h1><ol>
+<li>设置一个flag（退出标志），运行完自行终止。</li>
+<li>使用interrupt()抛出异常，终止线程。</li>
+<li>使用stop()强行终止。（不安全，已废弃，不推荐）</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何保证线程安全"><a href="#如何保证线程安全" class="headerlink" title="如何保证线程安全"></a>如何保证线程安全</h1><ol>
+<li>对非安全的代码加锁</li>
+<li>使用线程安全的类</li>
+<li>多线程并发时，把线程共享的变量，改为方法级的局部变量</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="守护线程（Daemon-Thread）"><a href="#守护线程（Daemon-Thread）" class="headerlink" title="守护线程（Daemon Thread）"></a>守护线程（Daemon Thread）</h1><p><em>又名 服务/精灵/后台 线程</em><br>用来保持JVM运行，优先级较低。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="线程池的作用（优点）"><a href="#线程池的作用（优点）" class="headerlink" title="线程池的作用（优点）"></a>线程池的作用（优点）</h2><ol>
+<li>限制线程的数量，不会因线程过多导致系统性能下降。</li>
+<li>不需要频繁创建/销毁，节省系统开销。</li>
+<li>可以统一进行管理。</li>
+</ol>
+<h2 id="线程池的组成"><a href="#线程池的组成" class="headerlink" title="线程池的组成"></a>线程池的组成</h2><ul>
+<li>管理器：创建、管理线程池。</li>
+<li>工作线程：池中的线程，无任务时处于等待态，循环使用。</li>
+<li>任务接口：每个任务必须实现的接口，以供工作线程调度。其规定了任务入口、任务完成后的收尾工作，任务的状态。</li>
+<li>任务队列：存放未处理的任务（缓冲区）</li>
+</ul>
+<h2 id="线程池的分类"><a href="#线程池的分类" class="headerlink" title="线程池的分类"></a>线程池的分类</h2><ol>
+<li>newFixedThreadPool：指定工作线程的数量。</li>
+<li>newCachedThreadPool：工作线程数量可变，空闲时（默认1分钟）则终止一个线程。</li>
+<li>newSingleThreadExecutor：只有一个工作线程，若意外终止，会自动重新创建。</li>
+<li>newSchduleThreadPool：工作线程数量固定，且支持周期性任务。</li>
+</ol>
 
       
     </div>
@@ -531,7 +625,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://ryanyhliu.com/Blog16.html" title="【笔记】 操作系统-进程与线程">http://ryanyhliu.com/Blog16.html</a>
+    <a href="http://ryanyhliu.com/Blog16.html" title="【笔记】 进程与线程">http://ryanyhliu.com/Blog16.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -565,8 +659,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog15.html" rel="next" title="HTTP相关 && 对称/非对称加密简述">
-                <i class="fa fa-chevron-left"></i> HTTP相关 && 对称/非对称加密简述
+              <a href="/Blog24.html" rel="next" title="【杂记】 大连理工大学某研究生遗书">
+                <i class="fa fa-chevron-left"></i> 【杂记】 大连理工大学某研究生遗书
               </a>
             
           </div>
@@ -575,8 +669,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog17.html" rel="prev" title="设计模式-前序">
-                设计模式-前序 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog25.html" rel="prev" title="输入URL到显示网页 全过程解析">
+                输入URL到显示网页 全过程解析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -740,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程间通信"><span class="nav-text">进程间通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程间同步"><span class="nav-text">线程间同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程的调度算法"><span class="nav-text">进程的调度算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OS内存管理"><span class="nav-text">OS内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OS内存管理的内容"><span class="nav-text">OS内存管理的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS内存管理的机制"><span class="nav-text">OS内存管理的机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU寻址（虚拟寻址）"><span class="nav-text">CPU寻址（虚拟寻址）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟内存"><span class="nav-text">虚拟内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局部性原理"><span class="nav-text">局部性原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程间通信"><span class="nav-text">进程间通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程间同步"><span class="nav-text">线程间同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程的调度算法"><span class="nav-text">进程的调度算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OS内存管理"><span class="nav-text">OS内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OS内存管理的内容"><span class="nav-text">OS内存管理的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS内存管理的机制"><span class="nav-text">OS内存管理的机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU寻址（虚拟寻址）"><span class="nav-text">CPU寻址（虚拟寻址）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟内存"><span class="nav-text">虚拟内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局部性原理"><span class="nav-text">局部性原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并发与并行"><span class="nav-text">并发与并行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的生命周期"><span class="nav-text">线程的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上下文切换"><span class="nav-text">上下文切换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sleep-和-wait"><span class="nav-text">sleep() 和 wait()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用start-执行run-与-直接调用run"><span class="nav-text">调用start()执行run() 与 直接调用run()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal-线程局部变量"><span class="nav-text">ThreadLocal 线程局部变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建线程的四个方法"><span class="nav-text">创建线程的四个方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#终止线程"><span class="nav-text">终止线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何保证线程安全"><span class="nav-text">如何保证线程安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#守护线程（Daemon-Thread）"><span class="nav-text">守护线程（Daemon Thread）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的作用（优点）"><span class="nav-text">线程池的作用（优点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的组成"><span class="nav-text">线程池的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的分类"><span class="nav-text">线程池的分类</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -774,7 +868,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.3k</span>
+    <span title="Site words total count">24k</span>
   
 </div>
 

@@ -788,10 +788,9 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <li>AppClassLoader 应用程序类加载器</li>
 </ol>
 <p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
-<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。<em>PS：这里的“双亲”指的是“父母那一辈”的意思。</em></p>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>什么是双亲委派模型？在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。</p>
-<p>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。</p>
-<p>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
+<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
+<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
+<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
 <p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
 <p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
 <p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
@@ -1036,7 +1035,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>【笔记】 操作系统-进程与线程</title>
+    <title>【笔记】 进程与线程</title>
     <url>/Blog16.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
@@ -1120,7 +1119,99 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <h1 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h1><ul>
 <li>时间局部性：执行了一条指令，通常不久后会再次执行。</li>
 <li>空间局部性：访问了一个数据，通常不久后会再次访问。</li>
+<li>&nbsp;</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h1><ul>
+<li>并发：同一时间段，多任务执行。</li>
+<li>并行；同一时间点，多任务执行。<br>并行是并发的一个子集，着重于<strong>“同时”</strong>。</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h1><p><img src=".//Blog16/Lifecycle.jpg" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h1><p>一个线程的时间片用完，回到 <code>READY就绪态</code><br>把CPU让给其它线程使用<br>切换之前，先保存一下自己的状态<br>切换回来再加载这个状态</p>
+<p><em>上下文切换可能是OS中最耗时的操作</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><p><strong>产生死锁需要满足四个条件</strong></p>
+<ol>
+<li>该资源一次只能被一个线程占用</li>
+<li>阻塞时，不释放现有资源</li>
+<li>资源不能被剥夺，只能自己用完释放</li>
+<li>若干线程形成循环等待</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="sleep-和-wait"><a href="#sleep-和-wait" class="headerlink" title="sleep() 和 wait()"></a>sleep() 和 wait()</h1><ol>
+<li>都可以暂停线程</li>
+<li>sleep()不释放锁，wait()释放</li>
+<li>wait()常用于线程间通信，sleep()只是暂停线程</li>
+<li>wait()需要notify()唤醒，sleep()超时自动唤醒</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="调用start-执行run-与-直接调用run"><a href="#调用start-执行run-与-直接调用run" class="headerlink" title="调用start()执行run() 与 直接调用run()"></a>调用start()执行run() 与 直接调用run()</h1><p>start()是把线程转换为RUNNABLE状态，CPU自动运行，是真正的多线程。<br>run()只是一个普通调用，顺序执行的一个普通方法。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="ThreadLocal-线程局部变量"><a href="#ThreadLocal-线程局部变量" class="headerlink" title="ThreadLocal 线程局部变量"></a>ThreadLocal 线程局部变量</h1><p>创建一个ThreadLocal变量，每个访问该变量的线程都会保存它的本地副本。<br>get()获取其默认值，set()修改其本地副本的值。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="创建线程的四个方法"><a href="#创建线程的四个方法" class="headerlink" title="创建线程的四个方法"></a>创建线程的四个方法</h1><ol>
+<li>继承Thread类</li>
+<li>实现Runnable接口</li>
+<li>实现Callable接口</li>
+<li>从线程池中获取</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="终止线程"><a href="#终止线程" class="headerlink" title="终止线程"></a>终止线程</h1><ol>
+<li>设置一个flag（退出标志），运行完自行终止。</li>
+<li>使用interrupt()抛出异常，终止线程。</li>
+<li>使用stop()强行终止。（不安全，已废弃，不推荐）</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何保证线程安全"><a href="#如何保证线程安全" class="headerlink" title="如何保证线程安全"></a>如何保证线程安全</h1><ol>
+<li>对非安全的代码加锁</li>
+<li>使用线程安全的类</li>
+<li>多线程并发时，把线程共享的变量，改为方法级的局部变量</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="守护线程（Daemon-Thread）"><a href="#守护线程（Daemon-Thread）" class="headerlink" title="守护线程（Daemon Thread）"></a>守护线程（Daemon Thread）</h1><p><em>又名 服务/精灵/后台 线程</em><br>用来保持JVM运行，优先级较低。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="线程池的作用（优点）"><a href="#线程池的作用（优点）" class="headerlink" title="线程池的作用（优点）"></a>线程池的作用（优点）</h2><ol>
+<li>限制线程的数量，不会因线程过多导致系统性能下降。</li>
+<li>不需要频繁创建/销毁，节省系统开销。</li>
+<li>可以统一进行管理。</li>
+</ol>
+<h2 id="线程池的组成"><a href="#线程池的组成" class="headerlink" title="线程池的组成"></a>线程池的组成</h2><ul>
+<li>管理器：创建、管理线程池。</li>
+<li>工作线程：池中的线程，无任务时处于等待态，循环使用。</li>
+<li>任务接口：每个任务必须实现的接口，以供工作线程调度。其规定了任务入口、任务完成后的收尾工作，任务的状态。</li>
+<li>任务队列：存放未处理的任务（缓冲区）</li>
+</ul>
+<h2 id="线程池的分类"><a href="#线程池的分类" class="headerlink" title="线程池的分类"></a>线程池的分类</h2><ol>
+<li>newFixedThreadPool：指定工作线程的数量。</li>
+<li>newCachedThreadPool：工作线程数量可变，空闲时（默认1分钟）则终止一个线程。</li>
+<li>newSingleThreadExecutor：只有一个工作线程，若意外终止，会自动重新创建。</li>
+<li>newSchduleThreadPool：工作线程数量固定，且支持周期性任务。</li>
+</ol>
 ]]></content>
       <tags>
         <tag>OS</tag>
@@ -1267,7 +1358,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>【笔记】 Java异常机制</title>
+    <title>Java异常机制</title>
     <url>/Blog19.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
@@ -1290,8 +1381,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 ]]></content>
       <tags>
         <tag>Java</tag>
-        <tag>笔记</tag>
-        <tag>异常机制</tag>
+        <tag>异常</tag>
       </tags>
   </entry>
   <entry>
@@ -1309,7 +1399,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>【笔记】 Override与Overload</title>
+    <title>【笔记】 Override与Overload（重写与重载）</title>
     <url>/Blog22.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
@@ -1413,7 +1503,9 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>【杂记】 大连理工大学某研究生遗书</title>
     <url>/Blog24.html</url>
-    <content><![CDATA[<p>大家好，我是大连理工大学化学工程专业专硕三年级学生，导师是Z老师。我的研究课题是…</p>
+    <content><![CDATA[<p><strong>最近在网上看到的，有点破防。于此处留档</strong></p>
+<hr>
+<p>大家好，我是大连理工大学化学工程专业专硕三年级学生，导师是Z老师。我的研究课题是…</p>
 <p>啊，别走嘛我不是来进行答辩的啦（笑哭.jpg）</p>
 <p>只是想来告个别，待会我就准备一挂解千愁了。</p>
 <p>今年真是糟糕的一年呢，国际国内都鸡飞蛋打的，想当初为了逃避找工作考了研究生，结果刚考上贸易战就开打，就业形势一下严峻了起来。今年又赶上疫情，好像这三年读研期间世界跟闹肚子似的。</p>
@@ -1438,6 +1530,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>谢谢你，谢谢你看到了这里。我其实算是个挺内向的人，第一次跟人倾吐了这么多。</p>
 <p>想起了之前在美团点外卖是给他们的公益活动捐过一块钱，希望能实现我一个愿望，<strong>让我下辈子变成某间猫咖里的一只猫吧，野猫也行</strong>，毕竟猫的年龄十来年，我活了25年，也没比猫久多少。</p>
 <p>希望家人朋友今后顺顺利利，祝愿国家一直繁荣昌盛</p>
+<hr>
 ]]></content>
       <tags>
         <tag>杂记</tag>

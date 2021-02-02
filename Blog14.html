@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ryanyhliu.com//Blog14/FENPEINEICUN.jpg">
 <meta property="og:image" content="http://ryanyhliu.com//Blog14/TLAB.jpg">
 <meta property="article:published_time" content="2020-08-24T04:03:37.000Z">
-<meta property="article:modified_time" content="2020-11-12T12:33:29.000Z">
+<meta property="article:modified_time" content="2021-02-02T07:40:46.576Z">
 <meta property="article:author" content="刘永蘅Ryan">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="对象创建">
@@ -406,10 +406,9 @@
 <li>AppClassLoader 应用程序类加载器</li>
 </ol>
 <p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
-<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。<em>PS：这里的“双亲”指的是“父母那一辈”的意思。</em></p>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>什么是双亲委派模型？在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。</p>
-<p>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。</p>
-<p>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
+<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
+<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
+<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
 <p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
 <p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
 <p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
@@ -710,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-类加载检查"><span class="nav-text">1 类加载检查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-加载"><span class="nav-text">1.1 加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派模型"><span class="nav-text">双亲委派模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-验证"><span class="nav-text">1.2 验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-准备"><span class="nav-text">1.3 准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-解析"><span class="nav-text">1.4 解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-初始化"><span class="nav-text">1.5 初始化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-分配内存"><span class="nav-text">2 分配内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-初始化零值"><span class="nav-text">3 初始化零值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-设置对象头"><span class="nav-text">4 设置对象头</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-执行init-方法"><span class="nav-text">5 执行init()方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-类加载检查"><span class="nav-text">1 类加载检查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-加载"><span class="nav-text">1.1 加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派模型（Parents-Delegation-Model）"><span class="nav-text">双亲委派模型（Parents Delegation Model）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-验证"><span class="nav-text">1.2 验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-准备"><span class="nav-text">1.3 准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-解析"><span class="nav-text">1.4 解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-初始化"><span class="nav-text">1.5 初始化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-分配内存"><span class="nav-text">2 分配内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-初始化零值"><span class="nav-text">3 初始化零值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-设置对象头"><span class="nav-text">4 设置对象头</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-执行init-方法"><span class="nav-text">5 执行init()方法</span></a></li></ol></div>
             
 
           </div>
@@ -744,7 +743,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.3k</span>
+    <span title="Site words total count">24k</span>
   
 </div>
 
