@@ -1608,5 +1608,43 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p>&nbsp;</p>
 <p><strong>这样，一个网页就呈现在屏幕上了！是不是非常简单</strong>/狗头</p>
 ]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>Web</tag>
+        <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式的五种写法（Java）</title>
+    <url>/Blog26.html</url>
+    <content><![CDATA[<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instance &#x3D; new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程不安全）"><a href="#懒汉式（线程不安全）" class="headerlink" title="懒汉式（线程不安全）"></a>懒汉式（线程不安全）</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instace;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            instance &#x3D; new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程安全）"><a href="#懒汉式（线程安全）" class="headerlink" title="懒汉式（线程安全）"></a>懒汉式（线程安全）</h1><p><strong>效率低，每次都要加锁</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instace;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static synchronized Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            instance &#x3D; new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="双重校验锁-DCL（Double-Checked-Locking）"><a href="#双重校验锁-DCL（Double-Checked-Locking）" class="headerlink" title="双重校验锁 DCL（Double Checked Locking）"></a>双重校验锁 DCL（Double Checked Locking）</h1><p><strong>先判断，若对象已创建，则不进入synchronized代码块。</strong>提升了性能且保证安全。<br><strong>Volate一般用于保证多线程可见性。这里用来防止指令重排序。</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private volatile static Singleton instance;</span><br><span class="line">    private Singleton()&#123;&#125;;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            synchronized(Singleton.class)&#123;</span><br><span class="line">                if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">                    instance &#x3D; new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>调用getInstance()才初始化，<strong>更加灵活</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        private static final Singleton INSTANCE &#x3D; new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static final Singleton getInstance()&#123;</span><br><span class="line">        return SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+        <tag>单例模式</tag>
+      </tags>
   </entry>
 </search>
