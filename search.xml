@@ -1644,7 +1644,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>Java</tag>
         <tag>设计模式</tag>
-        <tag>单例模式</tag>
       </tags>
   </entry>
 </search>
