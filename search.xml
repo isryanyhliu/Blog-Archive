@@ -1473,7 +1473,10 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>Java IO流</title>
     <url>/Blog23.html</url>
-    <content><![CDATA[<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ul>
 <li>基于字节：InputStream / OutputStream</li>
 <li>基于字符：Reader / Writer</li>
 <li>磁盘操作：File</li>
@@ -1511,7 +1514,10 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>【杂记】 大连理工大学某研究生遗书</title>
     <url>/Blog24.html</url>
-    <content><![CDATA[<p><strong>最近在网上看到的，有点破防。于此处留档</strong></p>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>最近在网上看到的，有点破防。于此处留档</strong></p>
 <hr>
 <p>大家好，我是大连理工大学化学工程专业专硕三年级学生，导师是Z老师。我的研究课题是…</p>
 <p>啊，别走嘛我不是来进行答辩的啦（笑哭.jpg）</p>
@@ -1547,7 +1553,10 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>输入URL到显示网页 全过程解析</title>
     <url>/Blog25.html</url>
-    <content><![CDATA[<p>打开浏览器，在地址栏中输入一串英文，敲一下回车键，就会显示出对应的网页。自从万维网问世，这一套操作流程就流传至今。可以说，只要是会用电脑的人，就一定会这一套操作。那么就是这样一个不起眼却必备的技能，其背后的原理究竟是怎样的？</p>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>打开浏览器，在地址栏中输入一串英文，敲一下回车键，就会显示出对应的网页。自从万维网问世，这一套操作流程就流传至今。可以说，只要是会用电脑的人，就一定会这一套操作。那么就是这样一个不起眼却必备的技能，其背后的原理究竟是怎样的？</p>
 <p>&nbsp;</p>
 <p>首先，我们打开浏览器，在地址栏中输入一串英文。以我的个人网站为例<code>www.ryanyhliu.com</code>，这一串英文我们称其为<strong>域名</strong>。所谓域名，就是网站的代号，那么网站是什么呢，网站可以理解为是某台存储有该网页的电脑。</p>
 <p>&nbsp;</p>
@@ -1625,7 +1634,10 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>单例模式的五种写法（Java）</title>
     <url>/Blog26.html</url>
-    <content><![CDATA[<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instance &#x3D; new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instance &#x3D; new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -1657,7 +1669,10 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
   <entry>
     <title>数据库范式</title>
     <url>/Blog27.html</url>
-    <content><![CDATA[<h1 id="第零范式（无范式）"><a href="#第零范式（无范式）" class="headerlink" title="第零范式（无范式）"></a>第零范式（无范式）</h1><p>如下所示<br><img src=".//Blog27/01.jpg" alt></p>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="第零范式（无范式）"><a href="#第零范式（无范式）" class="headerlink" title="第零范式（无范式）"></a>第零范式（无范式）</h1><p>如下所示<br><img src=".//Blog27/01.jpg" alt></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
