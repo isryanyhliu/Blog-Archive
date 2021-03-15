@@ -19,7 +19,11 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+  
+
+
 
 
 
@@ -60,16 +64,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/avatar.png?v=5.1.4" color="#222">
 
 
 
@@ -271,6 +275,8 @@
             
 
   <div id="posts" class="posts-expand">
+    <div class="reading-progress-bar"></div>
+
     
 
   
@@ -316,6 +322,15 @@
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-16T22:00:12+08:00">
                 2020-10-16
               </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2021-02-03T15:41:36+08:00" content="2021-02-03">
+                  2021-02-03
+                </time>
+              </span>
             
 
             
@@ -441,7 +456,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>赏口饭</span>
+    <span>包养TA</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -532,6 +547,7 @@
   </article>
 
 
+    
 
     <div class="post-spread">
       
@@ -781,6 +797,9 @@ setInterval("createtime()",250);
 
 
 
+
+
+
   
 
 
@@ -795,6 +814,11 @@ setInterval("createtime()",250);
 
 
 
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
 
   
   
@@ -830,6 +854,8 @@ setInterval("createtime()",250);
   
     <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
+
+
 
 
   
@@ -1313,5 +1339,9 @@ setInterval("createtime()",250);
 
   <script async src="/js/cursor/fireworks.js"></script>
 
+
+    <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/clipboard-use.js"></script>
 </body>
 </html>

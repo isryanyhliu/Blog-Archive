@@ -19,7 +19,11 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+  
+
+
 
 
 
@@ -60,16 +64,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/avatar.png?v=5.1.4" color="#222">
 
 
 
@@ -285,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog08.html">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog15.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘永蘅Ryan">
@@ -304,7 +308,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Blog08.html" itemprop="url">【杂记】 祝各位国际劳动节快乐</a></h2>
+                <a class="post-title-link" href="/Blog15.html" itemprop="url">HTTP相关 && 对称/非对称加密简述</a></h2>
         
 
         <div class="post-meta">
@@ -316,9 +320,18 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-01T09:47:50+08:00">
-                2020-05-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-30T22:08:36+08:00">
+                2020-08-30
               </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-13T10:37:25+08:00" content="2020-11-13">
+                  2020-11-13
+                </time>
+              </span>
             
 
             
@@ -348,7 +361,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  298
+                  1.6k
                 </span>
               
 
@@ -364,7 +377,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -389,7 +402,837 @@
           <p>&nbsp;</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Blog08.html#more" rel="contents">
+            <a class="btn" href="/Blog15.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog13.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog13.html" itemprop="url">TCP与UDP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-22T14:31:54+08:00">
+                2020-08-22
+              </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-12T15:03:10+08:00" content="2020-11-12">
+                  2020-11-12
+                </time>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  581
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog13.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog12.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog12.html" itemprop="url">TCP三次握手与四次挥手</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-22T11:08:54+08:00">
+                2020-08-22
+              </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-12T14:31:29+08:00" content="2020-11-12">
+                  2020-11-12
+                </time>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  988
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog12.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog11.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog11.html" itemprop="url">Java垃圾回收机制（Garbage Collection）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-14T12:06:02+08:00">
+                2020-08-14
+              </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-12T11:03:21+08:00" content="2020-11-12">
+                  2020-11-12
+                </time>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog11.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog09.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog09.html" itemprop="url">JVM内存</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-28T15:16:51+08:00">
+                2020-07-28
+              </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-12T00:24:14+08:00" content="2020-11-12">
+                  2020-11-12
+                </time>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  638
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog09.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog10.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘永蘅Ryan">
+      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘永蘅 个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog10.html" itemprop="url">Java集合</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-12T15:04:13+08:00">
+                2020-08-12
+              </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-12T00:18:29+08:00" content="2020-11-12">
+                  2020-11-12
+                </time>
+              </span>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&nbsp;</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog10.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -476,6 +1319,15 @@
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-27T21:47:50+08:00">
                 2020-04-27
               </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-11-06T18:53:08+08:00" content="2020-11-06">
+                  2020-11-06
+                </time>
+              </span>
             
 
             
@@ -600,477 +1452,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog06.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘永蘅Ryan">
-      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘永蘅 个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog06.html" itemprop="url">个人网站SEO及其它优化</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-20T09:24:32+08:00">
-                2020-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  11
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&nbsp;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog06.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog05.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘永蘅Ryan">
-      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘永蘅 个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog05.html" itemprop="url">搭建基于Hexo的网站遇到的一些坑（2020.04）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-16T08:41:38+08:00">
-                2020-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&nbsp;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog05.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog04.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘永蘅Ryan">
-      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘永蘅 个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog04.html" itemprop="url">通过邻接表实现广度优先搜索（迷宫问题）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-03T15:35:30+08:00">
-                2020-04-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  830
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&nbsp;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog04.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog03.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1105,6 +1486,15 @@
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-03T15:35:29+08:00">
                 2020-04-03
               </time>
+            
+
+            
+              <span class="post-updated">
+                &nbsp; | &nbsp; Updated On
+                <time itemprop="dateUpdated" datetime="2020-08-17T11:09:05+08:00" content="2020-08-17">
+                  2020-08-17
+                </time>
+              </span>
             
 
             
@@ -1176,320 +1566,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Blog03.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog01.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘永蘅Ryan">
-      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘永蘅 个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog01.html" itemprop="url">与桂林某电子科技大学的校园网的防火墙斗智斗勇</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-03T15:35:28+08:00">
-                2020-04-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&nbsp;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog01.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ryanyhliu.com/Blog00.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘永蘅Ryan">
-      <meta itemprop="description" content="&nbsp;<br/>愿中国青年都摆脱冷气，只是向上走<br/>不必听自暴自弃者流的话<br/>能做事的做事，能发声的发声<br/>有一分热，发一分光<br/>就像萤火一般，也可以在黑暗里发一点光<br/>不必等候炬火 以后如竟没有炬火<br/>我便是唯一的光<br/>&nbsp;<br/>">
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘永蘅 个人网站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog00.html" itemprop="url">Hello World</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-03T15:32:00+08:00">
-                2020-04-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  18
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&nbsp;</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog00.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1776,6 +1852,9 @@ setInterval("createtime()",250);
 
 
 
+
+
+
   
 
 
@@ -1790,6 +1869,11 @@ setInterval("createtime()",250);
 
 
 
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
 
   
   
@@ -1825,6 +1909,8 @@ setInterval("createtime()",250);
   
     <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
+
+
 
 
   
@@ -2304,5 +2390,9 @@ setInterval("createtime()",250);
 
   <script async src="/js/cursor/fireworks.js"></script>
 
+
+    <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/clipboard-use.js"></script>
 </body>
 </html>
