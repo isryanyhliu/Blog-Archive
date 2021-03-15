@@ -1730,7 +1730,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <ol>
 <li>左上角File -&gt; Project Stucture。</li>
 <li>选择Project Setting下边的Project栏。</li>
-<li>在右边的Project SDK处下拉，选择已安装好的Java SDK（若没安装，请自行搜索Java SDK的安装教程）。</li>
+<li>在右边的Project SDK处下拉，选择已安装好的Java SDK（若没安装，请先安装Java SDK）。</li>
 <li>点击OK即可。</li>
 </ol>
 ]]></content>
