@@ -237,6 +237,103 @@
       </tags>
   </entry>
   <entry>
+    <title>搭建基于Hexo的网站遇到的一些坑（2020.04）</title>
+    <url>/Blog05.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font size="6">
+<center>可以通过左侧导航栏，更方便的进行阅读</center>
+</font>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" alt></p>
+<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" alt></p>
+<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g      &#x2F;&#x2F;generate，保存后执行该命令，以重新生成文件</span><br><span class="line">hexo s      &#x2F;&#x2F;server，  启动本地服务器，进行预览</span><br><span class="line">hexo d      &#x2F;&#x2F;deploy，  部署本地项目到远程服务器</span><br><span class="line">hexo clean  &#x2F;&#x2F;清除本地静态文件（db.json，根目录public文件夹）</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" alt></p>
+<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
+<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" alt></p>
+<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 关于菜单示例配置</span><br><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  about: &#x2F;about&#x2F;||user</span><br><span class="line">  tags: &#x2F;tags&#x2F;||tags  </span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br></pre></td></tr></table></figure>
+<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" alt><br>配置方法：执行该命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-nest</span><br></pre></td></tr></table></figure>
+
+<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
+
+<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # 是否在移动端显示</span><br><span class="line">  color: &#39;0,0,255&#39; # 动态背景中线条的 RGB 颜色</span><br><span class="line">  opacity: 0.5 # 动态背景中线条透明度</span><br><span class="line">  zIndex: -1 # 动态背景的 z-index 属性值</span><br><span class="line">  count: 99 # 动态背景中线条数量</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//默认展开标题</span><br><span class="line"><span class="selector-class">.post-toc</span> <span class="selector-class">.nav</span> <span class="selector-class">.nav-child</span> &#123; </span><br><span class="line">    <span class="attribute">display</span>: block; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;source&#x2F;uploads&#x2F;</span><br></pre></td></tr></table></figure>
+<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">    avatar: &#x2F;uploads&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" alt><br>在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</span><br></pre></td></tr></table></figure>
+<p>目录文件下，添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"04/06/2020 21:00:00"</span>);<span class="comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"我已在此等候你 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>Web</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>个人网站SEO及其它优化</title>
     <url>/Blog06.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -341,100 +438,31 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>搭建基于Hexo的网站遇到的一些坑（2020.04）</title>
-    <url>/Blog05.html</url>
+    <title>【杂记】 祝各位国际劳动节快乐</title>
+    <url>/Blog08.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
 
-<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<font size="6">
-<center>可以通过左侧导航栏，更方便的进行阅读</center>
-</font>
+<center>
 
+<p>1886年5月1日，在美国举行了约35万人参加的罢工和示威游行<br>示威者要求改善劳动条件，实行<strong>八小时工作制</strong>。</p>
 <p>&nbsp;</p>
+<p>5月3日政府出动警察镇压，向人群开枪，杀害了四个人，受伤者无数</p>
 <p>&nbsp;</p>
+<p>5月4日各工会于干草市广场举行群众大会，遭警察包围。<br>突发爆炸事件，场面大乱，双方均死伤惨重</p>
 <p>&nbsp;</p>
-<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" alt></p>
-<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
+<p>事后警察与媒体咬定劳工领袖引起爆炸，以谋杀罪起诉八人<br>但其中五人均有不在场证明</p>
 <p>&nbsp;</p>
+<p>审判最后，<strong>一人被判十五年，二人被判无期，五人被判死刑</strong></p>
 <p>&nbsp;</p>
+<p>死刑之一工会领袖 奥古斯都·史比斯 临刑前说<br>“总有一天，我们的沉默，会远比今天你们所要压制的言论更为洪亮有力”</p>
 <p>&nbsp;</p>
-<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" alt></p>
-<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
-
+<p>1889年，巴黎第二次国际大会通过决议，将5月1日定为国际劳动节<br>要求全世界劳工共同努力，为实现八小时工作制而奋斗</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g      &#x2F;&#x2F;generate，保存后执行该命令，以重新生成文件</span><br><span class="line">hexo s      &#x2F;&#x2F;server，  启动本地服务器，进行预览</span><br><span class="line">hexo d      &#x2F;&#x2F;deploy，  部署本地项目到远程服务器</span><br><span class="line">hexo clean  &#x2F;&#x2F;清除本地静态文件（db.json，根目录public文件夹）</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" alt></p>
-<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
-<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" alt></p>
-<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 关于菜单示例配置</span><br><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  about: &#x2F;about&#x2F;||user</span><br><span class="line">  tags: &#x2F;tags&#x2F;||tags  </span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br></pre></td></tr></table></figure>
-<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" alt><br>配置方法：执行该命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-nest</span><br></pre></td></tr></table></figure>
-
-<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
-
-<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # 是否在移动端显示</span><br><span class="line">  color: &#39;0,0,255&#39; # 动态背景中线条的 RGB 颜色</span><br><span class="line">  opacity: 0.5 # 动态背景中线条透明度</span><br><span class="line">  zIndex: -1 # 动态背景的 z-index 属性值</span><br><span class="line">  count: 99 # 动态背景中线条数量</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//默认展开标题</span><br><span class="line"><span class="selector-class">.post-toc</span> <span class="selector-class">.nav</span> <span class="selector-class">.nav-child</span> &#123; </span><br><span class="line">    <span class="attribute">display</span>: block; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;source&#x2F;uploads&#x2F;</span><br></pre></td></tr></table></figure>
-<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">    avatar: &#x2F;uploads&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" alt><br>在</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</span><br></pre></td></tr></table></figure>
-<p>目录文件下，添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"04/06/2020 21:00:00"</span>);<span class="comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"我已在此等候你 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-]]></content>
+<p>1894年，小罗斯福总统执政时，确立美国法律八小时工作制</p>
+</center>]]></content>
       <tags>
-        <tag>Web</tag>
-        <tag>Hexo</tag>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -480,34 +508,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>Live2D</tag>
         <tag>Facerig</tag>
         <tag>建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【杂记】 祝各位国际劳动节快乐</title>
-    <url>/Blog08.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<center>
-
-<p>1886年5月1日，在美国举行了约35万人参加的罢工和示威游行<br>示威者要求改善劳动条件，实行<strong>八小时工作制</strong>。</p>
-<p>&nbsp;</p>
-<p>5月3日政府出动警察镇压，向人群开枪，杀害了四个人，受伤者无数</p>
-<p>&nbsp;</p>
-<p>5月4日各工会于干草市广场举行群众大会，遭警察包围。<br>突发爆炸事件，场面大乱，双方均死伤惨重</p>
-<p>&nbsp;</p>
-<p>事后警察与媒体咬定劳工领袖引起爆炸，以谋杀罪起诉八人<br>但其中五人均有不在场证明</p>
-<p>&nbsp;</p>
-<p>审判最后，<strong>一人被判十五年，二人被判无期，五人被判死刑</strong></p>
-<p>&nbsp;</p>
-<p>死刑之一工会领袖 奥古斯都·史比斯 临刑前说<br>“总有一天，我们的沉默，会远比今天你们所要压制的言论更为洪亮有力”</p>
-<p>&nbsp;</p>
-<p>1889年，巴黎第二次国际大会通过决议，将5月1日定为国际劳动节<br>要求全世界劳工共同努力，为实现八小时工作制而奋斗</p>
-<p>&nbsp;</p>
-<p>1894年，小罗斯福总统执政时，确立美国法律八小时工作制</p>
-</center>]]></content>
-      <tags>
-        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -767,68 +767,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>Java创建对象的过程（包含类加载）</title>
-    <url>/Blog14.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>在Java中，说到创建对象，我们大多数情况下使用的都是new指令。那么明面上一条new指令，暗地里经过JVM多少处理呢？</p>
-<h1 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1 类加载检查"></a>1 类加载检查</h1><p>当JVM遇到一条new指令时，先检查其参数能否在常量池中定位到该类的符号引用。再检查该符号引用是否被加载过、解析过、初始化过。</p>
-<p><em>注：符号引用相当于自定义的变量名等；引用除了符号引用以外，还有直接引用。直接引用指的是指针、偏移量之类的东西。</em></p>
-<p><em>JVM并不是编译时，就加载所有类进内存。而是第一次运行某个类时才加载，且只加载这一次。</em></p>
-<p>若有，则直接进行第二步分配内存。若没有，则执行<strong>类加载</strong>。</p>
-<p>类加载的过程分为三步：<strong>加载 -&gt; 链接 -&gt; 初始化</strong>。<br>而链接又分为三步：<strong>验证 -&gt; 准备 -&gt; 解析</strong>。</p>
-<p><em>加载和链接实际上是交叉进行的。加载未结束，链接已开始。</em></p>
-<p><em>不妨多了解一点，<strong>类的生命周期</strong>：加载 -&gt; 链接 -&gt; 初始化 -&gt; 使用 -&gt; 卸载</em></p>
-<h2 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h2><p>加载这一步的内容是，把class文件装入内存。</p>
-<p>在JVM中，内置的类加载器（ClassLoader）有三层，自顶向下分别是</p>
-<ol>
-<li>BootstrapClassLoader 启动类加载器（最顶层的ClassLoader，由C++实现）</li>
-<li>ExtensionClassLoader 扩展类加载器</li>
-<li>AppClassLoader 应用程序类加载器</li>
-</ol>
-<p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
-<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
-<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
-<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
-<p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
-<p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
-<p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
-<h2 id="1-2-验证"><a href="#1-2-验证" class="headerlink" title="1.2 验证"></a>1.2 验证</h2><p>保证加载的字节流符合规范。</p>
-<h2 id="1-3-准备"><a href="#1-3-准备" class="headerlink" title="1.3 准备"></a>1.3 准备</h2><p>为static变量（非实例变量）分配内存，并赋值。</p>
-<h2 id="1-4-解析"><a href="#1-4-解析" class="headerlink" title="1.4 解析"></a>1.4 解析</h2><p>将常量池的符号引用替换为直接引用。</p>
-<h2 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h2><p>初始化static代码块，构造器等。</p>
-<h1 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2 分配内存"></a>2 分配内存</h1><p>所需的内存大小，在类加载完成后，便可以确定。</p>
-<p>内存分配的方式有两种，分别是<strong>指针碰撞法</strong>以及<strong>空闲列表法</strong></p>
-<p><img src=".//Blog14/FENPEINEICUN.jpg" alt></p>
-<p><strong>分配完内存，就会在内存上创建实例化对象。</strong></p>
-<p>JVM在创建对象时，必须保证线程安全，通常用两种方法保证。</p>
-<ol>
-<li><p>CAS + 失败重试机制<br>CAS是乐观锁（乐观锁是一种思想，没有实际的锁。它假设不会出现冲突，所以不用加锁，直接去申请资源，失败就重试，直到成功为止）。CAS + 失败重试 可以保证操作的原子性，从而线程安全。</p>
-</li>
-<li><p>TLAB<br>全称ThreadLocalAllocBuffer，于 HotSpot1.6 引入，原理与指针碰撞法类似。在每个线程初始化时，同时申请一块指定大小的内存绑定给它。当线程需要内存时，就在自己的这块内存上分配，若容量不够，再去Eden区正常申请。<strong>优点</strong>：每个线程都有自己的专属指针，性能高。<img src=".//Blog14/TLAB.jpg" alt></p>
-</li>
-</ol>
-<h1 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3 初始化零值"></a>3 初始化零值</h1><p>分配内存完成后，要把这些内存初始化为0。<br><strong>所以成员变量可以不用初始化</strong></p>
-<h1 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4 设置对象头"></a>4 设置对象头</h1><p>初始化零值后，JVM要对对象实例进行设置。例如：</p>
-<ol>
-<li>该对象是哪个类的实例</li>
-<li>如何找到该类的元数据</li>
-<li>对象的HashCode</li>
-<li>对象的GC年龄</li>
-<li>锁状态标识</li>
-</ol>
-<p>这些信息都存放在对象头中。<em>PS：实例对象分为三个部分：对象头、实例数据、对齐填充（非必须）</em></p>
-<h1 id="5-执行init-方法"><a href="#5-执行init-方法" class="headerlink" title="5 执行init()方法"></a>5 执行init()方法</h1><p>从JVM的角度来看，执行完上述4步，一个新对象已经产生。</p>
-<p>执行完new指令后紧接着执行init()，才能完成对象实例的初始化（成员变量、成员方法等）。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>对象创建</tag>
-        <tag>类加载</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TCP与UDP</title>
     <url>/Blog13.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -915,123 +853,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>TCP</tag>
         <tag>网络协议</tag>
         <tag>UDP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP相关 &amp;&amp; 对称/非对称加密简述</title>
-    <url>/Blog15.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>HTTP的底层是TCP，所以，TCP的一些特性在HTTP中得以保留。由于TCP中存在长连接与短连接，所以HTTP中也存在长连接与短连接。</p>
-<h1 id="HTTP的长连接"><a href="#HTTP的长连接" class="headerlink" title="HTTP的长连接"></a>HTTP的长连接</h1><p>HTTP的长连接是基于TCP长连接做出的封装处理。HTTP长连接我们称之为<strong>Keep-Alive机制</strong>，其内容是：若长连接在2个小时（保活定时）内无任何反应，Server便向Client发送探测报文段，此时可能有4种结果：</p>
-<ol>
-<li><p>Client正常运行，且正常响应：<br>则Server保活定时复位（Reset）。</p>
-</li>
-<li><p>Client崩溃/重启，，无法响应：<br>Server继续每隔75秒发送一次探测报文段，共发送10次。若Client仍然没有响应，则关闭连接（CLOSED）。</p>
-</li>
-<li><p>Client崩溃后重启，一开始无响应，后来正常：<br>重启连接（连接已经中断，物是人非）。</p>
-</li>
-<li><p>Client正常运行，但探测报文段不可达（Client无响应）：<br>同第二点。</p>
-</li>
-</ol>
-<h1 id="HTTP的短连接"><a href="#HTTP的短连接" class="headerlink" title="HTTP的短连接"></a>HTTP的短连接</h1><p>HTTP的短连接实际上是由于HTTP的特性（无连接）决定的。</p>
-<p>所以，让我们引入HTTP的两个特性：无连接、无状态。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTP是无连接的"><a href="#HTTP是无连接的" class="headerlink" title="HTTP是无连接的"></a>HTTP是无连接的</h1><p>每次只处理一个请求，处理完（收到Client应答）就断开。<br><strong>解决</strong>：Keep-Alive机制。</p>
-<h1 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h1><p>每一次打开网页都完全独立。</p>
-<p><strong>解决</strong>：</p>
-<ol>
-<li><p>Cookie：<br>存储在浏览器（Bowser）中，由Server生成<br>下一次请求该网站时，会把该Cookie发送给Server<br>不安全（在Server之外被非法读写）</p>
-</li>
-<li><p>Session<br>存储在Server，较安全<br>但是Server需要Client提供Session_id才能找到对应Session<br>Session_id通常使用Cookie存储</p>
-</li>
-<li><p>Token<br>可抵抗<a href="https://zh.wikipedia.org/zh/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0" target="_blank" rel="noopener">CSRF（跨站请求伪造）</a> </p>
-</li>
-<li><p>JWT</p>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTP的端口默认是80；HTTPS则是443。</p>
-<p>HTTP基于TCP，明文传输；HTTPS基于HTTP + <strong>SSL</strong>，通过对称加密与非对称加密传输。下面我顺便简单介绍一下对称加密以及非对称加密，不感兴趣的同学可以直接跳过此部分。</p>
-<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>只有一个密钥，同时负责加密、解密，很好理解。</p>
-<p><strong>常见算法</strong>：DES、AES等。</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>有成对的密钥，称为 公钥 + 私钥，<strong>无法相互推导</strong>。一个加密，另一个解密。</p>
-<p><strong>常见算法</strong>：RSA、DSA等。</p>
-<p>这里举个栗子，强化大家的理解，是一个非常有趣的数学算法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先，我们需要知道这样一件事：</span><br><span class="line"></span><br><span class="line">一个8位数，与 4 0000 0001 做乘法运算，</span><br><span class="line">得出的运算结果的后八位，就是那个8位数的值。</span><br><span class="line"></span><br><span class="line">比如 12345678 * 400000001 &#x3D; 4938271212345678</span><br><span class="line"></span><br><span class="line">好了，准备完成。接下来，就是非对称加密的部分了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server取其任意一对因数，比如 19801 与 20201</span><br><span class="line">（19801 * 20201 &#x3D; 400000001）</span><br><span class="line"></span><br><span class="line">我们设公钥为 19801， 私钥为 20201</span><br><span class="line">私钥存储在Server中，严格确保不外泄</span><br><span class="line">把公钥公开到网络中，并且附送上加密算法：</span><br><span class="line"></span><br><span class="line">密文 * 公钥，再取其后八位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">假设，Client A想要传输内容为“12345678”的数据包给Server</span><br><span class="line">Client A获取到Server公开的公钥 19801</span><br><span class="line">12345678 * 19801 &#x3D; 244456770078，取后八位56770078</span><br><span class="line">Client A将56770078传输给Server</span><br><span class="line"></span><br><span class="line">在Client A向Server传输56770078时</span><br><span class="line">Client B通过抓包解包等技术手段，获取到该加密内容56770078</span><br><span class="line">由于加密算法是一个有损算法（舍弃了前4位）</span><br><span class="line">所以Client B即便知道加密过程，也无法还原数据</span><br><span class="line"></span><br><span class="line">好，此时Server也获取到了Client A的数据包</span><br><span class="line">Server 把 密文 * 私钥</span><br><span class="line">（56770078 * 20201 &#x3D; 1146812345678）</span><br><span class="line">再取其后8位，得到原文“12345678”</span><br></pre></td></tr></table></figure>
-<p>怎么样，是不是非常简单易懂~ 这就是非对称加密的核心内容。这只是一个非常简单的示例，可能放在今天，随随便便的一台个人计算机就可以根据公钥20201破解出私钥19801。但是在没有计算机的年代，靠大量人工的算力也无法通过公钥破解出私钥。随着学者在数学领域的探索，非对称加密的实际应用早已结合了各种前沿的数学运算。当然了，这些都不是我等搬砖狗深究之事<del>~</del></p>
-<h2 id="SSL原理"><a href="#SSL原理" class="headerlink" title="SSL原理"></a>SSL原理</h2><p>非对称加密虽然十分安全，但是性能比起对称加密则十分低下。而Bowser与Server之间的数据交互十分频繁，采用非对称加密显然不合适。</p>
-<p>在SSL中，采用了非对称加密与对称加密相结合的方式。即<strong>Server通过非对称加密，把对称加密所使用的密钥，递交给Client</strong>。具体的过程，如下图所示：</p>
-<p><img src=".//Blog15/SSL.jpg" alt></p>
-<p>其中证书验证的环节，我们暂且不细究。此处涉及到的并非纯粹的技术问题，而是类似于互联网规章制度，感兴趣的同学可以自行了解一下。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="与Server的四种交互"><a href="#与Server的四种交互" class="headerlink" title="与Server的四种交互"></a>与Server的四种交互</h1><ol>
-<li>GET    查询</li>
-<li>POST   修改</li>
-<li>PUT    增加</li>
-<li>DELETE 删除</li>
-</ol>
-<p>实际上，单独的 GET / POST 就可以实现增删改查。</p>
-<p>GET是幂等的（对同一个URL，多个请求返回相同结果）。</p>
-<p>POST使用必须用到表单Form（所以很多人偷懒使用GET）。</p>
-<p><strong>GET与POST的区别</strong>：</p>
-<ol>
-<li><p>GET提交的数据明文放在URL后边，不安全。<br>而POST则是把提交的数据放在HTTP包中加密传输，较为安全。</p>
-</li>
-<li><p>GET提交的数据量较小（最多1024字节）。<br>POST理论上无限制。</p>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTP请求、响应"><a href="#HTTP请求、响应" class="headerlink" title="HTTP请求、响应"></a>HTTP请求、响应</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包含</p>
-<ol>
-<li>请求方法（GET/POST）</li>
-<li>请求头<br>（空一行，表示请求头结束）</li>
-<li>请求正文</li>
-</ol>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包含</p>
-<ol>
-<li>状态行（包含<strong>状态码</strong>）</li>
-<li>响应头<br>（空一行，表示响应头结束）</li>
-<li>响应正文</li>
-</ol>
-<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><p><strong>信息码。</strong>Server已接收，Client可继续。</p>
-<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><p><strong>成功码。</strong>Server已接收并处理。</p>
-<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><p><strong>重定向码。</strong>服务器要求客户端重定向。</p>
-<p>重定向：亦称URL转发，用于当前资源（页面）迁移到新URL。</p>
-<h5 id="301"><a href="#301" class="headerlink" title="301"></a>301</h5><p><strong>永久重定向。</strong>例如<code>www.google.com</code>迁移到<code>google.com</code><br>优点：</p>
-<ul>
-<li>可以减少DNS的缓存（提高缓存友好型）</li>
-<li>防止访问量分散（提高网站竞价排名）</li>
-</ul>
-<h5 id="302"><a href="#302" class="headerlink" title="302"></a>302</h5><p><strong>临时重定向。</strong>旧资源仍可访问，但临时跳转访问新资源。<br>优点：</p>
-<ul>
-<li>搜索引擎不会更新资源的链接，比301更利于SEO</li>
-</ul>
-<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><p><strong>客户端错误码。</strong>Client的请求有非法内容。</p>
-<h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求有语法错误。</p>
-<h5 id="401"><a href="#401" class="headerlink" title="401"></a>401</h5><p>请求未经授权。</p>
-<h5 id="403"><a href="#403" class="headerlink" title="403"></a>403</h5><p>Server收到，但拒绝提供服务（原因会写在响应正文中）。</p>
-<h5 id="404"><a href="#404" class="headerlink" title="404"></a>404</h5><p>请求的资源不存在。</p>
-<h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4><p><strong>服务器错误码。</strong>Server未能正常处理请求。</p>
-<h5 id="500"><a href="#500" class="headerlink" title="500"></a>500</h5><p>服务器Error。</p>
-<h5 id="503"><a href="#503" class="headerlink" title="503"></a>503</h5><p>服务器当前无法处理（过段时间可能恢复）。</p>
-]]></content>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>网络协议</tag>
-        <tag>HTTP</tag>
-        <tag>对称加密</tag>
-        <tag>非对称加密</tag>
-        <tag>状态码</tag>
       </tags>
   </entry>
   <entry>
@@ -1229,6 +1050,185 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>Java创建对象的过程（包含类加载）</title>
+    <url>/Blog14.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>在Java中，说到创建对象，我们大多数情况下使用的都是new指令。那么明面上一条new指令，暗地里经过JVM多少处理呢？</p>
+<h1 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1 类加载检查"></a>1 类加载检查</h1><p>当JVM遇到一条new指令时，先检查其参数能否在常量池中定位到该类的符号引用。再检查该符号引用是否被加载过、解析过、初始化过。</p>
+<p><em>注：符号引用相当于自定义的变量名等；引用除了符号引用以外，还有直接引用。直接引用指的是指针、偏移量之类的东西。</em></p>
+<p><em>JVM并不是编译时，就加载所有类进内存。而是第一次运行某个类时才加载，且只加载这一次。</em></p>
+<p>若有，则直接进行第二步分配内存。若没有，则执行<strong>类加载</strong>。</p>
+<p>类加载的过程分为三步：<strong>加载 -&gt; 链接 -&gt; 初始化</strong>。<br>而链接又分为三步：<strong>验证 -&gt; 准备 -&gt; 解析</strong>。</p>
+<p><em>加载和链接实际上是交叉进行的。加载未结束，链接已开始。</em></p>
+<p><em>不妨多了解一点，<strong>类的生命周期</strong>：加载 -&gt; 链接 -&gt; 初始化 -&gt; 使用 -&gt; 卸载</em></p>
+<h2 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h2><p>加载这一步的内容是，把class文件装入内存。</p>
+<p>在JVM中，内置的类加载器（ClassLoader）有三层，自顶向下分别是</p>
+<ol>
+<li>BootstrapClassLoader 启动类加载器（最顶层的ClassLoader，由C++实现）</li>
+<li>ExtensionClassLoader 扩展类加载器</li>
+<li>AppClassLoader 应用程序类加载器</li>
+</ol>
+<p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
+<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
+<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
+<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
+<p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
+<p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
+<p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
+<h2 id="1-2-验证"><a href="#1-2-验证" class="headerlink" title="1.2 验证"></a>1.2 验证</h2><p>保证加载的字节流符合规范。</p>
+<h2 id="1-3-准备"><a href="#1-3-准备" class="headerlink" title="1.3 准备"></a>1.3 准备</h2><p>为static变量（非实例变量）分配内存，并赋值。</p>
+<h2 id="1-4-解析"><a href="#1-4-解析" class="headerlink" title="1.4 解析"></a>1.4 解析</h2><p>将常量池的符号引用替换为直接引用。</p>
+<h2 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h2><p>初始化static代码块，构造器等。</p>
+<h1 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2 分配内存"></a>2 分配内存</h1><p>所需的内存大小，在类加载完成后，便可以确定。</p>
+<p>内存分配的方式有两种，分别是<strong>指针碰撞法</strong>以及<strong>空闲列表法</strong></p>
+<p><img src=".//Blog14/FENPEINEICUN.jpg" alt></p>
+<p><strong>分配完内存，就会在内存上创建实例化对象。</strong></p>
+<p>JVM在创建对象时，必须保证线程安全，通常用两种方法保证。</p>
+<ol>
+<li><p>CAS + 失败重试机制<br>CAS是乐观锁（乐观锁是一种思想，没有实际的锁。它假设不会出现冲突，所以不用加锁，直接去申请资源，失败就重试，直到成功为止）。CAS + 失败重试 可以保证操作的原子性，从而线程安全。</p>
+</li>
+<li><p>TLAB<br>全称ThreadLocalAllocBuffer，于 HotSpot1.6 引入，原理与指针碰撞法类似。在每个线程初始化时，同时申请一块指定大小的内存绑定给它。当线程需要内存时，就在自己的这块内存上分配，若容量不够，再去Eden区正常申请。<strong>优点</strong>：每个线程都有自己的专属指针，性能高。<img src=".//Blog14/TLAB.jpg" alt></p>
+</li>
+</ol>
+<h1 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3 初始化零值"></a>3 初始化零值</h1><p>分配内存完成后，要把这些内存初始化为0。<br><strong>所以成员变量可以不用初始化</strong></p>
+<h1 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4 设置对象头"></a>4 设置对象头</h1><p>初始化零值后，JVM要对对象实例进行设置。例如：</p>
+<ol>
+<li>该对象是哪个类的实例</li>
+<li>如何找到该类的元数据</li>
+<li>对象的HashCode</li>
+<li>对象的GC年龄</li>
+<li>锁状态标识</li>
+</ol>
+<p>这些信息都存放在对象头中。<em>PS：实例对象分为三个部分：对象头、实例数据、对齐填充（非必须）</em></p>
+<h1 id="5-执行init-方法"><a href="#5-执行init-方法" class="headerlink" title="5 执行init()方法"></a>5 执行init()方法</h1><p>从JVM的角度来看，执行完上述4步，一个新对象已经产生。</p>
+<p>执行完new指令后紧接着执行init()，才能完成对象实例的初始化（成员变量、成员方法等）。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>对象创建</tag>
+        <tag>类加载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP相关 &amp;&amp; 对称/非对称加密简述</title>
+    <url>/Blog15.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>HTTP的底层是TCP，所以，TCP的一些特性在HTTP中得以保留。由于TCP中存在长连接与短连接，所以HTTP中也存在长连接与短连接。</p>
+<h1 id="HTTP的长连接"><a href="#HTTP的长连接" class="headerlink" title="HTTP的长连接"></a>HTTP的长连接</h1><p>HTTP的长连接是基于TCP长连接做出的封装处理。HTTP长连接我们称之为<strong>Keep-Alive机制</strong>，其内容是：若长连接在2个小时（保活定时）内无任何反应，Server便向Client发送探测报文段，此时可能有4种结果：</p>
+<ol>
+<li><p>Client正常运行，且正常响应：<br>则Server保活定时复位（Reset）。</p>
+</li>
+<li><p>Client崩溃/重启，，无法响应：<br>Server继续每隔75秒发送一次探测报文段，共发送10次。若Client仍然没有响应，则关闭连接（CLOSED）。</p>
+</li>
+<li><p>Client崩溃后重启，一开始无响应，后来正常：<br>重启连接（连接已经中断，物是人非）。</p>
+</li>
+<li><p>Client正常运行，但探测报文段不可达（Client无响应）：<br>同第二点。</p>
+</li>
+</ol>
+<h1 id="HTTP的短连接"><a href="#HTTP的短连接" class="headerlink" title="HTTP的短连接"></a>HTTP的短连接</h1><p>HTTP的短连接实际上是由于HTTP的特性（无连接）决定的。</p>
+<p>所以，让我们引入HTTP的两个特性：无连接、无状态。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP是无连接的"><a href="#HTTP是无连接的" class="headerlink" title="HTTP是无连接的"></a>HTTP是无连接的</h1><p>每次只处理一个请求，处理完（收到Client应答）就断开。<br><strong>解决</strong>：Keep-Alive机制。</p>
+<h1 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h1><p>每一次打开网页都完全独立。</p>
+<p><strong>解决</strong>：</p>
+<ol>
+<li><p>Cookie：<br>存储在浏览器（Bowser）中，由Server生成<br>下一次请求该网站时，会把该Cookie发送给Server<br>不安全（在Server之外被非法读写）</p>
+</li>
+<li><p>Session<br>存储在Server，较安全<br>但是Server需要Client提供Session_id才能找到对应Session<br>Session_id通常使用Cookie存储</p>
+</li>
+<li><p>Token<br>可抵抗<a href="https://zh.wikipedia.org/zh/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0" target="_blank" rel="noopener">CSRF（跨站请求伪造）</a> </p>
+</li>
+<li><p>JWT</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTP的端口默认是80；HTTPS则是443。</p>
+<p>HTTP基于TCP，明文传输；HTTPS基于HTTP + <strong>SSL</strong>，通过对称加密与非对称加密传输。下面我顺便简单介绍一下对称加密以及非对称加密，不感兴趣的同学可以直接跳过此部分。</p>
+<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>只有一个密钥，同时负责加密、解密，很好理解。</p>
+<p><strong>常见算法</strong>：DES、AES等。</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>有成对的密钥，称为 公钥 + 私钥，<strong>无法相互推导</strong>。一个加密，另一个解密。</p>
+<p><strong>常见算法</strong>：RSA、DSA等。</p>
+<p>这里举个栗子，强化大家的理解，是一个非常有趣的数学算法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先，我们需要知道这样一件事：</span><br><span class="line"></span><br><span class="line">一个8位数，与 4 0000 0001 做乘法运算，</span><br><span class="line">得出的运算结果的后八位，就是那个8位数的值。</span><br><span class="line"></span><br><span class="line">比如 12345678 * 400000001 &#x3D; 4938271212345678</span><br><span class="line"></span><br><span class="line">好了，准备完成。接下来，就是非对称加密的部分了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server取其任意一对因数，比如 19801 与 20201</span><br><span class="line">（19801 * 20201 &#x3D; 400000001）</span><br><span class="line"></span><br><span class="line">我们设公钥为 19801， 私钥为 20201</span><br><span class="line">私钥存储在Server中，严格确保不外泄</span><br><span class="line">把公钥公开到网络中，并且附送上加密算法：</span><br><span class="line"></span><br><span class="line">密文 * 公钥，再取其后八位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">假设，Client A想要传输内容为“12345678”的数据包给Server</span><br><span class="line">Client A获取到Server公开的公钥 19801</span><br><span class="line">12345678 * 19801 &#x3D; 244456770078，取后八位56770078</span><br><span class="line">Client A将56770078传输给Server</span><br><span class="line"></span><br><span class="line">在Client A向Server传输56770078时</span><br><span class="line">Client B通过抓包解包等技术手段，获取到该加密内容56770078</span><br><span class="line">由于加密算法是一个有损算法（舍弃了前4位）</span><br><span class="line">所以Client B即便知道加密过程，也无法还原数据</span><br><span class="line"></span><br><span class="line">好，此时Server也获取到了Client A的数据包</span><br><span class="line">Server 把 密文 * 私钥</span><br><span class="line">（56770078 * 20201 &#x3D; 1146812345678）</span><br><span class="line">再取其后8位，得到原文“12345678”</span><br></pre></td></tr></table></figure>
+<p>怎么样，是不是非常简单易懂~ 这就是非对称加密的核心内容。这只是一个非常简单的示例，可能放在今天，随随便便的一台个人计算机就可以根据公钥20201破解出私钥19801。但是在没有计算机的年代，靠大量人工的算力也无法通过公钥破解出私钥。随着学者在数学领域的探索，非对称加密的实际应用早已结合了各种前沿的数学运算。当然了，这些都不是我等搬砖狗深究之事<del>~</del></p>
+<h2 id="SSL原理"><a href="#SSL原理" class="headerlink" title="SSL原理"></a>SSL原理</h2><p>非对称加密虽然十分安全，但是性能比起对称加密则十分低下。而Bowser与Server之间的数据交互十分频繁，采用非对称加密显然不合适。</p>
+<p>在SSL中，采用了非对称加密与对称加密相结合的方式。即<strong>Server通过非对称加密，把对称加密所使用的密钥，递交给Client</strong>。具体的过程，如下图所示：</p>
+<p><img src=".//Blog15/SSL.jpg" alt></p>
+<p>其中证书验证的环节，我们暂且不细究。此处涉及到的并非纯粹的技术问题，而是类似于互联网规章制度，感兴趣的同学可以自行了解一下。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="与Server的四种交互"><a href="#与Server的四种交互" class="headerlink" title="与Server的四种交互"></a>与Server的四种交互</h1><ol>
+<li>GET    查询</li>
+<li>POST   修改</li>
+<li>PUT    增加</li>
+<li>DELETE 删除</li>
+</ol>
+<p>实际上，单独的 GET / POST 就可以实现增删改查。</p>
+<p>GET是幂等的（对同一个URL，多个请求返回相同结果）。</p>
+<p>POST使用必须用到表单Form（所以很多人偷懒使用GET）。</p>
+<p><strong>GET与POST的区别</strong>：</p>
+<ol>
+<li><p>GET提交的数据明文放在URL后边，不安全。<br>而POST则是把提交的数据放在HTTP包中加密传输，较为安全。</p>
+</li>
+<li><p>GET提交的数据量较小（最多1024字节）。<br>POST理论上无限制。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP请求、响应"><a href="#HTTP请求、响应" class="headerlink" title="HTTP请求、响应"></a>HTTP请求、响应</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包含</p>
+<ol>
+<li>请求方法（GET/POST）</li>
+<li>请求头<br>（空一行，表示请求头结束）</li>
+<li>请求正文</li>
+</ol>
+<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包含</p>
+<ol>
+<li>状态行（包含<strong>状态码</strong>）</li>
+<li>响应头<br>（空一行，表示响应头结束）</li>
+<li>响应正文</li>
+</ol>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><p><strong>信息码。</strong>Server已接收，Client可继续。</p>
+<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><p><strong>成功码。</strong>Server已接收并处理。</p>
+<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><p><strong>重定向码。</strong>服务器要求客户端重定向。</p>
+<p>重定向：亦称URL转发，用于当前资源（页面）迁移到新URL。</p>
+<h5 id="301"><a href="#301" class="headerlink" title="301"></a>301</h5><p><strong>永久重定向。</strong>例如<code>www.google.com</code>迁移到<code>google.com</code><br>优点：</p>
+<ul>
+<li>可以减少DNS的缓存（提高缓存友好型）</li>
+<li>防止访问量分散（提高网站竞价排名）</li>
+</ul>
+<h5 id="302"><a href="#302" class="headerlink" title="302"></a>302</h5><p><strong>临时重定向。</strong>旧资源仍可访问，但临时跳转访问新资源。<br>优点：</p>
+<ul>
+<li>搜索引擎不会更新资源的链接，比301更利于SEO</li>
+</ul>
+<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><p><strong>客户端错误码。</strong>Client的请求有非法内容。</p>
+<h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求有语法错误。</p>
+<h5 id="401"><a href="#401" class="headerlink" title="401"></a>401</h5><p>请求未经授权。</p>
+<h5 id="403"><a href="#403" class="headerlink" title="403"></a>403</h5><p>Server收到，但拒绝提供服务（原因会写在响应正文中）。</p>
+<h5 id="404"><a href="#404" class="headerlink" title="404"></a>404</h5><p>请求的资源不存在。</p>
+<h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4><p><strong>服务器错误码。</strong>Server未能正常处理请求。</p>
+<h5 id="500"><a href="#500" class="headerlink" title="500"></a>500</h5><p>服务器Error。</p>
+<h5 id="503"><a href="#503" class="headerlink" title="503"></a>503</h5><p>服务器当前无法处理（过段时间可能恢复）。</p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>网络协议</tag>
+        <tag>HTTP</tag>
+        <tag>对称加密</tag>
+        <tag>非对称加密</tag>
+        <tag>状态码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计模式-前序</title>
     <url>/Blog17.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1295,6 +1295,33 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 ]]></content>
       <tags>
         <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java异常机制</title>
+    <url>/Blog19.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="整体框架图"><a href="#整体框架图" class="headerlink" title="整体框架图"></a>整体框架图</h1><p><img src=".//Blog19/Frame.jpg" alt></p>
+<h1 id="什么情况下finally不执行"><a href="#什么情况下finally不执行" class="headerlink" title="什么情况下finally不执行"></a>什么情况下finally不执行</h1><ul>
+<li>finally第一行出错</li>
+<li>其前面的代码用<code>System.exit()</code>推出程序</li>
+<li>所在的线程死亡</li>
+<li>CPU关闭</li>
+</ul>
+<h1 id="若try和finally中都有return"><a href="#若try和finally中都有return" class="headerlink" title="若try和finally中都有return"></a>若try和finally中都有return</h1><p>执行顺序：</p>
+<ol>
+<li>try中常规语句</li>
+<li>finally中常规语句</li>
+<li>finally中return</li>
+<li>try中return</li>
+</ol>
+<h1 id="Throw-Throws"><a href="#Throw-Throws" class="headerlink" title="Throw/Throws"></a>Throw/Throws</h1><p>二者都是消极处理<br>Throw：抛出一个异常，出现在<strong>函数体</strong>。<br>Throws：<strong>声明</strong>方法可能抛出异常，出现在<strong>函数头</strong>。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>异常</tag>
       </tags>
   </entry>
   <entry>
@@ -1366,33 +1393,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>Java异常机制</title>
-    <url>/Blog19.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="整体框架图"><a href="#整体框架图" class="headerlink" title="整体框架图"></a>整体框架图</h1><p><img src=".//Blog19/Frame.jpg" alt></p>
-<h1 id="什么情况下finally不执行"><a href="#什么情况下finally不执行" class="headerlink" title="什么情况下finally不执行"></a>什么情况下finally不执行</h1><ul>
-<li>finally第一行出错</li>
-<li>其前面的代码用<code>System.exit()</code>推出程序</li>
-<li>所在的线程死亡</li>
-<li>CPU关闭</li>
-</ul>
-<h1 id="若try和finally中都有return"><a href="#若try和finally中都有return" class="headerlink" title="若try和finally中都有return"></a>若try和finally中都有return</h1><p>执行顺序：</p>
-<ol>
-<li>try中常规语句</li>
-<li>finally中常规语句</li>
-<li>finally中return</li>
-<li>try中return</li>
-</ol>
-<h1 id="Throw-Throws"><a href="#Throw-Throws" class="headerlink" title="Throw/Throws"></a>Throw/Throws</h1><p>二者都是消极处理<br>Throw：抛出一个异常，出现在<strong>函数体</strong>。<br>Throws：<strong>声明</strong>方法可能抛出异常，出现在<strong>函数头</strong>。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>异常</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【笔记】 ==与equals</title>
     <url>/Blog20.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1400,19 +1400,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 
 <p><img src=".//Blog20/01.jpg" alt></p>
 <p>换一种理解方式：<br><img src=".//Blog20/02.jpg" alt></p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【笔记】 Override与Overload（重写与重载）</title>
-    <url>/Blog22.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p><img src=".//Blog22/01.jpg" alt></p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -1471,6 +1458,45 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>【杂记】 大连理工大学某研究生遗书</title>
+    <url>/Blog24.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>最近在网上看到的，有点破防。于此处留档</strong></p>
+<hr>
+<p>大家好，我是大连理工大学化学工程专业专硕三年级学生，导师是Z老师。我的研究课题是…</p>
+<p>啊，别走嘛我不是来进行答辩的啦（笑哭.jpg）</p>
+<p>只是想来告个别，待会我就准备一挂解千愁了。</p>
+<p>今年真是糟糕的一年呢，国际国内都鸡飞蛋打的，想当初为了逃避找工作考了研究生，结果刚考上贸易战就开打，就业形势一下严峻了起来。今年又赶上疫情，好像这三年读研期间世界跟闹肚子似的。</p>
+<p>啊对了，说起闹肚子我不知怎么的越来越受不了圣女果，最近一次吃完之后拉了好几回。</p>
+<p>然后我还想起刚考上之后没多久，一个认识的学长推荐我去跟Z老师学习，第一次跟Z老师见面他把煤化工行业的上下五千年都给我讲了一遍，讲到一半我肚子也不舒服，精神也快绷不住了，但脸上还得维持认真听讲的表情。估计那一次是我人生中坚持最久的一次。之后每次找他，哪怕是问个小问题，都有可能让我坐在沙发上听他讲半天行业背景，从此我十分不乐意去找他商量事情。</p>
+<p>这三年过的，额，过的挺快的，体会到了给研究生讲课的老师授课质量差到酸奶没吃完放在垃圾桶里一周的地步。上完大部分课程就开始进实验室做实验了。</p>
+<p>开题答辩那天，听完我的汇报，评审的老师嘟噜了一句“还可以”，问了一两个问题就结束了。其实吧，我挺希望他们能针对我的思路和目的给出更具体的意见来着，没想到那天我算是最快结束答辩的。</p>
+<p>“多去看文献，看看别人是怎么做的。”如果去找组里的老师问问题的话，经常得到这个回答。于是我综合了几个博士论文的实验思路和内容，就撸起袖子去干活了，然后我就跟我那台如同祖宗一般的实验设备开始了长达一年的交流。每次做实验前我都要先祈祷一下待会它可千万要一直正常工作，你能想象一台普通的实验设备正常工作的概率居然不超过三分之一吗？我差点都把佛祖保佑几个字刻在它上面了。谢天谢地，它终于在今年1月份，我催了好几回组里的H老师后，算是修好了。</p>
+<p>今年大概1月18日，我还待在实验室做实验，其实当时也有想过要不要申请寒假也不回家了，毕竟感觉进度不是很好，后来想着也没剩几个寒暑假了，还是回去了。</p>
+<p>疫情爆发困在家里后，在家里人建议下开始备考公务员。过了半年回到学校，在宿舍隔离时我们开了线上组会，组里的老师看了我的数据，平静地表达了我的数据都没意义的评论。</p>
+<p>啊？什么？我照着文献做的啊？不是你给的建议吗？</p>
+<p>好吧，是我不对，我太笨了，不懂得自己思考。</p>
+<p>行吧，过去一年做的一切推翻重来。</p>
+<p>夏天，拼了命地赶进度，还得跟其他人共用一些设备，于是为了提高使用效率，我把白天让给了别人，晚上通宵了好几次做实验，期望着赶紧做完，我好专心备考公务员。</p>
+<p>然后？然后就是不断地，不断地做无用功，我也不知道为什么，一模一样的条件，每一次居然都能得到不同的结果，趴在电脑前看着自己的数据，感受着自己的心态一块一块碎落下来。</p>
+<p>看着我的实验设备，然后看了看自己的手，不知道是哪一个出了毛病，或许是脑子也说不定。</p>
+<p>&nbsp;<br>“不对啦！肯定是你自己的问题！”<br>“我…我哪出问题了？”<br>“你少玩点游戏，少刷些视频还会这样吗？”<br>“可…可我确实尽力了啊？”<br>“那就是你笨，懒，没用。这二十几年家里人给你这么多关怀，结果养了一个废物出来。”<br>“那…咋办？”<br>“你这样下去肯定延毕了，真丢人，几百万研究生，不缺你这么一个废物，去死吧。”<br>“那好吧。”</p>
+<p>我真是一个够无聊的人，这样无聊的小剧场我居然能自己演好几回。</p>
+<p>想起了前几天开组会，Z老师说让我们赶紧着手构思专利，不然赶不上毕业。结果H老师怒喷：“不能让他们发专利！得让他们发论文！专利太简单了，发个专利就毕业，太水了！”开的是线上组会，我当时通宵做PPT困得不行，听了H老师的话，我关掉了麦克风苦笑了一声，精神了。</p>
+<p>其实我觉得H老师的要求挺合理的，我们组一直要求很宽松，以前连组会都不开，除了每年年末老师请我们吃一顿饭，年中夏天带我们跟当届毕业生一起出去玩一次之外，并不怎么主动跟我们见面。不过，对不起，我可能没办法满足您的要求了，把疫情夺走的半年还给我，可能还有希望，但在这个节点上，我看着自己的数据，除了绝望还是绝望。可能是我太笨了，也可能是我太懒了，也可能是那几台设备不足以完成我的课题。总之，以前我们组还没出现过无法按时毕业的，为了不打破这个优良传统，那我消失好了。正好国家今年正为了就业问题犯愁，我就不给国家添麻烦了，我想我这样的人也没有资格加入公务员队伍为人民服务。</p>
+<p>如果我身上还有哪个部位能用的，都拿走吧。请把我烧成灰随便埋到哪块地里，好歹能贡献点养分。</p>
+<p>谢谢你，谢谢你看到了这里。我其实算是个挺内向的人，第一次跟人倾吐了这么多。</p>
+<p>想起了之前在美团点外卖是给他们的公益活动捐过一块钱，希望能实现我一个愿望，<strong>让我下辈子变成某间猫咖里的一只猫吧，野猫也行</strong>，毕竟猫的年龄十来年，我活了25年，也没比猫久多少。</p>
+<p>希望家人朋友今后顺顺利利，祝愿国家一直繁荣昌盛</p>
+<hr>
+]]></content>
+      <tags>
+        <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java IO流</title>
     <url>/Blog23.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1512,42 +1538,51 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>【杂记】 大连理工大学某研究生遗书</title>
-    <url>/Blog24.html</url>
+    <title>【笔记】 Override与Overload（重写与重载）</title>
+    <url>/Blog22.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
 
-<p><strong>最近在网上看到的，有点破防。于此处留档</strong></p>
-<hr>
-<p>大家好，我是大连理工大学化学工程专业专硕三年级学生，导师是Z老师。我的研究课题是…</p>
-<p>啊，别走嘛我不是来进行答辩的啦（笑哭.jpg）</p>
-<p>只是想来告个别，待会我就准备一挂解千愁了。</p>
-<p>今年真是糟糕的一年呢，国际国内都鸡飞蛋打的，想当初为了逃避找工作考了研究生，结果刚考上贸易战就开打，就业形势一下严峻了起来。今年又赶上疫情，好像这三年读研期间世界跟闹肚子似的。</p>
-<p>啊对了，说起闹肚子我不知怎么的越来越受不了圣女果，最近一次吃完之后拉了好几回。</p>
-<p>然后我还想起刚考上之后没多久，一个认识的学长推荐我去跟Z老师学习，第一次跟Z老师见面他把煤化工行业的上下五千年都给我讲了一遍，讲到一半我肚子也不舒服，精神也快绷不住了，但脸上还得维持认真听讲的表情。估计那一次是我人生中坚持最久的一次。之后每次找他，哪怕是问个小问题，都有可能让我坐在沙发上听他讲半天行业背景，从此我十分不乐意去找他商量事情。</p>
-<p>这三年过的，额，过的挺快的，体会到了给研究生讲课的老师授课质量差到酸奶没吃完放在垃圾桶里一周的地步。上完大部分课程就开始进实验室做实验了。</p>
-<p>开题答辩那天，听完我的汇报，评审的老师嘟噜了一句“还可以”，问了一两个问题就结束了。其实吧，我挺希望他们能针对我的思路和目的给出更具体的意见来着，没想到那天我算是最快结束答辩的。</p>
-<p>“多去看文献，看看别人是怎么做的。”如果去找组里的老师问问题的话，经常得到这个回答。于是我综合了几个博士论文的实验思路和内容，就撸起袖子去干活了，然后我就跟我那台如同祖宗一般的实验设备开始了长达一年的交流。每次做实验前我都要先祈祷一下待会它可千万要一直正常工作，你能想象一台普通的实验设备正常工作的概率居然不超过三分之一吗？我差点都把佛祖保佑几个字刻在它上面了。谢天谢地，它终于在今年1月份，我催了好几回组里的H老师后，算是修好了。</p>
-<p>今年大概1月18日，我还待在实验室做实验，其实当时也有想过要不要申请寒假也不回家了，毕竟感觉进度不是很好，后来想着也没剩几个寒暑假了，还是回去了。</p>
-<p>疫情爆发困在家里后，在家里人建议下开始备考公务员。过了半年回到学校，在宿舍隔离时我们开了线上组会，组里的老师看了我的数据，平静地表达了我的数据都没意义的评论。</p>
-<p>啊？什么？我照着文献做的啊？不是你给的建议吗？</p>
-<p>好吧，是我不对，我太笨了，不懂得自己思考。</p>
-<p>行吧，过去一年做的一切推翻重来。</p>
-<p>夏天，拼了命地赶进度，还得跟其他人共用一些设备，于是为了提高使用效率，我把白天让给了别人，晚上通宵了好几次做实验，期望着赶紧做完，我好专心备考公务员。</p>
-<p>然后？然后就是不断地，不断地做无用功，我也不知道为什么，一模一样的条件，每一次居然都能得到不同的结果，趴在电脑前看着自己的数据，感受着自己的心态一块一块碎落下来。</p>
-<p>看着我的实验设备，然后看了看自己的手，不知道是哪一个出了毛病，或许是脑子也说不定。</p>
-<p>&nbsp;<br>“不对啦！肯定是你自己的问题！”<br>“我…我哪出问题了？”<br>“你少玩点游戏，少刷些视频还会这样吗？”<br>“可…可我确实尽力了啊？”<br>“那就是你笨，懒，没用。这二十几年家里人给你这么多关怀，结果养了一个废物出来。”<br>“那…咋办？”<br>“你这样下去肯定延毕了，真丢人，几百万研究生，不缺你这么一个废物，去死吧。”<br>“那好吧。”</p>
-<p>我真是一个够无聊的人，这样无聊的小剧场我居然能自己演好几回。</p>
-<p>想起了前几天开组会，Z老师说让我们赶紧着手构思专利，不然赶不上毕业。结果H老师怒喷：“不能让他们发专利！得让他们发论文！专利太简单了，发个专利就毕业，太水了！”开的是线上组会，我当时通宵做PPT困得不行，听了H老师的话，我关掉了麦克风苦笑了一声，精神了。</p>
-<p>其实我觉得H老师的要求挺合理的，我们组一直要求很宽松，以前连组会都不开，除了每年年末老师请我们吃一顿饭，年中夏天带我们跟当届毕业生一起出去玩一次之外，并不怎么主动跟我们见面。不过，对不起，我可能没办法满足您的要求了，把疫情夺走的半年还给我，可能还有希望，但在这个节点上，我看着自己的数据，除了绝望还是绝望。可能是我太笨了，也可能是我太懒了，也可能是那几台设备不足以完成我的课题。总之，以前我们组还没出现过无法按时毕业的，为了不打破这个优良传统，那我消失好了。正好国家今年正为了就业问题犯愁，我就不给国家添麻烦了，我想我这样的人也没有资格加入公务员队伍为人民服务。</p>
-<p>如果我身上还有哪个部位能用的，都拿走吧。请把我烧成灰随便埋到哪块地里，好歹能贡献点养分。</p>
-<p>谢谢你，谢谢你看到了这里。我其实算是个挺内向的人，第一次跟人倾吐了这么多。</p>
-<p>想起了之前在美团点外卖是给他们的公益活动捐过一块钱，希望能实现我一个愿望，<strong>让我下辈子变成某间猫咖里的一只猫吧，野猫也行</strong>，毕竟猫的年龄十来年，我活了25年，也没比猫久多少。</p>
-<p>希望家人朋友今后顺顺利利，祝愿国家一直繁荣昌盛</p>
-<hr>
+<p><img src=".//Blog22/01.jpg" alt></p>
 ]]></content>
       <tags>
-        <tag>杂记</tag>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式的五种写法（Java）</title>
+    <url>/Blog26.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程不安全）"><a href="#懒汉式（线程不安全）" class="headerlink" title="懒汉式（线程不安全）"></a>懒汉式（线程不安全）</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instace;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程安全）"><a href="#懒汉式（线程安全）" class="headerlink" title="懒汉式（线程安全）"></a>懒汉式（线程安全）</h1><p><strong>效率低，每次都要加锁</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instace;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="双重校验锁-DCL（Double-Checked-Locking）"><a href="#双重校验锁-DCL（Double-Checked-Locking）" class="headerlink" title="双重校验锁 DCL（Double Checked Locking）"></a>双重校验锁 DCL（Double Checked Locking）</h1><p><strong>先判断，若对象已创建，则不进入synchronized代码块。</strong>提升了性能且保证安全。<br><strong>Volate一般用于保证多线程可见性。这里用来防止指令重排序。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>调用getInstance()才初始化，<strong>更加灵活</strong>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -1632,41 +1667,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>单例模式的五种写法（Java）</title>
-    <url>/Blog26.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instance &#x3D; new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="懒汉式（线程不安全）"><a href="#懒汉式（线程不安全）" class="headerlink" title="懒汉式（线程不安全）"></a>懒汉式（线程不安全）</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instace;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            instance &#x3D; new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="懒汉式（线程安全）"><a href="#懒汉式（线程安全）" class="headerlink" title="懒汉式（线程安全）"></a>懒汉式（线程安全）</h1><p><strong>效率低，每次都要加锁</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton instace;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static synchronized Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            instance &#x3D; new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="双重校验锁-DCL（Double-Checked-Locking）"><a href="#双重校验锁-DCL（Double-Checked-Locking）" class="headerlink" title="双重校验锁 DCL（Double Checked Locking）"></a>双重校验锁 DCL（Double Checked Locking）</h1><p><strong>先判断，若对象已创建，则不进入synchronized代码块。</strong>提升了性能且保证安全。<br><strong>Volate一般用于保证多线程可见性。这里用来防止指令重排序。</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private volatile static Singleton instance;</span><br><span class="line">    private Singleton()&#123;&#125;;</span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">            synchronized(Singleton.class)&#123;</span><br><span class="line">                if (instance &#x3D;&#x3D; null)&#123;</span><br><span class="line">                    instance &#x3D; new Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>调用getInstance()才初始化，<strong>更加灵活</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        private static final Singleton INSTANCE &#x3D; new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static final Singleton getInstance()&#123;</span><br><span class="line">        return SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据库范式</title>
     <url>/Blog27.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1713,6 +1713,26 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <li>插入异常：插入一个尚无学生的新系，在表3中增加记录即可，三张表相互独立无影响。（有改进）</li>
 <li>删除异常：删除一个系中所有学生记录，原理同上，该系的信息不会丢失。（有改进）</li>
 </ul>
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+        <tag>范式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Studio相关问题处理</title>
+    <url>/Blog28.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="Please-configure-Android-SDK"><a href="#Please-configure-Android-SDK" class="headerlink" title="Please configure Android SDK"></a>Please configure Android SDK</h1><p><strong>问题描述</strong><br>Android Studio Logcat处显示Please Configure Android SDK，无法正常显示Log信息。<br>如下图所示：<br><img src=".//Blog28/01.jpg" alt></p>
+<p><strong>解决方法</strong></p>
+<ol>
+<li>左上角File -&gt; Project Stucture。</li>
+<li>选择Project Setting下边的Project栏。</li>
+<li>在右边的Project SDK处下拉，选择已安装好的Java SDK（若没安装，请自行搜索Java SDK的安装教程）。</li>
+<li>点击OK即可。</li>
+</ol>
 ]]></content>
       <tags>
         <tag>数据库</tag>
