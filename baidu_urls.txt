@@ -1,4 +1,3 @@
-http://ryanyhliu.com/Blog02.html
 http://ryanyhliu.com/Blog28.html
 http://ryanyhliu.com/Blog27.html
 http://ryanyhliu.com/Blog26.html
@@ -21,6 +20,7 @@ http://ryanyhliu.com/Blog08.html
 http://ryanyhliu.com/Blog07.html
 http://ryanyhliu.com/Blog06.html
 http://ryanyhliu.com/Blog05.html
+http://ryanyhliu.com/Blog02.html
 http://ryanyhliu.com/Blog04.html
 http://ryanyhliu.com/Blog03.html
 http://ryanyhliu.com/Blog01.html
