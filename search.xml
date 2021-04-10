@@ -1,121 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/Blog00.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-<center>This post is created for test
-
-<p>=_=</p>
-<br>
-
-<p>But, thanks for reading</p>
-<p>Wish u a nice day</p>
-<p>TEST</p>
-</center>]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建基于Hexo的网站遇到的一些坑（2020.04）</title>
-    <url>/Blog05.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<font size="6">
-<center>可以通过左侧导航栏，更方便的进行阅读</center>
-</font>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" srcset="/img/loading.gif" alt></p>
-<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" srcset="/img/loading.gif" alt></p>
-<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" srcset="/img/loading.gif" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" srcset="/img/loading.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight 1c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs 1c">hexo g      <span class="hljs-comment">//generate，保存后执行该命令，以重新生成文件</span><br>hexo s      <span class="hljs-comment">//server，  启动本地服务器，进行预览</span><br>hexo d      <span class="hljs-comment">//deploy，  部署本地项目到远程服务器</span><br>hexo clean  <span class="hljs-comment">//清除本地静态文件（db.json，根目录public文件夹）</span><br></code></pre></div></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" srcset="/img/loading.gif" alt></p>
-<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
-<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" srcset="/img/loading.gif" alt></p>
-<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
-<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-meta"># 关于菜单示例配置</span><br><span class="hljs-symbol">menu:</span><br><span class="hljs-symbol">  home:</span> /||home<br><span class="hljs-symbol">  about:</span> <span class="hljs-meta-keyword">/about/</span>||user<br><span class="hljs-symbol">  tags:</span> <span class="hljs-meta-keyword">/tags/</span>||tags  <br><span class="hljs-symbol">  archives:</span> <span class="hljs-meta-keyword">/archives/</span>||archive<br></code></pre></div></td></tr></table></figure>
-<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" srcset="/img/loading.gif" alt><br>配置方法：执行该命令</p>
-<figure class="highlight crystal"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs crystal">git clone <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/theme</span>-<span class="hljs-keyword">next</span>/theme-<span class="hljs-keyword">next</span>-canvas-nest themes/<span class="hljs-keyword">next</span>/source/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">canvas</span>-<span class="hljs-title">nest</span></span><br></code></pre></div></td></tr></table></figure>
-
-<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">canvas_nest:</span> <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure>
-
-<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
-<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">canvas_nest:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">onmobile:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 是否在移动端显示</span><br>  <span class="hljs-attr">color:</span> <span class="hljs-string">'0,0,255'</span> <span class="hljs-comment"># 动态背景中线条的 RGB 颜色</span><br>  <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.5</span> <span class="hljs-comment"># 动态背景中线条透明度</span><br>  <span class="hljs-attr">zIndex:</span> <span class="hljs-number">-1</span> <span class="hljs-comment"># 动态背景的 z-index 属性值</span><br>  <span class="hljs-attr">count:</span> <span class="hljs-number">99</span> <span class="hljs-comment"># 动态背景中线条数量</span><br></code></pre></div></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">//默认展开标题<br><span class="hljs-selector-class">.post-toc</span> <span class="hljs-selector-class">.nav</span> <span class="hljs-selector-class">.nav-child</span> &#123; <br>    <span class="hljs-attribute">display</span>: block; <br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" srcset="/img/loading.gif" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/themes/</span><span class="hljs-keyword">next</span><span class="hljs-regexp">/source/u</span>ploads<span class="hljs-regexp">/</span><br></code></pre></div></td></tr></table></figure>
-<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
-<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-meta"># Sidebar Avatar</span><br><span class="hljs-symbol">    avatar:</span> <span class="hljs-meta-keyword">/uploads/</span>avatar.gif<br></code></pre></div></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" srcset="/img/loading.gif" alt><br>在</p>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/themes/</span><span class="hljs-keyword">next</span><span class="hljs-regexp">/layout/</span>_partials<span class="hljs-regexp">/footer.swig</span><br></code></pre></div></td></tr></table></figure>
-<p>目录文件下，添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"timeDate"</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"times"</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); </span><br><span class="actionscript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span><span class="hljs-params">()</span> </span>&#123; </span><br><span class="javascript">        <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"04/06/2020 21:00:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span><br>        now.setTime(now.getTime()+250); <br><span class="javascript">        days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); </span><br><span class="javascript">        hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); </span><br><span class="javascript">        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); </span><br><span class="javascript">        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; </span><br>        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); <br><span class="javascript">        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; </span><br><span class="javascript">        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"我已在此等候你 "</span>+dnum+<span class="hljs-string">" 天 "</span>; </span><br><span class="javascript">        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; </span><br>    &#125; <br><span class="actionscript">setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>与桂林某电子科技大学的校园网的防火墙斗智斗勇</title>
     <url>/Blog01.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -254,9 +139,196 @@
 <p>感谢阅读，以上</p>
 ]]></content>
       <tags>
-        <tag>Web</tag>
         <tag>计算机网络</tag>
         <tag>python</tag>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/Blog00.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+<center>This post is created for test
+
+<p>=_=</p>
+<br>
+
+<p>But, thanks for reading</p>
+<p>Wish u a nice day</p>
+<p>TEST</p>
+</center>]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过邻接表实现广度优先搜索（迷宫问题）</title>
+    <url>/Blog04.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><strong>“Talk is cheap. Show me the code.”  — Linus Torvalds</strong><br></p>
+<p>直接上代码，如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/***************************************</span><br><span class="hljs-comment">            问题：迷宫问题 </span><br><span class="hljs-comment">            算法：广度优先搜索 </span><br><span class="hljs-comment">         数据结构：邻接表 </span><br><span class="hljs-comment">***************************************/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R 7 </span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Branch</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">int</span> row;<br>	<span class="hljs-keyword">int</span> column;<br><br>	_Branch * nextBranch;<br>&#125;<br>* Branch;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Root</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">int</span> row;<br>	<span class="hljs-keyword">int</span> column;<br><br>	_Root * nextRoot;<br>	_Branch * nextBranch;<br>&#125;<br>* Root;<br><br><span class="hljs-comment">/////////////////////////////全局变量 </span><br><span class="hljs-keyword">int</span> <span class="hljs-built_in">map</span>[R][R];<span class="hljs-comment">//迷宫 </span><br>Root treeRoot;<span class="hljs-comment">//树根 </span><br><span class="hljs-keyword">int</span> level = <span class="hljs-number">1</span>;<span class="hljs-comment">//第几层 </span><br><span class="hljs-comment">/////////////////////// </span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printMap</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n---------------------------------------------------------------------\n"</span>);<br><br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; R; i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; R; j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[i][j] == <span class="hljs-number">-1</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\t□"</span>);<br>			&#125;<br>			<span class="hljs-keyword">else</span><br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\t%d"</span>, <span class="hljs-built_in">map</span>[i][j]);<br>			&#125;<br>		&#125;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-function">Branch <span class="hljs-title">findBranch</span><span class="hljs-params">(Root tempRoot, <span class="hljs-keyword">int</span> templevel)</span><span class="hljs-comment">//寻路 </span></span><br><span class="hljs-function"></span>&#123;<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));	<br>	<span class="hljs-keyword">int</span> tempRow = tempRoot -&gt; row;<br>	<span class="hljs-keyword">int</span> tempColumn = tempRoot -&gt; column;<br><br>	<span class="hljs-comment">//up</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow - <span class="hljs-number">1</span>;<br>		tempBranch -&gt; column = tempColumn;<br>		<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] = templevel + <span class="hljs-number">1</span>;<span class="hljs-comment">//等于当前的层数加一 </span><br><br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">9</span>)<span class="hljs-comment">//出口是9 </span><br>	&#123;<br>		level = <span class="hljs-number">0</span>;<span class="hljs-comment">//找到了出口，把当前层数变成0，并返回NULL </span><br>	&#125;<br>	<br>	<span class="hljs-comment">//right</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow;<br>		tempBranch -&gt; column = tempColumn + <span class="hljs-number">1</span>;<br>		<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] = templevel + <span class="hljs-number">1</span>;<br><br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br><br>	<span class="hljs-comment">//down</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow + <span class="hljs-number">1</span>;<br>		tempBranch -&gt; column = tempColumn;<br>		<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] = templevel + <span class="hljs-number">1</span>;<br>		<br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br><br>	<span class="hljs-comment">//left</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow;<br>		tempBranch -&gt; column = tempColumn - <span class="hljs-number">1</span>;<br>		<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] = templevel + <span class="hljs-number">1</span>;<br>		<br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addRoot</span><span class="hljs-params">(Branch tempBranch)</span></span><br><span class="hljs-function"></span>&#123;<br>	Root tempRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	Root tempBranchRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	<span class="hljs-comment">//初始化 </span><br>	&#123; <br>		tempBranchRoot -&gt; row = tempBranch -&gt; row;<br>		tempBranchRoot -&gt; column = tempBranch -&gt; column;<br>		tempBranchRoot -&gt; nextBranch = <span class="hljs-literal">NULL</span>;<br>		tempBranchRoot -&gt; nextRoot = <span class="hljs-literal">NULL</span>;<br>	&#125;<br>	 <br>	tempRoot = treeRoot;<br>	<span class="hljs-keyword">while</span> (tempRoot -&gt; nextRoot != <span class="hljs-literal">NULL</span>)<br>	&#123;<br>		tempRoot = tempRoot -&gt; nextRoot;<br>	&#125;<br>	tempRoot -&gt; nextRoot = tempBranchRoot;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createRoot</span><span class="hljs-params">(Root tempRoot)</span></span><br><span class="hljs-function"></span>&#123;<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	tempBranch = tempRoot -&gt; nextBranch;<br><br>	<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<br>	&#123;<br>		addRoot(tempBranch);<span class="hljs-comment">//把当前branch变成root </span><br>		tempBranch = tempBranch -&gt; nextBranch;<br>	&#125; <br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createTree</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	Root tempRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	Branch lastBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	<br>	tempRoot = treeRoot;<br><br>	<span class="hljs-keyword">while</span> (level != <span class="hljs-number">0</span>)<span class="hljs-comment">//标识符，如果为0就代表找到了出口 </span><br>	&#123;<br>		tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br>		<span class="hljs-comment">//为当前root建立branch </span><br>		<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<span class="hljs-comment">//如果还有branch </span><br>		&#123;<br>			tempBranch -&gt; nextBranch = <span class="hljs-literal">NULL</span>;<br>			tempRoot -&gt; nextBranch = tempBranch;<br>			lastBranch = tempBranch;<br><br>			tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br><br>			<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<br>			&#123;<br>				lastBranch -&gt; nextBranch = tempBranch;<br>				lastBranch = tempBranch;<br>				tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br>			&#125;<br>		&#125;<br>		createRoot(tempRoot);<span class="hljs-comment">//把当前root的branch创建成root，放在表尾 </span><br>		tempRoot = tempRoot -&gt; nextRoot;<span class="hljs-comment">//接着寻找下一个root </span><br><br>		printMap();<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] =  <span class="hljs-number">1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">4</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">1</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">4</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">9</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">3</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>; <br>	printMap();<br><br>	<span class="hljs-comment">//初始化根 </span><br>	&#123;<br>		treeRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>		treeRoot -&gt; nextRoot = <span class="hljs-literal">NULL</span>;<br>		treeRoot -&gt; row = <span class="hljs-number">1</span>;<br>		treeRoot -&gt; column = <span class="hljs-number">1</span>;<br>	&#125;<br>	<br>	createTree();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+        <tag>广度优先</tag>
+        <tag>C语言</tag>
+        <tag>数据结构</tag>
+        <tag>迷宫问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客基本格式</title>
+    <url>/Blog02.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt"># 一级标题<br>## 二级标题<br>### 三级标题<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">**加粗**<br>*斜体*<br>***斜体加粗***<br>~~删除线~~<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&gt; 引用的内容<br></code></pre></div></td></tr></table></figure>
+
+<p>引用支持嵌套</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&gt; 最外层引用<br>&gt;&gt; 第一层引用<br>&gt;&gt;&gt;&gt;&gt; 第五层引用<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>三个及以上的<code>-</code>或<code>*</code>都可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">---<br>****<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">[超链接名](超链接地址 &quot;超链接title&quot;)<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">无序：用 - + * 都可以<br>- 列表一<br>- 列表二<br>- 列表三<br><br>有序：用 数字加点<br>1. 列表一<br>2. 列表二<br>3. 列表三<br><br>嵌套：子级前边多三个空格<br>- 父列表一<br>   - 子列表1<br>   - 子列表2<br>- 父列表二<br>   - 子列表3<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">表头|表头|表头<br>---|:--:|---:<br>内容|内容|内容<br>内容|内容|内容<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>括号是为了防止转义，使用时需去掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">(&#96;&#96;&#96;)(语言)<br>  代码...<br>  代码...<br>  代码...<br>(&#96;&#96;&#96;)<br></code></pre></div></td></tr></table></figure>
+
+
+<h1 id="Fluid-脚注"><a href="#Fluid-脚注" class="headerlink" title="(Fluid)脚注"></a>(Fluid)脚注</h1><figure class="highlight markdown"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs markdown"><br>这是一句话[^1]<br>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">这是对应的脚注</span><br><br>or<br><br>正文<br><br><span class="hljs-section">## 参考</span><br>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">参考资料1</span><br>[<span class="hljs-symbol">^2</span>]: <span class="hljs-link">参考资料2</span><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="Fluid-便签"><a href="#Fluid-便签" class="headerlink" title="(Fluid)便签"></a>(Fluid)便签</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&#123;% note success %&#125;<br>文字 或者 &#96;markdown&#96; 均可<br>&#123;% endnote %&#125;<br><br>or<br><br>&lt;p class&#x3D;&quot;note note-primary&quot;&gt;标签&lt;&#x2F;p&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>便签可选如下：</p>
+<p class="note note-primary">primary</p>
+
+<p class="note note-secondary">secondary</p>
+
+<p class="note note-success">success</p>
+
+<p class="note note-danger">danger</p>
+
+<p class="note note-warning">warning</p>
+
+<p class="note note-info">info</p>
+
+<p class="note note-light">light</p>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建基于Hexo的网站遇到的一些坑（2020.04）</title>
+    <url>/Blog05.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p><em>非教程，仅用于记录自己搭建该网站遇到的一些问题和经验，以供大家参考，如有帮助不胜荣幸</em><br><em>本网站搭建于2020年4月份，Hexo版本号为 hexo-cli: 3.1.0; NexT主题版本为 5.1.4;</em><br><em>本文所记录的问题也是基于这个时间段、这个版本。不具有普遍适用性</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font size="6">
+<center>可以通过左侧导航栏，更方便的进行阅读</center>
+</font>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="项目配置文件-amp-主题配置文件"><a href="#项目配置文件-amp-主题配置文件" class="headerlink" title="项目配置文件&amp;主题配置文件"></a>项目配置文件&amp;主题配置文件</h1><p><img src=".//Blog05/TwoConfigFiles.png" srcset="/img/loading.gif" alt></p>
+<p>如上图所示，整个项目里有两个配置文件( _config.yml )。它们分别位于项目根目录下、项目主题根目录下。项目根目录下的称其为项目配置文件、主题根目录下的称其为主题配置文件。在参考别人教程的时候切记不要改错了文件</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="边写博客边预览"><a href="#边写博客边预览" class="headerlink" title="边写博客边预览"></a>边写博客边预览</h1><p>我写博客使用的工具是VSCode，安装了三个插件如下：<br><img src=".//Blog05/MarkDownPlugin.png" srcset="/img/loading.gif" alt></p>
+<center>MarkDown All in One | Markdown Preview Github Styling | markdownlint</center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>其中第二个插件是在VSCode里开一个侧栏，以提供MarkDown实时预览的，效果如下：<br><img src=".//Blog05/MarkDownPreview.png" srcset="/img/loading.gif" alt><br>如果你仔细查看的话，可以看到，这个插件的显示效果与实际Hexo解析出的静态页面效果不一样。其中的图片与文字并未显示出换行效果，但是Hexo进行解析的时候会加上换行。Hexo有一个好处就是，可以进行实时预览，并不需要借助插件，具体的操作是: 首先<code>hexo s</code>启动本地Hexo服务，在浏览器输入<code>localhost:4000</code>打开页面。修改完当前MarkDown后，按下<code>Ctrl S</code>保存。之后在浏览器刷新当前页面即可。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何在电脑上进行移动端预览"><a href="#如何在电脑上进行移动端预览" class="headerlink" title="如何在电脑上进行移动端预览"></a>如何在电脑上进行移动端预览</h1><p>我使用的是基于chromium内核的Chrome和Edge这两款浏览器，对于它们而言，开启移动端预览的方法是相同的。打开浏览器，按<code>F12</code>，点击切换设备工具栏（如下图红色箭头指向）/ 也可以通过快捷键 <code>Ctrl + Shift + M</code>切换到移动端模式。通过左侧移动端预览上边的工具栏还可以自定义宽高的像素，选择预设机型，修改显示比例，修改网络环境和CPU（模拟老旧设备，弱网络环境）等选项<br><img src=".//Blog05/MobileMode.png" srcset="/img/loading.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Hexo-常用命令的含义"><a href="#Hexo-常用命令的含义" class="headerlink" title="Hexo 常用命令的含义"></a>Hexo 常用命令的含义</h1><figure class="highlight 1c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs 1c">hexo g      <span class="hljs-comment">//generate，保存后执行该命令，以重新生成文件</span><br>hexo s      <span class="hljs-comment">//server，  启动本地服务器，进行预览</span><br>hexo d      <span class="hljs-comment">//deploy，  部署本地项目到远程服务器</span><br>hexo clean  <span class="hljs-comment">//清除本地静态文件（db.json，根目录public文件夹）</span><br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="菜单显示、配置问题"><a href="#菜单显示、配置问题" class="headerlink" title="菜单显示、配置问题"></a>菜单显示、配置问题</h1><p>下图所示即为菜单部分<br><img src=".//Blog05/MenuDisplay.png" srcset="/img/loading.gif" alt></p>
+<p>我这个版本的NexT主题配置好了之后，默认只有Home、Category两个页面。这里有一个小坑就是<strong>配置页面时，修改的是主题配置文件</strong>，而不是项目配置文件。</p>
+<p>执行命令<code>hexo new page &quot;PAGENAME&quot;</code>即可在目录<code>/source/</code>下新建一个菜单页的相关文件夹，里边便是该页的配置文件，如下图：<br><img src=".//Blog05/AboutmePage.png" srcset="/img/loading.gif" alt></p>
+<p>一开始我新建页面之后，点击菜单，跳转失败（找不到当前页面）。我看了一下浏览器的地址栏，发现跳转的时候URL会莫名其妙的多出来一个<code>%20%</code>，即多出来了一个空格。这其中的原因是在主题配置页面，把菜单配置中分隔符<code>||</code>左右的空格都给去掉就行了</p>
+<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-meta"># 关于菜单示例配置</span><br><span class="hljs-symbol">menu:</span><br><span class="hljs-symbol">  home:</span> /||home<br><span class="hljs-symbol">  about:</span> <span class="hljs-meta-keyword">/about/</span>||user<br><span class="hljs-symbol">  tags:</span> <span class="hljs-meta-keyword">/tags/</span>||tags  <br><span class="hljs-symbol">  archives:</span> <span class="hljs-meta-keyword">/archives/</span>||archive<br></code></pre></div></td></tr></table></figure>
+<p>PS: 如果遇到Archives的ICON显示不出来的问题，不妨看看是不是archive多加了一个s，哈哈哈哈</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="粒子漂浮背景"><a href="#粒子漂浮背景" class="headerlink" title="粒子漂浮背景"></a>粒子漂浮背景</h1><p>效果图预览：<br><img src=".//Blog05/lizipiaofuPicture.png" srcset="/img/loading.gif" alt><br>配置方法：执行该命令</p>
+<figure class="highlight crystal"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs crystal">git clone <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/theme</span>-<span class="hljs-keyword">next</span>/theme-<span class="hljs-keyword">next</span>-canvas-nest themes/<span class="hljs-keyword">next</span>/source/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">canvas</span>-<span class="hljs-title">nest</span></span><br></code></pre></div></td></tr></table></figure>
+
+<p>然后在<strong>主题配置文件</strong>中，找到该项并如下设置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">canvas_nest:</span> <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure>
+
+<p>但是如果你在移动端（真机）上预览，会发现这个背景会显得博客十分杂乱无章。这个的解决办法是要配置成<code>NexT v6.5.0</code>及其以上的版本，如果你进行了配置，可以通过以下的代码对粒子漂浮背景进行更多的设置。如果你像我这个憨憨一样用的是v5以下的版本，就只能暗自骂街了</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">canvas_nest:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">onmobile:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 是否在移动端显示</span><br>  <span class="hljs-attr">color:</span> <span class="hljs-string">'0,0,255'</span> <span class="hljs-comment"># 动态背景中线条的 RGB 颜色</span><br>  <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.5</span> <span class="hljs-comment"># 动态背景中线条透明度</span><br>  <span class="hljs-attr">zIndex:</span> <span class="hljs-number">-1</span> <span class="hljs-comment"># 动态背景的 z-index 属性值</span><br>  <span class="hljs-attr">count:</span> <span class="hljs-number">99</span> <span class="hljs-comment"># 动态背景中线条数量</span><br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="如何默认展开多级标题"><a href="#如何默认展开多级标题" class="headerlink" title="如何默认展开多级标题"></a>如何默认展开多级标题</h1><p>在该路径文件下添加以下代码<br>路径： <code>/themes/next/source/css/_custom/custom.styl</code><br>代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">//默认展开标题<br><span class="hljs-selector-class">.post-toc</span> <span class="hljs-selector-class">.nav</span> <span class="hljs-selector-class">.nav-child</span> &#123; <br>    <span class="hljs-attribute">display</span>: block; <br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="侧边栏头像"><a href="#侧边栏头像" class="headerlink" title="侧边栏头像"></a>侧边栏头像</h1><p>效果图：<br><img src=".//Blog05/Avatar.png" srcset="/img/loading.gif" alt><br>这个头像一定要是gif格式的，可以把png格式的图片直接修改拓展名变成gif，gif动图能否做头像我没尝试过。<br>把gif文件放在</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/themes/</span><span class="hljs-keyword">next</span><span class="hljs-regexp">/source/u</span>ploads<span class="hljs-regexp">/</span><br></code></pre></div></td></tr></table></figure>
+<p>目录下，然后修改<strong>主题配置文件</strong>，代码如下：</p>
+<figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-meta"># Sidebar Avatar</span><br><span class="hljs-symbol">    avatar:</span> <span class="hljs-meta-keyword">/uploads/</span>avatar.gif<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h1><p>效果图：<br><img src=".//Blog05/FooterRunTime.png" srcset="/img/loading.gif" alt><br>在</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/themes/</span><span class="hljs-keyword">next</span><span class="hljs-regexp">/layout/</span>_partials<span class="hljs-regexp">/footer.swig</span><br></code></pre></div></td></tr></table></figure>
+<p>目录文件下，添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"timeDate"</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"times"</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); </span><br><span class="actionscript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span><span class="hljs-params">()</span> </span>&#123; </span><br><span class="javascript">        <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"04/06/2020 21:00:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span></span><br>        now.setTime(now.getTime()+250); <br><span class="javascript">        days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); </span><br><span class="javascript">        hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); </span><br><span class="javascript">        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); </span><br><span class="javascript">        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; </span><br>        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); <br><span class="javascript">        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; </span><br><span class="javascript">        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"我已在此等候你 "</span>+dnum+<span class="hljs-string">" 天 "</span>; </span><br><span class="javascript">        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; </span><br>    &#125; <br><span class="actionscript">setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于版权声明、搞怪标题、站内搜索、网站访问量"><a href="#关于版权声明、搞怪标题、站内搜索、网站访问量" class="headerlink" title="关于版权声明、搞怪标题、站内搜索、网站访问量"></a>关于版权声明、搞怪标题、站内搜索、网站访问量</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-advanced-settings.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：进阶设置篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="关于文章结束标记、看板娘、鼠标点击特效"><a href="#关于文章结束标记、看板娘、鼠标点击特效" class="headerlink" title="关于文章结束标记、看板娘、鼠标点击特效"></a>关于文章结束标记、看板娘、鼠标点击特效</h1><p>请访问Yearito大神的博客<br><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener">Hexo搭建个人博客系列：主题美化篇</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>Web</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -313,24 +385,6 @@
       <tags>
         <tag>编译原理</tag>
         <tag>内存</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通过邻接表实现广度优先搜索（迷宫问题）</title>
-    <url>/Blog04.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p><strong>“Talk is cheap. Show me the code.”  — Linus Torvalds</strong><br></p>
-<p>直接上代码，如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/***************************************</span><br><span class="hljs-comment">            问题：迷宫问题 </span><br><span class="hljs-comment">            算法：广度优先搜索 </span><br><span class="hljs-comment">         数据结构：邻接表 </span><br><span class="hljs-comment">***************************************/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> R 7 </span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Branch</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">int</span> row;<br>	<span class="hljs-keyword">int</span> column;<br><br>	_Branch * nextBranch;<br>&#125;<br>* Branch;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Root</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">int</span> row;<br>	<span class="hljs-keyword">int</span> column;<br><br>	_Root * nextRoot;<br>	_Branch * nextBranch;<br>&#125;<br>* Root;<br><br><span class="hljs-comment">/////////////////////////////全局变量 </span><br><span class="hljs-keyword">int</span> <span class="hljs-built_in">map</span>[R][R];<span class="hljs-comment">//迷宫 </span><br>Root treeRoot;<span class="hljs-comment">//树根 </span><br><span class="hljs-keyword">int</span> level = <span class="hljs-number">1</span>;<span class="hljs-comment">//第几层 </span><br><span class="hljs-comment">/////////////////////// </span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printMap</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n---------------------------------------------------------------------\n"</span>);<br><br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br><br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; R; i++)<br>	&#123;<br>		<span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; R; j++)<br>		&#123;<br>			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[i][j] == <span class="hljs-number">-1</span>)<br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\t□"</span>);<br>			&#125;<br>			<span class="hljs-keyword">else</span><br>			&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\t%d"</span>, <span class="hljs-built_in">map</span>[i][j]);<br>			&#125;<br>		&#125;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-function">Branch <span class="hljs-title">findBranch</span><span class="hljs-params">(Root tempRoot, <span class="hljs-keyword">int</span> templevel)</span><span class="hljs-comment">//寻路 </span></span><br><span class="hljs-function"></span>&#123;<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));	<br>	<span class="hljs-keyword">int</span> tempRow = tempRoot -&gt; row;<br>	<span class="hljs-keyword">int</span> tempColumn = tempRoot -&gt; column;<br><br>	<span class="hljs-comment">//up</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow - <span class="hljs-number">1</span>;<br>		tempBranch -&gt; column = tempColumn;<br>		<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] = templevel + <span class="hljs-number">1</span>;<span class="hljs-comment">//等于当前的层数加一 </span><br><br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow - <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">9</span>)<span class="hljs-comment">//出口是9 </span><br>	&#123;<br>		level = <span class="hljs-number">0</span>;<span class="hljs-comment">//找到了出口，把当前层数变成0，并返回NULL </span><br>	&#125;<br>	<br>	<span class="hljs-comment">//right</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow;<br>		tempBranch -&gt; column = tempColumn + <span class="hljs-number">1</span>;<br>		<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] = templevel + <span class="hljs-number">1</span>;<br><br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn + <span class="hljs-number">1</span>] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br><br>	<span class="hljs-comment">//down</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow + <span class="hljs-number">1</span>;<br>		tempBranch -&gt; column = tempColumn;<br>		<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] = templevel + <span class="hljs-number">1</span>;<br>		<br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow + <span class="hljs-number">1</span>][tempColumn] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br><br>	<span class="hljs-comment">//left</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>)<br>	&#123;<br>		tempBranch -&gt; row = tempRow;<br>		tempBranch -&gt; column = tempColumn - <span class="hljs-number">1</span>;<br>		<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] = templevel + <span class="hljs-number">1</span>;<br>		<br>		<span class="hljs-keyword">return</span> tempBranch;<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span>[tempRow][tempColumn - <span class="hljs-number">1</span>] == <span class="hljs-number">9</span>)<br>	&#123;<br>		level = <span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addRoot</span><span class="hljs-params">(Branch tempBranch)</span></span><br><span class="hljs-function"></span>&#123;<br>	Root tempRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	Root tempBranchRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	<span class="hljs-comment">//初始化 </span><br>	&#123; <br>		tempBranchRoot -&gt; row = tempBranch -&gt; row;<br>		tempBranchRoot -&gt; column = tempBranch -&gt; column;<br>		tempBranchRoot -&gt; nextBranch = <span class="hljs-literal">NULL</span>;<br>		tempBranchRoot -&gt; nextRoot = <span class="hljs-literal">NULL</span>;<br>	&#125;<br>	 <br>	tempRoot = treeRoot;<br>	<span class="hljs-keyword">while</span> (tempRoot -&gt; nextRoot != <span class="hljs-literal">NULL</span>)<br>	&#123;<br>		tempRoot = tempRoot -&gt; nextRoot;<br>	&#125;<br>	tempRoot -&gt; nextRoot = tempBranchRoot;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createRoot</span><span class="hljs-params">(Root tempRoot)</span></span><br><span class="hljs-function"></span>&#123;<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	tempBranch = tempRoot -&gt; nextBranch;<br><br>	<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<br>	&#123;<br>		addRoot(tempBranch);<span class="hljs-comment">//把当前branch变成root </span><br>		tempBranch = tempBranch -&gt; nextBranch;<br>	&#125; <br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createTree</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	Root tempRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>	Branch tempBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	Branch lastBranch = (struct _Branch *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(struct _Branch));<br>	<br>	tempRoot = treeRoot;<br><br>	<span class="hljs-keyword">while</span> (level != <span class="hljs-number">0</span>)<span class="hljs-comment">//标识符，如果为0就代表找到了出口 </span><br>	&#123;<br>		tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br>		<span class="hljs-comment">//为当前root建立branch </span><br>		<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<span class="hljs-comment">//如果还有branch </span><br>		&#123;<br>			tempBranch -&gt; nextBranch = <span class="hljs-literal">NULL</span>;<br>			tempRoot -&gt; nextBranch = tempBranch;<br>			lastBranch = tempBranch;<br><br>			tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br><br>			<span class="hljs-keyword">while</span> (tempBranch != <span class="hljs-literal">NULL</span>)<br>			&#123;<br>				lastBranch -&gt; nextBranch = tempBranch;<br>				lastBranch = tempBranch;<br>				tempBranch = findBranch(tempRoot, <span class="hljs-built_in">map</span>[tempRoot -&gt; row][tempRoot -&gt; column]);<br>			&#125;<br>		&#125;<br>		createRoot(tempRoot);<span class="hljs-comment">//把当前root的branch创建成root，放在表尾 </span><br>		tempRoot = tempRoot -&gt; nextRoot;<span class="hljs-comment">//接着寻找下一个root </span><br><br>		printMap();<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] =  <span class="hljs-number">1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">4</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">1</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">2</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">3</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">1</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">4</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">4</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">3</span>] =  <span class="hljs-number">0</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">5</span>] =  <span class="hljs-number">9</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">5</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">3</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">4</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">5</span>] = <span class="hljs-number">-1</span>; <span class="hljs-built_in">map</span>[<span class="hljs-number">6</span>][<span class="hljs-number">6</span>] = <span class="hljs-number">-1</span>; <br>	printMap();<br><br>	<span class="hljs-comment">//初始化根 </span><br>	&#123;<br>		treeRoot = (struct _Root *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(struct _Root));<br>		treeRoot -&gt; nextRoot = <span class="hljs-literal">NULL</span>;<br>		treeRoot -&gt; row = <span class="hljs-number">1</span>;<br>		treeRoot -&gt; column = <span class="hljs-number">1</span>;<br>	&#125;<br>	<br>	createTree();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-        <tag>广度优先</tag>
-        <tag>C语言</tag>
-        <tag>数据结构</tag>
-        <tag>迷宫问题</tag>
       </tags>
   </entry>
   <entry>
@@ -509,6 +563,67 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>JVM内存</title>
+    <url>/Blog09.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>Java内存（运行时数据区）<br>&nbsp;<br>在Java1.8之前长这样：<br><img src=".//Blog09/JVM01.jpg" srcset="/img/loading.gif" alt><br>在Java1.8之后长这样：<br><img src=".//Blog09/JVM02.jpg" srcset="/img/loading.gif" alt></p>
+<p>二者最大的区别即图中蓝框所示的部分。在Java1.8之后，“方法区”改名为“元空间”，且放入直接内存（系统内存）中，不再属于JVM内存，相关介绍在本文方法区部分有讲。<del>大部分面试是以Java1.8之前的版本来进行考量</del>。</p>
+<p>&nbsp;</p>
+<p>接下来我们分别来介绍JVM内存组成部分。</p>
+<h2 id="Java虚拟机栈（VM-Stack）"><a href="#Java虚拟机栈（VM-Stack）" class="headerlink" title="Java虚拟机栈（VM Stack）"></a>Java虚拟机栈（VM Stack）</h2><p>虚拟机栈是为Java字节码相关功能服务的。（我的理解是服务于Java代码相关部分）。</p>
+<p>虚拟机栈<strong>结构</strong>包括</p>
+<ul>
+<li>局部变量表</li>
+<li>操作数栈</li>
+<li>动态链接</li>
+<li>方法出口</li>
+</ul>
+<p>其中，局部变量表 负责存放各种数据类型（int，byte，char … ）以及对象的引用（reference类型）</p>
+<p>虚拟机栈的<strong>生命周期</strong>由其线程生命周期决定（很好理解，虚拟机栈就是属于某个线程）。</p>
+<p>虚拟机栈的两种异常：<br>1.StackOverFlowError：Stack不支持动态拓展，Stack 用完了<br>2.OutOfMemoryError  ：Stack  支持动态拓展，Memory用完了</p>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈只为Native方法服务（Native方法：非Java代码实现的方法）。</p>
+<p>本地方法栈的<strong>结构</strong>、<strong>生命周期</strong>、<strong>异常</strong>与虚拟机栈类似，此处不赘述。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h2><p>堆是JVM中最大的一块内存，<strong>只存放</strong> 对象实例 以及 数组。</p>
+<p><em>是垃圾收集器管理的主要区域，因此也被称为“GC堆”</em></p>
+<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survivor区。Survivor区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区用来<strong>存储</strong> 类信息、常量、静态变量、编译后的代码 等数据。</p>
+<p><em>实现方法区的内存也被称为 永久代（PermGen）</em></p>
+<p>Java1.8之后，方法区变为元空间（MetaSpace），使用直接内存。这样做的好处是：<br><strong>不受JVM内存限制，不会触发OutOfMemoryError</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="常量池-（方法区的一部分）"><a href="#常量池-（方法区的一部分）" class="headerlink" title="常量池 （方法区的一部分）"></a>常量池 （方法区的一部分）</h2><p>常量池的<strong>结构</strong>如下：</p>
+<ul>
+<li>字面量<ul>
+<li>文本字符串</li>
+<li>final修饰的常量</li>
+<li>基本数据类型的值</li>
+<li><em>其它</em></li>
+</ul>
+</li>
+<li>符号引用<ul>
+<li>类和结构的完全限定名</li>
+<li>字段名称 和 描述符</li>
+<li>方法名称 和 描述符</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>内存</tag>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java集合</title>
     <url>/Blog10.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -572,196 +687,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
         <tag>数据结构</tag>
         <tag>Java</tag>
         <tag>集合</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JVM内存</title>
-    <url>/Blog09.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>Java内存（运行时数据区）<br>&nbsp;<br>在Java1.8之前长这样：<br><img src=".//Blog09/JVM01.jpg" srcset="/img/loading.gif" alt><br>在Java1.8之后长这样：<br><img src=".//Blog09/JVM02.jpg" srcset="/img/loading.gif" alt></p>
-<p>二者最大的区别即图中蓝框所示的部分。在Java1.8之后，“方法区”改名为“元空间”，且放入直接内存（系统内存）中，不再属于JVM内存，相关介绍在本文方法区部分有讲。<del>大部分面试是以Java1.8之前的版本来进行考量</del>。</p>
-<p>&nbsp;</p>
-<p>接下来我们分别来介绍JVM内存组成部分。</p>
-<h2 id="Java虚拟机栈（VM-Stack）"><a href="#Java虚拟机栈（VM-Stack）" class="headerlink" title="Java虚拟机栈（VM Stack）"></a>Java虚拟机栈（VM Stack）</h2><p>虚拟机栈是为Java字节码相关功能服务的。（我的理解是服务于Java代码相关部分）。</p>
-<p>虚拟机栈<strong>结构</strong>包括</p>
-<ul>
-<li>局部变量表</li>
-<li>操作数栈</li>
-<li>动态链接</li>
-<li>方法出口</li>
-</ul>
-<p>其中，局部变量表 负责存放各种数据类型（int，byte，char … ）以及对象的引用（reference类型）</p>
-<p>虚拟机栈的<strong>生命周期</strong>由其线程生命周期决定（很好理解，虚拟机栈就是属于某个线程）。</p>
-<p>虚拟机栈的两种异常：<br>1.StackOverFlowError：Stack不支持动态拓展，Stack 用完了<br>2.OutOfMemoryError  ：Stack  支持动态拓展，Memory用完了</p>
-<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈只为Native方法服务（Native方法：非Java代码实现的方法）。</p>
-<p>本地方法栈的<strong>结构</strong>、<strong>生命周期</strong>、<strong>异常</strong>与虚拟机栈类似，此处不赘述。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h2 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h2><p>堆是JVM中最大的一块内存，<strong>只存放</strong> 对象实例 以及 数组。</p>
-<p><em>是垃圾收集器管理的主要区域，因此也被称为“GC堆”</em></p>
-<p><em>从垃圾回收的角度看，堆可以划分为 新生代 和 老年代（至于我们常说的 永久代 并不属于堆内存）。新生代可继续划分为Eden区和Survivor区。Survivor区可继续划分为S0区和S1区。相关内容我会在Java垃圾回收篇详说，此处留白。</em></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区用来<strong>存储</strong> 类信息、常量、静态变量、编译后的代码 等数据。</p>
-<p><em>实现方法区的内存也被称为 永久代（PermGen）</em></p>
-<p>Java1.8之后，方法区变为元空间（MetaSpace），使用直接内存。这样做的好处是：<br><strong>不受JVM内存限制，不会触发OutOfMemoryError</strong></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h2 id="常量池-（方法区的一部分）"><a href="#常量池-（方法区的一部分）" class="headerlink" title="常量池 （方法区的一部分）"></a>常量池 （方法区的一部分）</h2><p>常量池的<strong>结构</strong>如下：</p>
-<ul>
-<li>字面量<ul>
-<li>文本字符串</li>
-<li>final修饰的常量</li>
-<li>基本数据类型的值</li>
-<li><em>其它</em></li>
-</ul>
-</li>
-<li>符号引用<ul>
-<li>类和结构的完全限定名</li>
-<li>字段名称 和 描述符</li>
-<li>方法名称 和 描述符</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>内存</tag>
-        <tag>Java</tag>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java垃圾回收机制（Garbage Collection）</title>
-    <url>/Blog11.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
-<p>&nbsp;</p>
-<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区的永久代PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
-<h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
-<h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="1-判断对象是否存活の算法"><a href="#1-判断对象是否存活の算法" class="headerlink" title="1 判断对象是否存活の算法"></a>1 判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
-<h2 id="1-1-引用计数法："><a href="#1-1-引用计数法：" class="headerlink" title="1.1 引用计数法："></a>1.1 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
-<h2 id="1-2-可达性分析算法："><a href="#1-2-可达性分析算法：" class="headerlink" title="1.2 可达性分析算法："></a>1.2 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
-<p>   <strong>可作为GC Roots的有：</strong><br>   1.虚拟机栈中引用的对象<br>   2.本地方法栈中引用的对象<br>   3.方法区常量引用的对象<br>   4.方法区类静态属性引用的对象</p>
-<p>   如下图所示，Object 03、04、05 与 GC Roots 之间无 Reference Chain，故会被GC。而Object 01、02 会继续存活。<br><img src=".//Blog11/GCRoots.jpg" srcset="/img/loading.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="2-四种引用"><a href="#2-四种引用" class="headerlink" title="2 四种引用"></a>2 四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
-<ol>
-<li>强引用：=，new就是强引用。GC Roots可达，不会被回收。</li>
-<li>软引用：<strong>有用但非必须</strong>。OS在将要OutOfMemory之前，GC才会回收当前对象。</li>
-<li>弱引用：OS无论Memory是否充足，只要GC，一定会回收当前对象。ThreadLocal就是弱引用。</li>
-<li>虚引用：主要用来跟踪对象被垃圾回收的活动。</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="3-对象的访问定位（对象的引用）"><a href="#3-对象的访问定位（对象的引用）" class="headerlink" title="3 对象的访问定位（对象的引用）"></a>3 对象的访问定位（对象的引用）</h1><p>要GC某对象，首先要找到它。这里也是有两种算法可供了解：</p>
-<ol>
-<li>句柄法</li>
-<li>直接指针</li>
-</ol>
-<p>这两种方法都是通过栈中的引用（reference），来操作堆上的对象。</p>
-<h2 id="3-1-句柄法"><a href="#3-1-句柄法" class="headerlink" title="3.1 句柄法"></a>3.1 句柄法</h2><p>从堆内存中，划分出一块区域作为句柄池。</p>
-<p><strong>reference中存放 对象的句柄地址</strong>。<br><strong>句柄中存放的是对象的 实例数据 与 类型数据 各自的地址</strong>。</p>
-<p>句柄法<strong>优点</strong>：对象被移动时，只需修改 实例数据的指针，reference无需修改。</p>
-<p><img src=".//Blog11/JUBING.jpg" srcset="/img/loading.gif" alt></p>
-<h2 id="3-2-直接指针"><a href="#3-2-直接指针" class="headerlink" title="3.2 直接指针"></a>3.2 直接指针</h2><p><em>HotSpot（全称为Java HotSpot Virtual Machine。一种较新版本的JVM，用来代替JIT，性能较高。是Sun JDK 和 Open JDK中自带的VM）使用该方法访问对象。</em></p>
-<p><strong>reference中存放 对象的地址</strong>。<br><strong>对象中存放 实例数据 和 类型数据的地址</strong>。</p>
-<p>直接指针<strong>优点</strong>：速度快，节省了一次指针定位的时间。</p>
-<p><img src=".//Blog11/ZHIJIEZHIZHEN.jpg" srcset="/img/loading.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="4-垃圾回收の算法"><a href="#4-垃圾回收の算法" class="headerlink" title="4 垃圾回收の算法"></a>4 垃圾回收の算法</h1><p>对象的存亡判断，访问定位等问题已经解决了。万事俱备，亟待回收，接下来就该重头戏——GC算法登场！</p>
-<h2 id="4-1-标记-清除算法"><a href="#4-1-标记-清除算法" class="headerlink" title="4.1 标记-清除算法"></a>4.1 标记-清除算法</h2><p>先标记，再清除。最基本的GC算法，其它算法都是由它改进而来。有两个缺点：</p>
-<ol>
-<li>效率低下</li>
-<li>空间问题（碎片化：清理后的内存空间零零散散，不连续）</li>
-</ol>
-<h2 id="4-2-复制算法"><a href="#4-2-复制算法" class="headerlink" title="4.2 复制算法"></a>4.2 复制算法</h2><p>基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
-<p>它将内存分为大小相同的两块，每次使用其中一块。当该块内存满了便触发GC，将存活的对象整理到另外一半内存中，再将刚刚使用的内存完全擦除。下图可以强化理解：</p>
-<p><img src=".//Blog11/FUZHI.jpg" srcset="/img/loading.gif" alt></p>
-<h2 id="4-3-标记-整理算法"><a href="#4-3-标记-整理算法" class="headerlink" title="4.3 标记-整理算法"></a>4.3 标记-整理算法</h2><p>同上，基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
-<p>标记之后，清除掉死亡的对象，再将存活的对象连续放在一起。</p>
-<h2 id="4-4-分代垃圾回收算法"><a href="#4-4-分代垃圾回收算法" class="headerlink" title="4.4 分代垃圾回收算法"></a>4.4 分代垃圾回收算法</h2><p>目前的JVM都在用这个，综合了上述各算法，更好的提升了GC效率。</p>
-<p><strong>Eden和Survivor一起使用复制算法，Tenured（老年代）使用标记-整理算法</strong></p>
-<h3 id="4-4-1-划分"><a href="#4-4-1-划分" class="headerlink" title="4.4.1 划分"></a>4.4.1 划分</h3><p>堆内存分为 <code>年轻代（Young Generation）</code> 和 <code>老年代（Old Generation）</code><br>年轻代又分为 <code>Eden区</code> 和 <code>Survivor区</code><br>Survivor区又分为 <code>From区</code> 和 <code>To区</code>（HotSpot官方说法，民间常用的说法有分为S0/S1区，S1/S2区，都是一个意思）。</p>
-<h3 id="4-4-2-Minor-GC"><a href="#4-4-2-Minor-GC" class="headerlink" title="4.4.2 Minor GC"></a>4.4.2 Minor GC</h3><p>对于年轻代的垃圾回收，有一个专属的名词<strong>“Minor GC”</strong>。</p>
-<p><strong>触发条件</strong>：当新对象生成，且在Eden区分配内存失败时，触发Minor GC。</p>
-<p>在整个年轻代中，每个对象都有一个“年龄”。每触发一次Minor GC，年龄+1，且会被挪动（拷贝）到另外一个Survivor区域。</p>
-<p><strong>举个例子，假如，我们使用了Eden区和From Survivor区，那么To Survivor区就是空的。此时触发一次Minor GC，所有对象年龄+1。标记清除掉无引用的垃圾对象。再进行一次判断，若对象的年龄达到了15，则将其送入老年代。剩下的对象（存活，且年龄介于0和15之间），送入To Survivor区，此时From Survivor区就变成空的了。等到下一次触发Minor GC时，则再挪入From Survivor区中，空出To Survivor区，以此循环往复。</strong></p>
-<h3 id="4-4-3-Full-GC"><a href="#4-4-3-Full-GC" class="headerlink" title="4.4.3 Full GC"></a>4.4.3 Full GC</h3><p>对于老年代的垃圾回收，也有”一个”专属的名词<strong>“Full GC”</strong>（也有称为Major GC的 =_= ）。</p>
-<p><strong>触发条件</strong>：Full GC 通常由当前JVM的<strong>垃圾收集器</strong>来决定。</p>
-<p><strong>每一次Full GC 通常都会触发至少一次 Minor GC</strong></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="5-常见的垃圾收集器"><a href="#5-常见的垃圾收集器" class="headerlink" title="5 常见的垃圾收集器"></a>5 常见的垃圾收集器</h1><p>在 4.4.3 中提到了在何种情况下，会使用到垃圾收集器。</p>
-<p><img src=".//Blog11/LAJISHOUJIQI.jpg" srcset="/img/loading.gif" alt></p>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-        <tag>Java</tag>
-        <tag>JVM</tag>
-        <tag>GC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TCP三次握手与四次挥手</title>
-    <url>/Blog12.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><p>先看一下我的笔记吧。</p>
-<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/ThreewayHandshake.jpg" srcset="/img/loading.gif" alt></p>
-<p>三次握手中，“三次”的含义是建立TCP连接的过程中，一共有三个数据包。通过对三个数据包的合理使用，即可在C/S之间建立起可靠的数据传输通道。</p>
-<p>如果要确认在C/S间建立起可靠连接，需要确认以下四点：</p>
-<ol>
-<li>Client端 发送功能正常</li>
-<li>Client端 接收功能正常</li>
-<li>Server端 发送功能正常</li>
-<li>Server端 接收功能正常</li>
-</ol>
-<p>经过历史的淘汰，技术人员的精简，最后呈现在我们面前的就是这三个短小精悍的数据包。也就是说，三次握手的三个数据包，通过精妙的安排，分别证明了上述的四个功能，这三个数据包缺一不可。</p>
-<p><strong>那么，这三个数据包的作用分别是：</strong><br><strong>第一个数据包（Server端成功接收）：证明了Client发送功能正常。</strong><br><strong>第二个数据包（Client端成功接收）：证明了Server接收功能正常、Server发送功能正常。</strong><br><strong>第三个数据包（Server端成功接收）：证明了Client接收功能正常。</strong></p>
-<p>其它补充：<br>SYN与ACK对应，ACK的作用是确认收到（Acknowledgement）。<br>第三次握手在技术上就可以携带数据了（但实际上并没有）。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h1><p>还是先看一下我的笔记吧。</p>
-<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/FourwayHandwave.jpg" srcset="/img/loading.gif" alt></p>
-<p>四次挥手的大概过程与原理，大家仔细分析一下上图就可以看明白，没什么特别之处值得详说。但是有一处值得注意：<strong>图中红色字体的部分</strong>。</p>
-<p>让我们仔细来分析一下，为什么Client端的TIME WAIT状态需要等待2MSL（2个最大包存活时间）？</p>
-<p>首先，我们看一下在这个时间点，TCP四次挥手此时正在发生的事情。</p>
-<ol>
-<li>若Server收到了第四个包，即可正常关闭连接。</li>
-<li>若Server没有收到第四个包，则会重发一个ACK（第三个包）。</li>
-</ol>
-<p>在Server端发送完第三个包之后，需要收到Client端发送的第四个包，才会进入CLOSED状态。假如第四个包由于网络波动等原因loss掉（丢包），Server就会在等待了<strong>一段时间</strong>之后重新发送第三个包。这个Server端等待的<strong>一段时间</strong>，实际上就是一个包在网络中存活的最大时间（1MSL）。那么Server端重发的第三个包传递到Client端，又需要1MSL。这样加起来，总共需要2MSL。</p>
-<p>所以，如果发生了坏情况（第四个包loss），需要经过2MSL（等待第四个包1MSL + 重发第三个包1MSL），Client端才会接收到Server端重发的第三个包。</p>
-<p><font color="FF0000"><strong>补充！</strong></font><br>如果你在百度上检索这个2MSL，会发现很多回答都是“放空网络中的旧请求报文”。很多答案都闪烁其辞且相互抄袭，经过我个人查证，这种说法来源于《Unix网络编程卷1》中的一段解读：</p>
-<p><em>“假设该Socket在关闭连接之后又打开，如果在关闭（四次挥手）的时候发生了波动（拥塞，延迟等），导致三次握手之后才收到上次连接的挥手数据包，就会产生不可预料的影响。为了避免出现这种情况，此处设置了2MSL用来放空所有四次挥手时的数据包。”</em></p>
-<p><strong>但是，在原文中（下图红色批注）的原意是：2MSL足以放空！</strong>所以实际上，1MSL就足够进行数据包的放空。换句话说，2MSL并不是用来放空数据包，只是顺手做到了而已！</p>
-<p><img src=".//Blog12/Unix01.jpg" srcset="/img/loading.gif" alt></p>
-<div style="text-align:right">——节选自《UNIX网络编程卷1》</div>
-
-]]></content>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>TCP</tag>
-        <tag>网络协议</tag>
       </tags>
   </entry>
   <entry>
@@ -849,187 +774,91 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>计算机网络</tag>
         <tag>TCP</tag>
-        <tag>网络协议</tag>
         <tag>UDP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java创建对象的过程（包含类加载）</title>
-    <url>/Blog14.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>在Java中，说到创建对象，我们大多数情况下使用的都是new指令。那么明面上一条new指令，暗地里经过JVM多少处理呢？</p>
-<h1 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1 类加载检查"></a>1 类加载检查</h1><p>当JVM遇到一条new指令时，先检查其参数能否在常量池中定位到该类的符号引用。再检查该符号引用是否被加载过、解析过、初始化过。</p>
-<p><em>注：符号引用相当于自定义的变量名等；引用除了符号引用以外，还有直接引用。直接引用指的是指针、偏移量之类的东西。</em></p>
-<p><em>JVM并不是编译时，就加载所有类进内存。而是第一次运行某个类时才加载，且只加载这一次。</em></p>
-<p>若有，则直接进行第二步分配内存。若没有，则执行<strong>类加载</strong>。</p>
-<p>类加载的过程分为三步：<strong>加载 -&gt; 链接 -&gt; 初始化</strong>。<br>而链接又分为三步：<strong>验证 -&gt; 准备 -&gt; 解析</strong>。</p>
-<p><em>加载和链接实际上是交叉进行的。加载未结束，链接已开始。</em></p>
-<p><em>不妨多了解一点，<strong>类的生命周期</strong>：加载 -&gt; 链接 -&gt; 初始化 -&gt; 使用 -&gt; 卸载</em></p>
-<h2 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h2><p>加载这一步的内容是，把class文件装入内存。</p>
-<p>在JVM中，内置的类加载器（ClassLoader）有三层，自顶向下分别是</p>
-<ol>
-<li>BootstrapClassLoader 启动类加载器（最顶层的ClassLoader，由C++实现）</li>
-<li>ExtensionClassLoader 扩展类加载器</li>
-<li>AppClassLoader 应用程序类加载器</li>
-</ol>
-<p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
-<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
-<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
-<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
-<p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
-<p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
-<p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
-<h2 id="1-2-验证"><a href="#1-2-验证" class="headerlink" title="1.2 验证"></a>1.2 验证</h2><p>保证加载的字节流符合规范。</p>
-<h2 id="1-3-准备"><a href="#1-3-准备" class="headerlink" title="1.3 准备"></a>1.3 准备</h2><p>为static变量（非实例变量）分配内存，并赋值。</p>
-<h2 id="1-4-解析"><a href="#1-4-解析" class="headerlink" title="1.4 解析"></a>1.4 解析</h2><p>将常量池的符号引用替换为直接引用。</p>
-<h2 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h2><p>初始化static代码块，构造器等。</p>
-<h1 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2 分配内存"></a>2 分配内存</h1><p>所需的内存大小，在类加载完成后，便可以确定。</p>
-<p>内存分配的方式有两种，分别是<strong>指针碰撞法</strong>以及<strong>空闲列表法</strong></p>
-<p><img src=".//Blog14/FENPEINEICUN.jpg" srcset="/img/loading.gif" alt></p>
-<p><strong>分配完内存，就会在内存上创建实例化对象。</strong></p>
-<p>JVM在创建对象时，必须保证线程安全，通常用两种方法保证。</p>
-<ol>
-<li><p>CAS + 失败重试机制<br>CAS是乐观锁（乐观锁是一种思想，没有实际的锁。它假设不会出现冲突，所以不用加锁，直接去申请资源，失败就重试，直到成功为止）。CAS + 失败重试 可以保证操作的原子性，从而线程安全。</p>
-</li>
-<li><p>TLAB<br>全称ThreadLocalAllocBuffer，于 HotSpot1.6 引入，原理与指针碰撞法类似。在每个线程初始化时，同时申请一块指定大小的内存绑定给它。当线程需要内存时，就在自己的这块内存上分配，若容量不够，再去Eden区正常申请。<strong>优点</strong>：每个线程都有自己的专属指针，性能高。<img src=".//Blog14/TLAB.jpg" srcset="/img/loading.gif" alt></p>
-</li>
-</ol>
-<h1 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3 初始化零值"></a>3 初始化零值</h1><p>分配内存完成后，要把这些内存初始化为0。<br><strong>所以成员变量可以不用初始化</strong></p>
-<h1 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4 设置对象头"></a>4 设置对象头</h1><p>初始化零值后，JVM要对对象实例进行设置。例如：</p>
-<ol>
-<li>该对象是哪个类的实例</li>
-<li>如何找到该类的元数据</li>
-<li>对象的HashCode</li>
-<li>对象的GC年龄</li>
-<li>锁状态标识</li>
-</ol>
-<p>这些信息都存放在对象头中。<em>PS：实例对象分为三个部分：对象头、实例数据、对齐填充（非必须）</em></p>
-<h1 id="5-执行init-方法"><a href="#5-执行init-方法" class="headerlink" title="5 执行init()方法"></a>5 执行init()方法</h1><p>从JVM的角度来看，执行完上述4步，一个新对象已经产生。</p>
-<p>执行完new指令后紧接着执行init()，才能完成对象实例的初始化（成员变量、成员方法等）。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>对象创建</tag>
-        <tag>类加载</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP相关 &amp;&amp; 对称/非对称加密简述</title>
-    <url>/Blog15.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<p>HTTP的底层是TCP，所以，TCP的一些特性在HTTP中得以保留。由于TCP中存在长连接与短连接，所以HTTP中也存在长连接与短连接。</p>
-<h1 id="HTTP的长连接"><a href="#HTTP的长连接" class="headerlink" title="HTTP的长连接"></a>HTTP的长连接</h1><p>HTTP的长连接是基于TCP长连接做出的封装处理。HTTP长连接我们称之为<strong>Keep-Alive机制</strong>，其内容是：若长连接在2个小时（保活定时）内无任何反应，Server便向Client发送探测报文段，此时可能有4种结果：</p>
-<ol>
-<li><p>Client正常运行，且正常响应：<br>则Server保活定时复位（Reset）。</p>
-</li>
-<li><p>Client崩溃/重启，，无法响应：<br>Server继续每隔75秒发送一次探测报文段，共发送10次。若Client仍然没有响应，则关闭连接（CLOSED）。</p>
-</li>
-<li><p>Client崩溃后重启，一开始无响应，后来正常：<br>重启连接（连接已经中断，物是人非）。</p>
-</li>
-<li><p>Client正常运行，但探测报文段不可达（Client无响应）：<br>同第二点。</p>
-</li>
-</ol>
-<h1 id="HTTP的短连接"><a href="#HTTP的短连接" class="headerlink" title="HTTP的短连接"></a>HTTP的短连接</h1><p>HTTP的短连接实际上是由于HTTP的特性（无连接）决定的。</p>
-<p>所以，让我们引入HTTP的两个特性：无连接、无状态。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTP是无连接的"><a href="#HTTP是无连接的" class="headerlink" title="HTTP是无连接的"></a>HTTP是无连接的</h1><p>每次只处理一个请求，处理完（收到Client应答）就断开。<br><strong>解决</strong>：Keep-Alive机制。</p>
-<h1 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h1><p>每一次打开网页都完全独立。</p>
-<p><strong>解决</strong>：</p>
-<ol>
-<li><p>Cookie：<br>存储在浏览器（Bowser）中，由Server生成<br>下一次请求该网站时，会把该Cookie发送给Server<br>不安全（在Server之外被非法读写）</p>
-</li>
-<li><p>Session<br>存储在Server，较安全<br>但是Server需要Client提供Session_id才能找到对应Session<br>Session_id通常使用Cookie存储</p>
-</li>
-<li><p>Token<br>可抵抗<a href="https://zh.wikipedia.org/zh/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0" target="_blank" rel="noopener">CSRF（跨站请求伪造）</a> </p>
-</li>
-<li><p>JWT</p>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTP的端口默认是80；HTTPS则是443。</p>
-<p>HTTP基于TCP，明文传输；HTTPS基于HTTP + <strong>SSL</strong>，通过对称加密与非对称加密传输。下面我顺便简单介绍一下对称加密以及非对称加密，不感兴趣的同学可以直接跳过此部分。</p>
-<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>只有一个密钥，同时负责加密、解密，很好理解。</p>
-<p><strong>常见算法</strong>：DES、AES等。</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>有成对的密钥，称为 公钥 + 私钥，<strong>无法相互推导</strong>。一个加密，另一个解密。</p>
-<p><strong>常见算法</strong>：RSA、DSA等。</p>
-<p>这里举个栗子，强化大家的理解，是一个非常有趣的数学算法。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">首先，我们需要知道这样一件事：<br><br>一个8位数，与 4 0000 0001 做乘法运算，<br>得出的运算结果的后八位，就是那个8位数的值。<br><br>比如 12345678 * 400000001 = 4938271212345678<br><br>好了，准备完成。接下来，就是非对称加密的部分了。<br><br><br>Server取其任意一对因数，比如 19801 与 20201<br>（19801 * 20201 = 400000001）<br><br>我们设公钥为 19801， 私钥为 20201<br>私钥存储在Server中，严格确保不外泄<br>把公钥公开到网络中，并且附送上加密算法：<br><br>密文 * 公钥，再取其后八位<br><br><br>假设，Client A想要传输内容为“12345678”的数据包给Server<br>Client A获取到Server公开的公钥 19801<br>12345678 * 19801 = 244456770078，取后八位56770078<br>Client A将56770078传输给Server<br><br>在Client A向Server传输56770078时<br>Client B通过抓包解包等技术手段，获取到该加密内容56770078<br>由于加密算法是一个有损算法（舍弃了前4位）<br>所以Client B即便知道加密过程，也无法还原数据<br><br>好，此时Server也获取到了Client A的数据包<br>Server 把 密文 * 私钥<br>（56770078 * 20201 = 1146812345678）<br>再取其后8位，得到原文“12345678”<br></code></pre></div></td></tr></table></figure>
-<p>怎么样，是不是非常简单易懂~ 这就是非对称加密的核心内容。这只是一个非常简单的示例，可能放在今天，随随便便的一台个人计算机就可以根据公钥20201破解出私钥19801。但是在没有计算机的年代，靠大量人工的算力也无法通过公钥破解出私钥。随着学者在数学领域的探索，非对称加密的实际应用早已结合了各种前沿的数学运算。当然了，这些都不是我等搬砖狗深究之事<del>~</del></p>
-<h2 id="SSL原理"><a href="#SSL原理" class="headerlink" title="SSL原理"></a>SSL原理</h2><p>非对称加密虽然十分安全，但是性能比起对称加密则十分低下。而Bowser与Server之间的数据交互十分频繁，采用非对称加密显然不合适。</p>
-<p>在SSL中，采用了非对称加密与对称加密相结合的方式。即<strong>Server通过非对称加密，把对称加密所使用的密钥，递交给Client</strong>。具体的过程，如下图所示：</p>
-<p><img src=".//Blog15/SSL.jpg" srcset="/img/loading.gif" alt></p>
-<p>其中证书验证的环节，我们暂且不细究。此处涉及到的并非纯粹的技术问题，而是类似于互联网规章制度，感兴趣的同学可以自行了解一下。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="与Server的四种交互"><a href="#与Server的四种交互" class="headerlink" title="与Server的四种交互"></a>与Server的四种交互</h1><ol>
-<li>GET    查询</li>
-<li>POST   修改</li>
-<li>PUT    增加</li>
-<li>DELETE 删除</li>
-</ol>
-<p>实际上，单独的 GET / POST 就可以实现增删改查。</p>
-<p>GET是幂等的（对同一个URL，多个请求返回相同结果）。</p>
-<p>POST使用必须用到表单Form（所以很多人偷懒使用GET）。</p>
-<p><strong>GET与POST的区别</strong>：</p>
-<ol>
-<li><p>GET提交的数据明文放在URL后边，不安全。<br>而POST则是把提交的数据放在HTTP包中加密传输，较为安全。</p>
-</li>
-<li><p>GET提交的数据量较小（最多1024字节）。<br>POST理论上无限制。</p>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="HTTP请求、响应"><a href="#HTTP请求、响应" class="headerlink" title="HTTP请求、响应"></a>HTTP请求、响应</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包含</p>
-<ol>
-<li>请求方法（GET/POST）</li>
-<li>请求头<br>（空一行，表示请求头结束）</li>
-<li>请求正文</li>
-</ol>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包含</p>
-<ol>
-<li>状态行（包含<strong>状态码</strong>）</li>
-<li>响应头<br>（空一行，表示响应头结束）</li>
-<li>响应正文</li>
-</ol>
-<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><p><strong>信息码。</strong>Server已接收，Client可继续。</p>
-<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><p><strong>成功码。</strong>Server已接收并处理。</p>
-<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><p><strong>重定向码。</strong>服务器要求客户端重定向。</p>
-<p>重定向：亦称URL转发，用于当前资源（页面）迁移到新URL。</p>
-<h5 id="301"><a href="#301" class="headerlink" title="301"></a>301</h5><p><strong>永久重定向。</strong>例如<code>www.google.com</code>迁移到<code>google.com</code><br>优点：</p>
-<ul>
-<li>可以减少DNS的缓存（提高缓存友好型）</li>
-<li>防止访问量分散（提高网站竞价排名）</li>
-</ul>
-<h5 id="302"><a href="#302" class="headerlink" title="302"></a>302</h5><p><strong>临时重定向。</strong>旧资源仍可访问，但临时跳转访问新资源。<br>优点：</p>
-<ul>
-<li>搜索引擎不会更新资源的链接，比301更利于SEO</li>
-</ul>
-<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><p><strong>客户端错误码。</strong>Client的请求有非法内容。</p>
-<h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求有语法错误。</p>
-<h5 id="401"><a href="#401" class="headerlink" title="401"></a>401</h5><p>请求未经授权。</p>
-<h5 id="403"><a href="#403" class="headerlink" title="403"></a>403</h5><p>Server收到，但拒绝提供服务（原因会写在响应正文中）。</p>
-<h5 id="404"><a href="#404" class="headerlink" title="404"></a>404</h5><p>请求的资源不存在。</p>
-<h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4><p><strong>服务器错误码。</strong>Server未能正常处理请求。</p>
-<h5 id="500"><a href="#500" class="headerlink" title="500"></a>500</h5><p>服务器Error。</p>
-<h5 id="503"><a href="#503" class="headerlink" title="503"></a>503</h5><p>服务器当前无法处理（过段时间可能恢复）。</p>
-]]></content>
-      <tags>
-        <tag>计算机网络</tag>
         <tag>网络协议</tag>
-        <tag>HTTP</tag>
-        <tag>对称加密</tag>
-        <tag>非对称加密</tag>
-        <tag>状态码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java垃圾回收机制（Garbage Collection）</title>
+    <url>/Blog11.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>垃圾回收是Java特有的功能，即由JVM主动判断回收那些程序不再需要的“垃圾”信息。</p>
+<p>&nbsp;</p>
+<h1 id="0-前记"><a href="#0-前记" class="headerlink" title="0 前记"></a>0 前记</h1><p>Java GC主要是对于<strong>堆内存</strong>来说的。此小节下面的部分，都是基于堆内存进行解释。所以，在这里我们先来看一下除了堆内存，其它地方（即方法区的永久代PermGen）是如何GC的。这一部分相对独立，且重要性偏小，为了不影响大家的整体理解，就单独放在这里好了。</p>
+<h2 id="0-1-方法区GC"><a href="#0-1-方法区GC" class="headerlink" title="0.1 方法区GC"></a>0.1 方法区GC</h2><p>如何判断一个类无用：<br>需要满足三点<br>1.所有实例都已经被回收（堆中无实例）。<br>2.加载该类的ClassLoader已经被回收。<br>3.该类对应的对象无引用（即无法通过反射访问该类的信息）。</p>
+<h2 id="0-2-常量池GC"><a href="#0-2-常量池GC" class="headerlink" title="0.2 常量池GC"></a>0.2 常量池GC</h2><p>如何判断一个常量可被GC：<br>没有引用的常量就是废弃常量，可被GC。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="1-判断对象是否存活の算法"><a href="#1-判断对象是否存活の算法" class="headerlink" title="1 判断对象是否存活の算法"></a>1 判断对象是否存活の算法</h1><p>在发生GC前，要判断对象是否死亡，这里用到的判断方法有：</p>
+<h2 id="1-1-引用计数法："><a href="#1-1-引用计数法：" class="headerlink" title="1.1 引用计数法："></a>1.1 引用计数法：</h2><p>   给对象添加一个计数器，每有一个地方引用它，计数器值+1；引用失效，计数器值-1。当计数器值==0时，对象死亡，不可能再被引用。<br>   Java不使用该方法，其存在<strong>问题：A与B相互引用时，A和B的计数器值恒大于等于1，永远无法被回收。</strong></p>
+<h2 id="1-2-可达性分析算法："><a href="#1-2-可达性分析算法：" class="headerlink" title="1.2 可达性分析算法："></a>1.2 可达性分析算法：</h2><p>   首先通过一系列名为<strong>GC Roots</strong>的对象作为起点，从GC Roots向下搜索，走过的路径称为<strong>引用链（Reference Chain）</strong>。若待判断的对象与GC Roots之间不可达（无 Reference Chain），则为垃圾。</p>
+<p>   <strong>可作为GC Roots的有：</strong><br>   1.虚拟机栈中引用的对象<br>   2.本地方法栈中引用的对象<br>   3.方法区常量引用的对象<br>   4.方法区类静态属性引用的对象</p>
+<p>   如下图所示，Object 03、04、05 与 GC Roots 之间无 Reference Chain，故会被GC。而Object 01、02 会继续存活。<br><img src=".//Blog11/GCRoots.jpg" srcset="/img/loading.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="2-四种引用"><a href="#2-四种引用" class="headerlink" title="2 四种引用"></a>2 四种引用</h1><p>除了上述的两种算法外，Java GC还会通过引用的类型，来判断是否回收当前的对象。Java中的引用常分为如下四种类型：</p>
+<ol>
+<li>强引用：=，new就是强引用。GC Roots可达，不会被回收。</li>
+<li>软引用：<strong>有用但非必须</strong>。OS在将要OutOfMemory之前，GC才会回收当前对象。</li>
+<li>弱引用：OS无论Memory是否充足，只要GC，一定会回收当前对象。ThreadLocal就是弱引用。</li>
+<li>虚引用：主要用来跟踪对象被垃圾回收的活动。</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="3-对象的访问定位（对象的引用）"><a href="#3-对象的访问定位（对象的引用）" class="headerlink" title="3 对象的访问定位（对象的引用）"></a>3 对象的访问定位（对象的引用）</h1><p>要GC某对象，首先要找到它。这里也是有两种算法可供了解：</p>
+<ol>
+<li>句柄法</li>
+<li>直接指针</li>
+</ol>
+<p>这两种方法都是通过栈中的引用（reference），来操作堆上的对象。</p>
+<h2 id="3-1-句柄法"><a href="#3-1-句柄法" class="headerlink" title="3.1 句柄法"></a>3.1 句柄法</h2><p>从堆内存中，划分出一块区域作为句柄池。</p>
+<p><strong>reference中存放 对象的句柄地址</strong>。<br><strong>句柄中存放的是对象的 实例数据 与 类型数据 各自的地址</strong>。</p>
+<p>句柄法<strong>优点</strong>：对象被移动时，只需修改 实例数据的指针，reference无需修改。</p>
+<p><img src=".//Blog11/JUBING.jpg" srcset="/img/loading.gif" alt></p>
+<h2 id="3-2-直接指针"><a href="#3-2-直接指针" class="headerlink" title="3.2 直接指针"></a>3.2 直接指针</h2><p><em>HotSpot（全称为Java HotSpot Virtual Machine。一种较新版本的JVM，用来代替JIT，性能较高。是Sun JDK 和 Open JDK中自带的VM）使用该方法访问对象。</em></p>
+<p><strong>reference中存放 对象的地址</strong>。<br><strong>对象中存放 实例数据 和 类型数据的地址</strong>。</p>
+<p>直接指针<strong>优点</strong>：速度快，节省了一次指针定位的时间。</p>
+<p><img src=".//Blog11/ZHIJIEZHIZHEN.jpg" srcset="/img/loading.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="4-垃圾回收の算法"><a href="#4-垃圾回收の算法" class="headerlink" title="4 垃圾回收の算法"></a>4 垃圾回收の算法</h1><p>对象的存亡判断，访问定位等问题已经解决了。万事俱备，亟待回收，接下来就该重头戏——GC算法登场！</p>
+<h2 id="4-1-标记-清除算法"><a href="#4-1-标记-清除算法" class="headerlink" title="4.1 标记-清除算法"></a>4.1 标记-清除算法</h2><p>先标记，再清除。最基本的GC算法，其它算法都是由它改进而来。有两个缺点：</p>
+<ol>
+<li>效率低下</li>
+<li>空间问题（碎片化：清理后的内存空间零零散散，不连续）</li>
+</ol>
+<h2 id="4-2-复制算法"><a href="#4-2-复制算法" class="headerlink" title="4.2 复制算法"></a>4.2 复制算法</h2><p>基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>它将内存分为大小相同的两块，每次使用其中一块。当该块内存满了便触发GC，将存活的对象整理到另外一半内存中，再将刚刚使用的内存完全擦除。下图可以强化理解：</p>
+<p><img src=".//Blog11/FUZHI.jpg" srcset="/img/loading.gif" alt></p>
+<h2 id="4-3-标记-整理算法"><a href="#4-3-标记-整理算法" class="headerlink" title="4.3 标记-整理算法"></a>4.3 标记-整理算法</h2><p>同上，基于 4.1 标记-清除算法，一定程度的解决了上述两个问题。</p>
+<p>标记之后，清除掉死亡的对象，再将存活的对象连续放在一起。</p>
+<h2 id="4-4-分代垃圾回收算法"><a href="#4-4-分代垃圾回收算法" class="headerlink" title="4.4 分代垃圾回收算法"></a>4.4 分代垃圾回收算法</h2><p>目前的JVM都在用这个，综合了上述各算法，更好的提升了GC效率。</p>
+<p><strong>Eden和Survivor一起使用复制算法，Tenured（老年代）使用标记-整理算法</strong></p>
+<h3 id="4-4-1-划分"><a href="#4-4-1-划分" class="headerlink" title="4.4.1 划分"></a>4.4.1 划分</h3><p>堆内存分为 <code>年轻代（Young Generation）</code> 和 <code>老年代（Old Generation）</code><br>年轻代又分为 <code>Eden区</code> 和 <code>Survivor区</code><br>Survivor区又分为 <code>From区</code> 和 <code>To区</code>（HotSpot官方说法，民间常用的说法有分为S0/S1区，S1/S2区，都是一个意思）。</p>
+<h3 id="4-4-2-Minor-GC"><a href="#4-4-2-Minor-GC" class="headerlink" title="4.4.2 Minor GC"></a>4.4.2 Minor GC</h3><p>对于年轻代的垃圾回收，有一个专属的名词<strong>“Minor GC”</strong>。</p>
+<p><strong>触发条件</strong>：当新对象生成，且在Eden区分配内存失败时，触发Minor GC。</p>
+<p>在整个年轻代中，每个对象都有一个“年龄”。每触发一次Minor GC，年龄+1，且会被挪动（拷贝）到另外一个Survivor区域。</p>
+<p><strong>举个例子，假如，我们使用了Eden区和From Survivor区，那么To Survivor区就是空的。此时触发一次Minor GC，所有对象年龄+1。标记清除掉无引用的垃圾对象。再进行一次判断，若对象的年龄达到了15，则将其送入老年代。剩下的对象（存活，且年龄介于0和15之间），送入To Survivor区，此时From Survivor区就变成空的了。等到下一次触发Minor GC时，则再挪入From Survivor区中，空出To Survivor区，以此循环往复。</strong></p>
+<h3 id="4-4-3-Full-GC"><a href="#4-4-3-Full-GC" class="headerlink" title="4.4.3 Full GC"></a>4.4.3 Full GC</h3><p>对于老年代的垃圾回收，也有”一个”专属的名词<strong>“Full GC”</strong>（也有称为Major GC的 =_= ）。</p>
+<p><strong>触发条件</strong>：Full GC 通常由当前JVM的<strong>垃圾收集器</strong>来决定。</p>
+<p><strong>每一次Full GC 通常都会触发至少一次 Minor GC</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="5-常见的垃圾收集器"><a href="#5-常见的垃圾收集器" class="headerlink" title="5 常见的垃圾收集器"></a>5 常见的垃圾收集器</h1><p>在 4.4.3 中提到了在何种情况下，会使用到垃圾收集器。</p>
+<p><img src=".//Blog11/LAJISHOUJIQI.jpg" srcset="/img/loading.gif" alt></p>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+        <tag>GC</tag>
       </tags>
   </entry>
   <entry>
@@ -1226,6 +1055,231 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>HTTP相关 &amp;&amp; 对称/非对称加密简述</title>
+    <url>/Blog15.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>HTTP的底层是TCP，所以，TCP的一些特性在HTTP中得以保留。由于TCP中存在长连接与短连接，所以HTTP中也存在长连接与短连接。</p>
+<h1 id="HTTP的长连接"><a href="#HTTP的长连接" class="headerlink" title="HTTP的长连接"></a>HTTP的长连接</h1><p>HTTP的长连接是基于TCP长连接做出的封装处理。HTTP长连接我们称之为<strong>Keep-Alive机制</strong>，其内容是：若长连接在2个小时（保活定时）内无任何反应，Server便向Client发送探测报文段，此时可能有4种结果：</p>
+<ol>
+<li><p>Client正常运行，且正常响应：<br>则Server保活定时复位（Reset）。</p>
+</li>
+<li><p>Client崩溃/重启，，无法响应：<br>Server继续每隔75秒发送一次探测报文段，共发送10次。若Client仍然没有响应，则关闭连接（CLOSED）。</p>
+</li>
+<li><p>Client崩溃后重启，一开始无响应，后来正常：<br>重启连接（连接已经中断，物是人非）。</p>
+</li>
+<li><p>Client正常运行，但探测报文段不可达（Client无响应）：<br>同第二点。</p>
+</li>
+</ol>
+<h1 id="HTTP的短连接"><a href="#HTTP的短连接" class="headerlink" title="HTTP的短连接"></a>HTTP的短连接</h1><p>HTTP的短连接实际上是由于HTTP的特性（无连接）决定的。</p>
+<p>所以，让我们引入HTTP的两个特性：无连接、无状态。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP是无连接的"><a href="#HTTP是无连接的" class="headerlink" title="HTTP是无连接的"></a>HTTP是无连接的</h1><p>每次只处理一个请求，处理完（收到Client应答）就断开。<br><strong>解决</strong>：Keep-Alive机制。</p>
+<h1 id="HTTP是无状态的"><a href="#HTTP是无状态的" class="headerlink" title="HTTP是无状态的"></a>HTTP是无状态的</h1><p>每一次打开网页都完全独立。</p>
+<p><strong>解决</strong>：</p>
+<ol>
+<li><p>Cookie：<br>存储在浏览器（Bowser）中，由Server生成<br>下一次请求该网站时，会把该Cookie发送给Server<br>不安全（在Server之外被非法读写）</p>
+</li>
+<li><p>Session<br>存储在Server，较安全<br>但是Server需要Client提供Session_id才能找到对应Session<br>Session_id通常使用Cookie存储</p>
+</li>
+<li><p>Token<br>可抵抗<a href="https://zh.wikipedia.org/zh/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0" target="_blank" rel="noopener">CSRF（跨站请求伪造）</a> </p>
+</li>
+<li><p>JWT</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>HTTP的端口默认是80；HTTPS则是443。</p>
+<p>HTTP基于TCP，明文传输；HTTPS基于HTTP + <strong>SSL</strong>，通过对称加密与非对称加密传输。下面我顺便简单介绍一下对称加密以及非对称加密，不感兴趣的同学可以直接跳过此部分。</p>
+<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>只有一个密钥，同时负责加密、解密，很好理解。</p>
+<p><strong>常见算法</strong>：DES、AES等。</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>有成对的密钥，称为 公钥 + 私钥，<strong>无法相互推导</strong>。一个加密，另一个解密。</p>
+<p><strong>常见算法</strong>：RSA、DSA等。</p>
+<p>这里举个栗子，强化大家的理解，是一个非常有趣的数学算法。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">首先，我们需要知道这样一件事：<br><br>一个8位数，与 4 0000 0001 做乘法运算，<br>得出的运算结果的后八位，就是那个8位数的值。<br><br>比如 12345678 * 400000001 = 4938271212345678<br><br>好了，准备完成。接下来，就是非对称加密的部分了。<br><br><br>Server取其任意一对因数，比如 19801 与 20201<br>（19801 * 20201 = 400000001）<br><br>我们设公钥为 19801， 私钥为 20201<br>私钥存储在Server中，严格确保不外泄<br>把公钥公开到网络中，并且附送上加密算法：<br><br>密文 * 公钥，再取其后八位<br><br><br>假设，Client A想要传输内容为“12345678”的数据包给Server<br>Client A获取到Server公开的公钥 19801<br>12345678 * 19801 = 244456770078，取后八位56770078<br>Client A将56770078传输给Server<br><br>在Client A向Server传输56770078时<br>Client B通过抓包解包等技术手段，获取到该加密内容56770078<br>由于加密算法是一个有损算法（舍弃了前4位）<br>所以Client B即便知道加密过程，也无法还原数据<br><br>好，此时Server也获取到了Client A的数据包<br>Server 把 密文 * 私钥<br>（56770078 * 20201 = 1146812345678）<br>再取其后8位，得到原文“12345678”<br></code></pre></div></td></tr></table></figure>
+<p>怎么样，是不是非常简单易懂~ 这就是非对称加密的核心内容。这只是一个非常简单的示例，可能放在今天，随随便便的一台个人计算机就可以根据公钥20201破解出私钥19801。但是在没有计算机的年代，靠大量人工的算力也无法通过公钥破解出私钥。随着学者在数学领域的探索，非对称加密的实际应用早已结合了各种前沿的数学运算。当然了，这些都不是我等搬砖狗深究之事<del>~</del></p>
+<h2 id="SSL原理"><a href="#SSL原理" class="headerlink" title="SSL原理"></a>SSL原理</h2><p>非对称加密虽然十分安全，但是性能比起对称加密则十分低下。而Bowser与Server之间的数据交互十分频繁，采用非对称加密显然不合适。</p>
+<p>在SSL中，采用了非对称加密与对称加密相结合的方式。即<strong>Server通过非对称加密，把对称加密所使用的密钥，递交给Client</strong>。具体的过程，如下图所示：</p>
+<p><img src=".//Blog15/SSL.jpg" srcset="/img/loading.gif" alt></p>
+<p>其中证书验证的环节，我们暂且不细究。此处涉及到的并非纯粹的技术问题，而是类似于互联网规章制度，感兴趣的同学可以自行了解一下。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="与Server的四种交互"><a href="#与Server的四种交互" class="headerlink" title="与Server的四种交互"></a>与Server的四种交互</h1><ol>
+<li>GET    查询</li>
+<li>POST   修改</li>
+<li>PUT    增加</li>
+<li>DELETE 删除</li>
+</ol>
+<p>实际上，单独的 GET / POST 就可以实现增删改查。</p>
+<p>GET是幂等的（对同一个URL，多个请求返回相同结果）。</p>
+<p>POST使用必须用到表单Form（所以很多人偷懒使用GET）。</p>
+<p><strong>GET与POST的区别</strong>：</p>
+<ol>
+<li><p>GET提交的数据明文放在URL后边，不安全。<br>而POST则是把提交的数据放在HTTP包中加密传输，较为安全。</p>
+</li>
+<li><p>GET提交的数据量较小（最多1024字节）。<br>POST理论上无限制。</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="HTTP请求、响应"><a href="#HTTP请求、响应" class="headerlink" title="HTTP请求、响应"></a>HTTP请求、响应</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包含</p>
+<ol>
+<li>请求方法（GET/POST）</li>
+<li>请求头<br>（空一行，表示请求头结束）</li>
+<li>请求正文</li>
+</ol>
+<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包含</p>
+<ol>
+<li>状态行（包含<strong>状态码</strong>）</li>
+<li>响应头<br>（空一行，表示响应头结束）</li>
+<li>响应正文</li>
+</ol>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><p><strong>信息码。</strong>Server已接收，Client可继续。</p>
+<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><p><strong>成功码。</strong>Server已接收并处理。</p>
+<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><p><strong>重定向码。</strong>服务器要求客户端重定向。</p>
+<p>重定向：亦称URL转发，用于当前资源（页面）迁移到新URL。</p>
+<h5 id="301"><a href="#301" class="headerlink" title="301"></a>301</h5><p><strong>永久重定向。</strong>例如<code>www.google.com</code>迁移到<code>google.com</code><br>优点：</p>
+<ul>
+<li>可以减少DNS的缓存（提高缓存友好型）</li>
+<li>防止访问量分散（提高网站竞价排名）</li>
+</ul>
+<h5 id="302"><a href="#302" class="headerlink" title="302"></a>302</h5><p><strong>临时重定向。</strong>旧资源仍可访问，但临时跳转访问新资源。<br>优点：</p>
+<ul>
+<li>搜索引擎不会更新资源的链接，比301更利于SEO</li>
+</ul>
+<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><p><strong>客户端错误码。</strong>Client的请求有非法内容。</p>
+<h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求有语法错误。</p>
+<h5 id="401"><a href="#401" class="headerlink" title="401"></a>401</h5><p>请求未经授权。</p>
+<h5 id="403"><a href="#403" class="headerlink" title="403"></a>403</h5><p>Server收到，但拒绝提供服务（原因会写在响应正文中）。</p>
+<h5 id="404"><a href="#404" class="headerlink" title="404"></a>404</h5><p>请求的资源不存在。</p>
+<h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4><p><strong>服务器错误码。</strong>Server未能正常处理请求。</p>
+<h5 id="500"><a href="#500" class="headerlink" title="500"></a>500</h5><p>服务器Error。</p>
+<h5 id="503"><a href="#503" class="headerlink" title="503"></a>503</h5><p>服务器当前无法处理（过段时间可能恢复）。</p>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>网络协议</tag>
+        <tag>HTTP</tag>
+        <tag>对称加密</tag>
+        <tag>非对称加密</tag>
+        <tag>状态码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP三次握手与四次挥手</title>
+    <url>/Blog12.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><p>先看一下我的笔记吧。</p>
+<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/ThreewayHandshake.jpg" srcset="/img/loading.gif" alt></p>
+<p>三次握手中，“三次”的含义是建立TCP连接的过程中，一共有三个数据包。通过对三个数据包的合理使用，即可在C/S之间建立起可靠的数据传输通道。</p>
+<p>如果要确认在C/S间建立起可靠连接，需要确认以下四点：</p>
+<ol>
+<li>Client端 发送功能正常</li>
+<li>Client端 接收功能正常</li>
+<li>Server端 发送功能正常</li>
+<li>Server端 接收功能正常</li>
+</ol>
+<p>经过历史的淘汰，技术人员的精简，最后呈现在我们面前的就是这三个短小精悍的数据包。也就是说，三次握手的三个数据包，通过精妙的安排，分别证明了上述的四个功能，这三个数据包缺一不可。</p>
+<p><strong>那么，这三个数据包的作用分别是：</strong><br><strong>第一个数据包（Server端成功接收）：证明了Client发送功能正常。</strong><br><strong>第二个数据包（Client端成功接收）：证明了Server接收功能正常、Server发送功能正常。</strong><br><strong>第三个数据包（Server端成功接收）：证明了Client接收功能正常。</strong></p>
+<p>其它补充：<br>SYN与ACK对应，ACK的作用是确认收到（Acknowledgement）。<br>第三次握手在技术上就可以携带数据了（但实际上并没有）。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h1><p>还是先看一下我的笔记吧。</p>
+<p>方框内表示的是Client/Server端的状态；中间连线表示数据包内的内容。<br><img src=".//Blog12/FourwayHandwave.jpg" srcset="/img/loading.gif" alt></p>
+<p>四次挥手的大概过程与原理，大家仔细分析一下上图就可以看明白，没什么特别之处值得详说。但是有一处值得注意：<strong>图中红色字体的部分</strong>。</p>
+<p>让我们仔细来分析一下，为什么Client端的TIME WAIT状态需要等待2MSL（2个最大包存活时间）？</p>
+<p>首先，我们看一下在这个时间点，TCP四次挥手此时正在发生的事情。</p>
+<ol>
+<li>若Server收到了第四个包，即可正常关闭连接。</li>
+<li>若Server没有收到第四个包，则会重发一个ACK（第三个包）。</li>
+</ol>
+<p>在Server端发送完第三个包之后，需要收到Client端发送的第四个包，才会进入CLOSED状态。假如第四个包由于网络波动等原因loss掉（丢包），Server就会在等待了<strong>一段时间</strong>之后重新发送第三个包。这个Server端等待的<strong>一段时间</strong>，实际上就是一个包在网络中存活的最大时间（1MSL）。那么Server端重发的第三个包传递到Client端，又需要1MSL。这样加起来，总共需要2MSL。</p>
+<p>所以，如果发生了坏情况（第四个包loss），需要经过2MSL（等待第四个包1MSL + 重发第三个包1MSL），Client端才会接收到Server端重发的第三个包。</p>
+<p><font color="FF0000"><strong>补充！</strong></font><br>如果你在百度上检索这个2MSL，会发现很多回答都是“放空网络中的旧请求报文”。很多答案都闪烁其辞且相互抄袭，经过我个人查证，这种说法来源于《Unix网络编程卷1》中的一段解读：</p>
+<p><em>“假设该Socket在关闭连接之后又打开，如果在关闭（四次挥手）的时候发生了波动（拥塞，延迟等），导致三次握手之后才收到上次连接的挥手数据包，就会产生不可预料的影响。为了避免出现这种情况，此处设置了2MSL用来放空所有四次挥手时的数据包。”</em></p>
+<p><strong>但是，在原文中（下图红色批注）的原意是：2MSL足以放空！</strong>所以实际上，1MSL就足够进行数据包的放空。换句话说，2MSL并不是用来放空数据包，只是顺手做到了而已！</p>
+<p><img src=".//Blog12/Unix01.jpg" srcset="/img/loading.gif" alt></p>
+<div style="text-align:right">——节选自《UNIX网络编程卷1》</div>
+
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>TCP</tag>
+        <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java创建对象的过程（包含类加载）</title>
+    <url>/Blog14.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<p>在Java中，说到创建对象，我们大多数情况下使用的都是new指令。那么明面上一条new指令，暗地里经过JVM多少处理呢？</p>
+<h1 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1 类加载检查"></a>1 类加载检查</h1><p>当JVM遇到一条new指令时，先检查其参数能否在常量池中定位到该类的符号引用。再检查该符号引用是否被加载过、解析过、初始化过。</p>
+<p><em>注：符号引用相当于自定义的变量名等；引用除了符号引用以外，还有直接引用。直接引用指的是指针、偏移量之类的东西。</em></p>
+<p><em>JVM并不是编译时，就加载所有类进内存。而是第一次运行某个类时才加载，且只加载这一次。</em></p>
+<p>若有，则直接进行第二步分配内存。若没有，则执行<strong>类加载</strong>。</p>
+<p>类加载的过程分为三步：<strong>加载 -&gt; 链接 -&gt; 初始化</strong>。<br>而链接又分为三步：<strong>验证 -&gt; 准备 -&gt; 解析</strong>。</p>
+<p><em>加载和链接实际上是交叉进行的。加载未结束，链接已开始。</em></p>
+<p><em>不妨多了解一点，<strong>类的生命周期</strong>：加载 -&gt; 链接 -&gt; 初始化 -&gt; 使用 -&gt; 卸载</em></p>
+<h2 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h2><p>加载这一步的内容是，把class文件装入内存。</p>
+<p>在JVM中，内置的类加载器（ClassLoader）有三层，自顶向下分别是</p>
+<ol>
+<li>BootstrapClassLoader 启动类加载器（最顶层的ClassLoader，由C++实现）</li>
+<li>ExtensionClassLoader 扩展类加载器</li>
+<li>AppClassLoader 应用程序类加载器</li>
+</ol>
+<p>除了三层内置的ClassLoader以外，JVM还允许用户自定义类加载器（最底层）。</p>
+<p>实际上，每一个类都有适合它的类加载器。如何快速的找到该类加载器？类加载器在协同工作时，默认会使用<strong>双亲委派模型（Parents Delegation Model）</strong>。</p>
+<h3 id="双亲委派模型（Parents-Delegation-Model）"><a href="#双亲委派模型（Parents-Delegation-Model）" class="headerlink" title="双亲委派模型（Parents Delegation Model）"></a>双亲委派模型（Parents Delegation Model）</h3><p><em>这里的“双亲”指的是“父母那一辈”的意思。</em></p>
+<p>什么是双亲委派模型：<br>在类加载的时候，首先把该请求委派给该父类加载器loadClass()处理。<br>因此所有的请求最后都会传到BootStrapClassLoader尝试处理。当父类加载器无法处理时，才会由自己处理。<br>若父类加载器为null，会自动把BootstrapClassLoader作为父类加载器。</p>
+<p><strong>注意</strong>：类加载器的“父子”关系并不是继承，而是优先级！</p>
+<p><strong>优点</strong>：可以避免类的重复加载，也保证Java核心API不被篡改（相同的类被不同的ClassLoader加载可能产生不同的类）。</p>
+<p><em>如果不想使用双亲委派模型，可以自定义一个ClassLoader（继承自<code>java.lang.ClassLoader</code>），然后重写<code>loadClass()</code></em></p>
+<h2 id="1-2-验证"><a href="#1-2-验证" class="headerlink" title="1.2 验证"></a>1.2 验证</h2><p>保证加载的字节流符合规范。</p>
+<h2 id="1-3-准备"><a href="#1-3-准备" class="headerlink" title="1.3 准备"></a>1.3 准备</h2><p>为static变量（非实例变量）分配内存，并赋值。</p>
+<h2 id="1-4-解析"><a href="#1-4-解析" class="headerlink" title="1.4 解析"></a>1.4 解析</h2><p>将常量池的符号引用替换为直接引用。</p>
+<h2 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h2><p>初始化static代码块，构造器等。</p>
+<h1 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2 分配内存"></a>2 分配内存</h1><p>所需的内存大小，在类加载完成后，便可以确定。</p>
+<p>内存分配的方式有两种，分别是<strong>指针碰撞法</strong>以及<strong>空闲列表法</strong></p>
+<p><img src=".//Blog14/FENPEINEICUN.jpg" srcset="/img/loading.gif" alt></p>
+<p><strong>分配完内存，就会在内存上创建实例化对象。</strong></p>
+<p>JVM在创建对象时，必须保证线程安全，通常用两种方法保证。</p>
+<ol>
+<li><p>CAS + 失败重试机制<br>CAS是乐观锁（乐观锁是一种思想，没有实际的锁。它假设不会出现冲突，所以不用加锁，直接去申请资源，失败就重试，直到成功为止）。CAS + 失败重试 可以保证操作的原子性，从而线程安全。</p>
+</li>
+<li><p>TLAB<br>全称ThreadLocalAllocBuffer，于 HotSpot1.6 引入，原理与指针碰撞法类似。在每个线程初始化时，同时申请一块指定大小的内存绑定给它。当线程需要内存时，就在自己的这块内存上分配，若容量不够，再去Eden区正常申请。<strong>优点</strong>：每个线程都有自己的专属指针，性能高。<img src=".//Blog14/TLAB.jpg" srcset="/img/loading.gif" alt></p>
+</li>
+</ol>
+<h1 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3 初始化零值"></a>3 初始化零值</h1><p>分配内存完成后，要把这些内存初始化为0。<br><strong>所以成员变量可以不用初始化</strong></p>
+<h1 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4 设置对象头"></a>4 设置对象头</h1><p>初始化零值后，JVM要对对象实例进行设置。例如：</p>
+<ol>
+<li>该对象是哪个类的实例</li>
+<li>如何找到该类的元数据</li>
+<li>对象的HashCode</li>
+<li>对象的GC年龄</li>
+<li>锁状态标识</li>
+</ol>
+<p>这些信息都存放在对象头中。<em>PS：实例对象分为三个部分：对象头、实例数据、对齐填充（非必须）</em></p>
+<h1 id="5-执行init-方法"><a href="#5-执行init-方法" class="headerlink" title="5 执行init()方法"></a>5 执行init()方法</h1><p>从JVM的角度来看，执行完上述4步，一个新对象已经产生。</p>
+<p>执行完new指令后紧接着执行init()，才能完成对象实例的初始化（成员变量、成员方法等）。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>对象创建</tag>
+        <tag>类加载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>OSI网络模型</title>
     <url>/Blog18.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1390,6 +1444,68 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
+    <title>【笔记】Java相关</title>
+    <url>/Blog20.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+
+<h1 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h1><p><img src=".//Blog20/01.jpg" srcset="/img/loading.gif" alt></p>
+<p>换一种理解方式：<br><img src=".//Blog20/02.jpg" srcset="/img/loading.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h1><table>
+<thead>
+<tr>
+<th align="center">接口</th>
+<th align="center">抽象类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">like-a</td>
+<td align="center">is-a</td>
+</tr>
+<tr>
+<td align="center">修饰符是public或default</td>
+<td align="center">修饰符是public，protected，default</td>
+</tr>
+<tr>
+<td align="center">变量修饰必须是static，final</td>
+<td align="center">随便</td>
+</tr>
+<tr>
+<td align="center">可以implements多个</td>
+<td align="center">只能extends一个</td>
+</tr>
+<tr>
+<td align="center">是对行为的抽象</td>
+<td align="center">是对类的抽象</td>
+</tr>
+<tr>
+<td align="center">是一种行为规范</td>
+<td align="center">是一种设计模板</td>
+</tr>
+<tr>
+<td align="center">不能有构造方法</td>
+<td align="center">可以有构造方法</td>
+</tr>
+</tbody></table>
+<p>ps：<strong>抽象类</strong>不能被实例化，只能被继承。实现了抽象类的抽象方法的子类 可实例化。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="Override与Overload（重写与重载）"><a href="#Override与Overload（重写与重载）" class="headerlink" title="Override与Overload（重写与重载）"></a>Override与Overload（重写与重载）</h1><p><img src=".//Blog20/03.jpg" srcset="/img/loading.gif" alt></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java IO流</title>
     <url>/Blog23.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1470,100 +1586,47 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       </tags>
   </entry>
   <entry>
-    <title>单例模式的五种写法（Java）</title>
-    <url>/Blog26.html</url>
+    <title>【笔记】 Android Studio相关问题处理</title>
+    <url>/Blog28.html</url>
     <content><![CDATA[<p>&nbsp;</p>
 <a id="more"></a>
 
-<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instance = <span class="hljs-keyword">new</span> Singleton();<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h1 id="Please-configure-Android-SDK"><a href="#Please-configure-Android-SDK" class="headerlink" title="Please configure Android SDK"></a>Please configure Android SDK</h1><div class="note note-danger">
+            <p><strong>问题描述：</strong></p>
+          </div>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="懒汉式（线程不安全）"><a href="#懒汉式（线程不安全）" class="headerlink" title="懒汉式（线程不安全）"></a>懒汉式（线程不安全）</h1><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instace;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            instance = <span class="hljs-keyword">new</span> Singleton();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instace;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>Android Studio Logcat处显示Please Configure Android SDK，无法正常显示Log信息。<br>如下图所示：<br><img src=".//Blog28/01.jpg" srcset="/img/loading.gif" alt></p>
+<div class="note note-success">
+            <p><strong>解决方法：</strong></p>
+          </div>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="懒汉式（线程安全）"><a href="#懒汉式（线程安全）" class="headerlink" title="懒汉式（线程安全）"></a>懒汉式（线程安全）</h1><p><strong>效率低，每次都要加锁</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instace;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            instance = <span class="hljs-keyword">new</span> Singleton();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instace;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ol>
+<li>左上角File -&gt; Project Stucture。</li>
+<li>选择Project Setting下边的Project栏。</li>
+<li>在右边的Project SDK处下拉，选择已安装好的Java SDK（若没安装，请先安装Java SDK）。</li>
+<li>点击OK即可。</li>
+</ol>
+<h1 id="Log中过滤掉（不显示）指定字符"><a href="#Log中过滤掉（不显示）指定字符" class="headerlink" title="Log中过滤掉（不显示）指定字符"></a>Log中过滤掉（不显示）指定字符</h1><div class="note note-success">
+            <p><strong>下面给出的解决方案，于下图所示处输入</strong><br><img src=".//Blog28/02.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="双重校验锁-DCL（Double-Checked-Locking）"><a href="#双重校验锁-DCL（Double-Checked-Locking）" class="headerlink" title="双重校验锁 DCL（Double Checked Locking）"></a>双重校验锁 DCL（Double Checked Locking）</h1><p><strong>先判断，若对象已创建，则不进入synchronized代码块。</strong>提升了性能且保证安全。<br><strong>Volate一般用于保证多线程可见性。这里用来防止指令重排序。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">static</span> Singleton instance;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            <span class="hljs-keyword">synchronized</span>(Singleton<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>&#123;<br>                <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>                    instance = <span class="hljs-keyword">new</span> Singleton();<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="note note-danger">
+            <ol><li>Log中不显示单个指定的字符：</li></ol>
+          </div>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>调用getInstance()才初始化，<strong>更加灵活</strong>。</p>
-<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SingletonHolder</span></span>&#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton INSTANCE = <span class="hljs-keyword">new</span> Singleton();<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> SingletonHolder.INSTANCE;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>]]></content>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">^(?!.*(你要过滤掉的字符)).*$<br></code></pre></div></td></tr></table></figure>
+<p>示例：过滤掉 <code>Android</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">^(?!.*(Android)).*$<br></code></pre></div></td></tr></table></figure>
+<div class="note note-danger">
+            <ol start="2"><li>Log中不显示多个指定的字符</li></ol>
+          </div>
+
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">^(?!.*(第一个字符 | 第二个字符)).*$<br></code></pre></div></td></tr></table></figure>
+<p>示例：过滤掉 <code>Android</code> 、 <code>Java</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">^(?!.*(Android | Java)).*$<br></code></pre></div></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Java</tag>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【笔记】Java相关</title>
-    <url>/Blog20.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-
-<h1 id="与equals"><a href="#与equals" class="headerlink" title="==与equals"></a>==与equals</h1><p><img src=".//Blog20/01.jpg" srcset="/img/loading.gif" alt></p>
-<p>换一种理解方式：<br><img src=".//Blog20/02.jpg" srcset="/img/loading.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h1><table>
-<thead>
-<tr>
-<th align="center">接口</th>
-<th align="center">抽象类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">like-a</td>
-<td align="center">is-a</td>
-</tr>
-<tr>
-<td align="center">修饰符是public或default</td>
-<td align="center">修饰符是public，protected，default</td>
-</tr>
-<tr>
-<td align="center">变量修饰必须是static，final</td>
-<td align="center">随便</td>
-</tr>
-<tr>
-<td align="center">可以implements多个</td>
-<td align="center">只能extends一个</td>
-</tr>
-<tr>
-<td align="center">是对行为的抽象</td>
-<td align="center">是对类的抽象</td>
-</tr>
-<tr>
-<td align="center">是一种行为规范</td>
-<td align="center">是一种设计模板</td>
-</tr>
-<tr>
-<td align="center">不能有构造方法</td>
-<td align="center">可以有构造方法</td>
-</tr>
-</tbody></table>
-<p>ps：<strong>抽象类</strong>不能被实例化，只能被继承。实现了抽象类的抽象方法的子类 可实例化。</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1 id="Override与Overload（重写与重载）"><a href="#Override与Overload（重写与重载）" class="headerlink" title="Override与Overload（重写与重载）"></a>Override与Overload（重写与重载）</h1><p><img src=".//Blog20/03.jpg" srcset="/img/loading.gif" alt></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
         <tag>笔记</tag>
+        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -1642,9 +1705,44 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 <p><strong>这样，一个网页就呈现在屏幕上了！是不是非常简单</strong>/狗头</p>
 ]]></content>
       <tags>
-        <tag>Web</tag>
         <tag>计算机网络</tag>
+        <tag>Web</tag>
         <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式的五种写法（Java）</title>
+    <url>/Blog26.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<a id="more"></a>
+
+<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instance = <span class="hljs-keyword">new</span> Singleton();<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程不安全）"><a href="#懒汉式（线程不安全）" class="headerlink" title="懒汉式（线程不安全）"></a>懒汉式（线程不安全）</h1><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instace;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            instance = <span class="hljs-keyword">new</span> Singleton();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instace;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="懒汉式（线程安全）"><a href="#懒汉式（线程安全）" class="headerlink" title="懒汉式（线程安全）"></a>懒汉式（线程安全）</h1><p><strong>效率低，每次都要加锁</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instace;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            instance = <span class="hljs-keyword">new</span> Singleton();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instace;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="双重校验锁-DCL（Double-Checked-Locking）"><a href="#双重校验锁-DCL（Double-Checked-Locking）" class="headerlink" title="双重校验锁 DCL（Double Checked Locking）"></a>双重校验锁 DCL（Double Checked Locking）</h1><p><strong>先判断，若对象已创建，则不进入synchronized代码块。</strong>提升了性能且保证安全。<br><strong>Volate一般用于保证多线程可见性。这里用来防止指令重排序。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">static</span> Singleton instance;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>            <span class="hljs-keyword">synchronized</span>(Singleton<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>&#123;<br>                <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>)&#123;<br>                    instance = <span class="hljs-keyword">new</span> Singleton();<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>调用getInstance()才初始化，<strong>更加灵活</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SingletonHolder</span></span>&#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton INSTANCE = <span class="hljs-keyword">new</span> Singleton();<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> SingletonHolder.INSTANCE;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -1698,80 +1796,6 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>数据库</tag>
         <tag>范式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【笔记】 Android Studio相关问题处理</title>
-    <url>/Blog28.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="Please-configure-Android-SDK"><a href="#Please-configure-Android-SDK" class="headerlink" title="Please configure Android SDK"></a>Please configure Android SDK</h1><div class="note note-danger">
-            <p><strong>问题描述：</strong><br>Android Studio Logcat处显示Please Configure Android SDK，无法正常显示Log信息。<br>如下图所示：<br><img src=".//Blog28/01.jpg" srcset="/img/loading.gif" alt></p>
-          </div>
-
-
-<div class="note note-success">
-            <p><strong>解决方法：</strong></p><ol><li>左上角File -&gt; Project Stucture。</li><li>选择Project Setting下边的Project栏。</li><li>在右边的Project SDK处下拉，选择已安装好的Java SDK（若没安装，请先安装Java SDK）。</li><li>点击OK即可。</li></ol>
-          </div>
-]]></content>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客基本格式</title>
-    <url>/Blog02.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<a id="more"></a>
-
-<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt"># 一级标题<br>## 二级标题<br>### 三级标题<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">**加粗**<br>*斜体*<br>***斜体加粗***<br>~~删除线~~<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&gt; 引用的内容<br></code></pre></div></td></tr></table></figure>
-
-<p>引用支持嵌套</p>
-<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&gt; 最外层引用<br>&gt;&gt; 第一层引用<br>&gt;&gt;&gt;&gt;&gt; 第五层引用<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>三个及以上的<code>-</code>或<code>*</code>都可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">---<br>****<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">[超链接名](超链接地址 &quot;超链接title&quot;)<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">无序：用 - + * 都可以<br>- 列表一<br>- 列表二<br>- 列表三<br><br>有序：用 数字加点<br>1. 列表一<br>2. 列表二<br>3. 列表三<br><br>嵌套：子级前边多三个空格<br>- 父列表一<br>   - 子列表1<br>   - 子列表2<br>- 父列表二<br>   - 子列表3<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">表头|表头|表头<br>---|:--:|---:<br>内容|内容|内容<br>内容|内容|内容<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>括号是为了防止转义，使用时需去掉</p>
-<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">(&#96;&#96;&#96;)(语言)<br>  代码...<br>  代码...<br>  代码...<br>(&#96;&#96;&#96;)<br></code></pre></div></td></tr></table></figure>
-
-
-<h1 id="Fluid-脚注"><a href="#Fluid-脚注" class="headerlink" title="(Fluid)脚注"></a>(Fluid)脚注</h1><figure class="highlight markdown"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs markdown"><br>这是一句话[^1]<br>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">这是对应的脚注</span><br><br>or<br><br>正文<br><br><span class="hljs-section">## 参考</span><br>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">参考资料1</span><br>[<span class="hljs-symbol">^2</span>]: <span class="hljs-link">参考资料2</span><br></code></pre></div></td></tr></table></figure>
-
-<h1 id="Fluid-便签"><a href="#Fluid-便签" class="headerlink" title="(Fluid)便签"></a>(Fluid)便签</h1><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs txt">&#123;% note success %&#125;<br>文字 或者 &#96;markdown&#96; 均可<br>&#123;% endnote %&#125;<br><br>or<br><br>&lt;p class&#x3D;&quot;note note-primary&quot;&gt;标签&lt;&#x2F;p&gt;<br></code></pre></div></td></tr></table></figure>
-
-<p>便签可选如下：</p>
-<p class="note note-primary">primary</p>
-
-<p class="note note-secondary">secondary</p>
-
-<p class="note note-success">success</p>
-
-<p class="note note-danger">danger</p>
-
-<p class="note note-warning">warning</p>
-
-<p class="note note-info">info</p>
-
-<p class="note note-light">light</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Markdown</tag>
       </tags>
   </entry>
 </search>
