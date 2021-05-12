@@ -255,8 +255,8 @@
           </div>
 
 <p>在引导阶段，主要控制 PC 的是 固件（BIOS 或 UEFI）</p>
-<h1 id="1-POST开机自检"><a href="#1-POST开机自检" class="headerlink" title="1. POST开机自检"></a>1. POST开机自检</h1><p>POST 是 Power-On Self-Test 的缩写，属于 BIOS 的功能之一。POST 是针对于 PC 硬件的检查，先检查计算机必须的硬件如 CPU，RAM 等，其次检查非必须的硬件如 ROM，PCI Express，CD-ROM，可移动介质等。自检通过之后，则进入下一阶段——加载 OS<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="Arch Linux.Unified Extensible Firmware Interface.2021-05-09
-">[4]</span></a></sup>。</p>
+<h1 id="1-POST开机自检"><a href="#1-POST开机自检" class="headerlink" title="1. POST开机自检"></a>1. POST开机自检</h1><p>POST 是 Power-On Self-Test 的缩写，属于 BIOS 的功能之一。POST 是针对于 PC 硬件的检查，先检查计算机必须的硬件如 CPU，RAM 等，其次检查非必须的硬件如 ROM，PCI Express，CD-ROM，可移动介质等。自检通过之后，则进入下一阶段——加载 OS<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="DELL.开机自检和引导过程[EB/OL].2021-01-03
+">[2]</span></a></sup>。</p>
 <h1 id="2-加载-OS"><a href="#2-加载-OS" class="headerlink" title="2. 加载 OS"></a>2. 加载 OS</h1><p>固件（BIOS 和 UEFI）按照规定，此时会把控制权交给排在第一位的存储设备。</p>
 <p>PC 读取该设备的第一个扇区，即最前面的512字节。若该512字节的最后两个字节是 <code>0X55</code> 和 <code>0XAA</code>，表明该存储设备可以用于启动。若不是，则控制权顺移至下一个存储设备。</p>
 <p>这里，以 MBR 格式的硬盘作为示例，进行说明。</p>
@@ -267,25 +267,25 @@
 <li>主引导记录签名：2 bytes [511, 512]</li>
 </ul>
 <div class="note note-warning">
-            <p>在MBR格式的硬盘中，分区表的最大值固定为64字节，且分成4项，每项分得16个字节。即一个硬盘最多4个一级分区，又称作主分区。每个分区又由6部分组成：</p><ol><li>字节(0, 1]：如果该字节为 <code>0X80</code>，就表示该分区激活，控制权要转交给该分区。4个分区中只能有一个激活分区。</li><li>字节[2, 4]：主分区第一个扇区的物理位置（柱面、磁头、扇区号等）</li><li>字节(4, 5]：主分区类型</li><li>字节[6, 8]：主分区最后一个扇区的物理位置</li><li>字节[9, 12]：该主分区第一个扇面的逻辑地址</li><li>字节[13, 16]：主分区的扇区总数</li></ol><p>其中，最后4个字节“主分区的扇区总数”决定了这个主分区的长度。即一个主分区的扇区总数不能超过2^32次方。如果每个扇区为512字节，那么单个分区无法超过2TB。再考虑到扇区的逻辑地址也是32位，所以单个硬盘的最大空间也无法超过2TB<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="阮一峰.计算机是如何启动的.2013-02-06">[2]</span></a></sup>。</p><p><strong>读取到激活的主分区之后，就可以从激活的主分区中启动 OS 了</strong>。这一部分就不详细说明了，每个操作系统都不一样。</p>
+            <p>在MBR格式的硬盘中，分区表的最大值固定为64字节，且分成4项，每项分得16个字节。即一个硬盘最多4个一级分区，又称作主分区。每个分区又由6部分组成：</p><ol><li>字节(0, 1]：如果该字节为 <code>0X80</code>，就表示该分区激活，控制权要转交给该分区。4个分区中只能有一个激活分区。</li><li>字节[2, 4]：主分区第一个扇区的物理位置（柱面、磁头、扇区号等）</li><li>字节(4, 5]：主分区类型</li><li>字节[6, 8]：主分区最后一个扇区的物理位置</li><li>字节[9, 12]：该主分区第一个扇面的逻辑地址</li><li>字节[13, 16]：主分区的扇区总数</li></ol><p>其中，最后4个字节“主分区的扇区总数”决定了这个主分区的长度。即一个主分区的扇区总数不能超过2^32次方。如果每个扇区为512字节，那么单个分区无法超过2TB。再考虑到扇区的逻辑地址也是32位，所以单个硬盘的最大空间也无法超过2TB<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="阮一峰.计算机是如何启动的.2013-02-06">[3]</span></a></sup>。</p><p><strong>读取到激活的主分区之后，就可以从激活的主分区中启动 OS 了</strong>。这一部分就不详细说明了，每个操作系统都不一样。</p>
           </div>
 
 
 
 <hr>
 <p>在 PC 上，OS的加载通常分成两部分：第一阶段的主引导记录(Master Boot Record，MBR)，用于第二阶段引导位于某个分区中的（主分区）的引导。</p>
-<p>这么设计的背后，其实是历史遗留问题。在以前，OS 比较简单的时候，用来引导 OS 的代码并不是很复杂，可以直接装载于 MBR 中。后来 OS 越来越复杂，MBR 放不下引导 OS 的代码，这才有了第二阶段引导<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="UEFI 引导与 BIOS 引导在原理上有什么区别？ - 张良怀的回答 - 知乎
-">[3]</span></a></sup><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="Arch Linux.Unified Extensible Firmware Interface.2021-05-09
-">[4]</span></a></sup>。</p>
+<p>这么设计的背后，其实是历史遗留问题。在以前，OS 比较简单的时候，用来引导 OS 的代码并不是很复杂，可以直接装载于 MBR 中。后来 OS 越来越复杂，MBR 放不下引导 OS 的代码，这才有了第二阶段引导<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="UEFI 引导与 BIOS 引导在原理上有什么区别？ - 张良怀的回答 - 知乎
+">[4]</span></a></sup><sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="Arch Linux.Unified Extensible Firmware Interface.2021-05-09
+">[5]</span></a></sup>。</p>
 <p>当然，随着如今计算机的发展，除了传统 BIOS 通过读取 MBR 的这种方式来引导 OS 的加载，还有 UEFI 这种新兴的技术，无需二次跳转，可以直接由 EFI 应用程序（.efi文件）来引导加载 OS。下图为传统 BIOS 与 UEFI 的一些对比。</p>
 <p><img src=".//Blog30/01.jpg" srcset="/img/loading.gif" alt></p>
 <p>除了这些 UEFI 还比传统 BIOS 多了 SecureBoot 机制，可以防止 PC 在启动时被攻击（有可能导致同盘的 Linux 无法顺利启动）。</p>
 <p>现代的 BIOS 和 UEFI 都支持从多种设备上启动，如硬盘、光驱、USB 设备等。固件（BIOS 和 UEFI）允许用户自行设置启动顺序。</p>
 <h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://zh.wikipedia.org/wiki/%E5%95%9F%E5%8B%95%E7%A8%8B%E5%BC%8F" target="_blank" rel="noopener">Wikipedia.引导程序.2021-04-23</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="http://www.ruanyifeng.com/blog/2013/02/booting.html" target="_blank" rel="noopener">阮一峰.计算机是如何启动的.2013-02-06</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a href="https://www.zhihu.com/question/21672895/answer/45616136" target="_blank" rel="noopener">UEFI 引导与 BIOS 引导在原理上有什么区别？ - 张良怀的回答 - 知乎</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener">Arch Linux.Unified Extensible Firmware Interface.2021-05-09</a>
-<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a href="https://www.dell.com/support/kbdoc/zh-hk/000128270/%E5%90%8E%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%AF%BC%E8%BF%87%E7%A8%8B" target="_blank" rel="noopener">DELL.开机自检和引导过程[EB/OL].2021-01-03</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://www.dell.com/support/kbdoc/zh-hk/000128270/%E5%90%8E%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%AF%BC%E8%BF%87%E7%A8%8B" target="_blank" rel="noopener">DELL.开机自检和引导过程[EB/OL].2021-01-03</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a href="http://www.ruanyifeng.com/blog/2013/02/booting.html" target="_blank" rel="noopener">阮一峰.计算机是如何启动的.2013-02-06</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a href="https://www.zhihu.com/question/21672895/answer/45616136" target="_blank" rel="noopener">UEFI 引导与 BIOS 引导在原理上有什么区别？ - 张良怀的回答 - 知乎</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface" target="_blank" rel="noopener">Arch Linux.Unified Extensible Firmware Interface.2021-05-09</a>
 <a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
             <hr>
