@@ -1275,8 +1275,8 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 ]]></content>
       <tags>
         <tag>Java</tag>
-        <tag>对象创建</tag>
-        <tag>类加载</tag>
+        <tag>对象</tag>
+        <tag>类</tag>
       </tags>
   </entry>
   <entry>
@@ -1344,7 +1344,7 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
       <tags>
         <tag>计算机网络</tag>
         <tag>网络协议</tag>
-        <tag>OSI</tag>
+        <tag>OSI网络模型</tag>
       </tags>
   </entry>
   <entry>
