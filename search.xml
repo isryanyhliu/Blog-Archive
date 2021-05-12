@@ -2035,17 +2035,20 @@ SiteMap是一个描述网站架构的文件，它可以帮助搜索引擎spider�
 ">[4]</span></a></sup>。</p>
 <h1 id="2-加载-OS"><a href="#2-加载-OS" class="headerlink" title="2. 加载 OS"></a>2. 加载 OS</h1><p>固件（BIOS 和 UEFI）按照规定，此时会把控制权交给排在第一位的存储设备。</p>
 <p>PC 读取该设备的第一个扇区，即最前面的512字节。若该512字节的最后两个字节是 <code>0X55</code> 和 <code>0XAA</code>，表明该存储设备可以用于启动。若不是，则控制权顺移至下一个存储设备。</p>
-<p>（在MBR格式的硬盘中）第一个扇区中存放的内容有：</p>
+<p>这里，以 MBR 格式的硬盘作为示例，进行说明。</p>
+<p>（在 MBR 格式的硬盘中）第一个扇区中存放的内容有：</p>
 <ul>
 <li>主引导记录 (Master Boot Record, MBR)：446 bytes [1, 446]</li>
 <li>分区表 (Partition Table) ：64 bytes [447, 510]</li>
 <li>主引导记录签名：2 bytes [511, 512]</li>
 </ul>
 <div class="note note-warning">
-            <p>在MBR格式的硬盘中，分区表的最大值固定为64字节，且分成4项，每项分得16个字节。即一个硬盘最多4个一级分区，又称作主分区。每个分区又由6部分组成：</p><ol><li>字节(0, 1]：如果该字节为 <code>0X80</code>，就表示该分区激活，控制权要转交给该分区。4个分区中只能有一个激活分区。</li><li>字节[2, 4]：主分区第一个扇区的物理位置（柱面、磁头、扇区号等）</li><li>字节(4, 5]：主分区类型</li><li>字节[6, 8]：主分区最后一个扇区的物理位置</li><li>字节[9, 12]：该主分区第一个扇面的逻辑地址</li><li>字节[13, 16]：主分区的扇区总数</li></ol><p>其中，最后4个字节“主分区的扇区总数”决定了这个主分区的长度。即一个主分区的扇区总数不能超过2^32次方。如果每个扇区为512字节，那么单个分区无法超过2TB。再考虑到扇区的逻辑地址也是32位，所以单个硬盘的最大空间也无法超过2TB<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="阮一峰.计算机是如何启动的.2013-02-06">[2]</span></a></sup>。</p>
+            <p>在MBR格式的硬盘中，分区表的最大值固定为64字节，且分成4项，每项分得16个字节。即一个硬盘最多4个一级分区，又称作主分区。每个分区又由6部分组成：</p><ol><li>字节(0, 1]：如果该字节为 <code>0X80</code>，就表示该分区激活，控制权要转交给该分区。4个分区中只能有一个激活分区。</li><li>字节[2, 4]：主分区第一个扇区的物理位置（柱面、磁头、扇区号等）</li><li>字节(4, 5]：主分区类型</li><li>字节[6, 8]：主分区最后一个扇区的物理位置</li><li>字节[9, 12]：该主分区第一个扇面的逻辑地址</li><li>字节[13, 16]：主分区的扇区总数</li></ol><p>其中，最后4个字节“主分区的扇区总数”决定了这个主分区的长度。即一个主分区的扇区总数不能超过2^32次方。如果每个扇区为512字节，那么单个分区无法超过2TB。再考虑到扇区的逻辑地址也是32位，所以单个硬盘的最大空间也无法超过2TB<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="阮一峰.计算机是如何启动的.2013-02-06">[2]</span></a></sup>。</p><p><strong>读取到激活的主分区之后，就可以从激活的主分区中启动 OS 了</strong>。这一部分就不详细说明了，每个操作系统都不一样。</p>
           </div>
 
 
+
+<hr>
 <p>在 PC 上，OS的加载通常分成两部分：第一阶段的主引导记录(Master Boot Record，MBR)，用于第二阶段引导位于某个分区中的（主分区）的引导。</p>
 <p>这么设计的背后，其实是历史遗留问题。在以前，OS 比较简单的时候，用来引导 OS 的代码并不是很复杂，可以直接装载于 MBR 中。后来 OS 越来越复杂，MBR 放不下引导 OS 的代码，这才有了第二阶段引导<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="UEFI 引导与 BIOS 引导在原理上有什么区别？ - 张良怀的回答 - 知乎
 ">[3]</span></a></sup><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="Arch Linux.Unified Extensible Firmware Interface.2021-05-09
