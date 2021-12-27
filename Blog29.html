@@ -1,0 +1,819 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;dark&#34;>
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  
+    <meta name="description" content="&amp;nbsp;">
+  
+  <meta name="author" content="刘永蘅Ryan">
+  <meta name="keywords" content="刘永蘅,ryanyhliu,个人网站">
+  
+  <title>Linux常用命令及参数 - 刘永蘅 个人网站</title>
+
+  
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/dracula.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"ryanyhliu.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":7,"color":"#00fa9a","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"0a88d0c70d2d3df222cde1dd1a3f6817","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>刘永蘅 个人网站</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('http://fly.atlinker.cn/api/bing/1920.php') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.4)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux常用命令及参数">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-06 08:36" pubdate>
+        Thursday, May 6th 2021, AM
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux常用命令及参数</h1>
+            
+              <p class="note note-info">
+                
+                  最后一次更新时间：Monday, May 10th 2021, PM
+                
+              </p>
+            
+
+            
+            <div class="markdown-body">
+              <p>&nbsp;</p>
+<a id="more"></a>
+
+<div class="note note-primary">
+            <p>首先推荐一个在线的Terminal，以方便大家随时随地可以练习指令<br><a href="https://bellard.org/jslinux/" target="_blank" rel="noopener">JSLinux | Run Linux or other Operating Systems in your browser!</a></p>
+          </div>
+
+<h1 id="ls-列出目录内容"><a href="#ls-列出目录内容" class="headerlink" title="ls 列出目录内容"></a>ls 列出目录内容</h1><p class="note note-info">是 list 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-l 详细信息</li><li>-S 按大小排序（从大到小）</li><li>-t 按时间排序（从新到旧）</li><li>-r 反序</li><li>-a 显示隐藏文件</li></ul>
+          </div>
+
+<div class="note note-success">
+            <ol><li><p><code>ls -l he*</code><br>列出（当前目录下）以he开头的文件<br><img src=".//Blog29/01.jpg" srcset="/img/loading.gif" alt></p></li><li><p><code>ls -ltr</code><br>以从旧到新的顺序列出<br><img src=".//Blog29/02.jpg" srcset="/img/loading.gif" alt></p></li></ol>
+          </div>
+
+<h1 id="pwd-查看当前路径"><a href="#pwd-查看当前路径" class="headerlink" title="pwd 查看当前路径"></a>pwd 查看当前路径</h1><p class="note note-info">是 print work directory 的缩写</p>
+
+<h1 id="mkdir-创建目录"><a href="#mkdir-创建目录" class="headerlink" title="mkdir 创建目录"></a>mkdir 创建目录</h1><p class="note note-info">是 make directory 的缩写</p>
+
+<ul>
+<li>-p 若无该路径，则自动创建</li>
+</ul>
+<h1 id="rmdir-删除目录"><a href="#rmdir-删除目录" class="headerlink" title="rmdir 删除目录"></a>rmdir 删除目录</h1><p class="note note-info">是 remove directory 的缩写</p>
+不能删除非空目录
+
+<h1 id="rm-删除"><a href="#rm-删除" class="headerlink" title="rm 删除"></a>rm 删除</h1><p class="note note-info">是 remove file 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-i 每个文件删除前均需确认</li><li>-f force 强制删除（无需确认）</li><li>-r recursion 递归删除（包括子目录及其文件一起删除）</li></ul>
+          </div>
+
+<div class="note note-success">
+            <ol><li><p><code>rm *.log</code><br>删除所有log文件</p></li><li><p><code>rm -rf /*</code><br>解锁包吃包住的人生</p></li></ol>
+          </div>
+
+
+<h1 id="mv-移动"><a href="#mv-移动" class="headerlink" title="mv 移动"></a>mv 移动</h1><p class="note note-info">是 move file 的缩写</p>
+
+<p class="note note-danger">若最后一个参数为路径，则移动；若为文件，则重命名</p>
+
+<div class="note note-success">
+            <ol><li><p><code>mv 1.txt 2.txt 3.txt /root</code><br>把 1.txt，2.txt，3.txt 移动至/root</p></li><li><p><code>mv 1.txt 2.txt</code><br>把 1.txt 重命名为 2.txt</p></li><li><p><code>mv 1.txt 2.txt 3.txt</code><br>// 报错，只能将一个文件重命名</p></li></ol>
+          </div>
+
+
+<h1 id="cp-复制"><a href="#cp-复制" class="headerlink" title="cp 复制"></a>cp 复制</h1><p class="note note-info">是 copy file 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-i 需要确认</li><li>-r 复制目录及目录内所有内容</li><li>-a 与原文件时间戳保持一致</li></ul>
+          </div>
+
+<h1 id="cat-显示文件内容"><a href="#cat-显示文件内容" class="headerlink" title="cat 显示文件内容"></a>cat 显示文件内容</h1><p class="note note-info">是 concatenate 的缩写</p>
+
+<div class="note note-success">
+            <p><img src=".//Blog29/03.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+<h1 id="more-less-head-tail-查看文件"><a href="#more-less-head-tail-查看文件" class="headerlink" title="more less head tail 查看文件"></a>more less head tail 查看文件</h1><ol>
+<li><p>more：一页一页读，<code>space</code>键为下一页，<code>b</code>键为上一页</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/04.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>less：与more类似，但是more不能向前移动。less在查看之前不会加载整个文件</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/05.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>head：把文件的开头显示在terminal里</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/06.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>tail：显示文件尾部内容。常用查看日志文件</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/07.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+</li>
+</ol>
+<h1 id="which-whereis-locate-find-查找文件"><a href="#which-whereis-locate-find-查找文件" class="headerlink" title="which whereis locate find 查找文件"></a>which whereis locate find 查找文件</h1><ol>
+<li><p>which：在PATH中搜索某个系统命令的位置</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/08.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>whereis：只能用于程序名的搜索，且只能搜索</p>
+<div class="note note-warning">
+            <ul><li>二进制文件（参数 -b）</li><li>man说明文件（参数 -m）</li><li>源代码文件（参数 -s）</li></ul>
+          </div>
+<p>若省略，则返回所有信息；基于系统内建的数据库进行搜索，效率很高</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/09.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>locate：可以通过正则来寻找文件；也是基于系统内建的数据库进行搜索，效率很高。数据库由<code>updatedb</code>更新，<code>updatedb</code>由<code>cron daemon</code>周期性调用，默认是每天更新一次，可以通过修改<code>crontab</code>(etc/crontab)来修改默认的更新设定值。</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/10.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+</li>
+<li><p>find：<strong>实时</strong>在文件树中查找文件，并作出相应的处理</p>
+<div class="note note-success">
+            <p><img src=".//Blog29/11.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+</li>
+</ol>
+<h1 id="chmod-修改权限"><a href="#chmod-修改权限" class="headerlink" title="chmod 修改权限"></a>chmod 修改权限</h1><p class="note note-info">是 change mode 的缩写</p>
+
+<p class="note note-danger">Linux权限表示：共有 10 个位置，第一个字符指定了文件类型。一个目录也是一个文件。如果第一个字符是横线，表示是一个非目录的文件。如果是 d，表示是一个目录。从第二个字符开始到第十个 9 个字符，3 个字符一组，分别表示了 3 组用户对文件或者目录的权限。权限字符用横线代表空许可，r 代表只读，w 代表写，x 代表可执行；用数字表示的话：r=4；w=2；x=1；-=0；读+写+执行=7；读+执行=5；执行=1</p>
+<div class="note note-warning">
+            <ul><li>-c 打印处理信息</li><li>-R 处理其及其子目录下所有文件</li></ul>
+          </div>
+
+<div class="note note-success">
+            <ol><li><p><code>chmod a+x t.log</code><br>增加t.log所有用户可执行权限</p></li><li><p><code>chmod u=r t.log -c</code><br>撤销所有权限，增加可读权限，并打印处理信息</p></li><li><p><code>chmod 751 t.log</code><br>属主分配7，组分配5，其它用户分配1</p></li><li><p><code>chmod a+r -R text/</code><br>将text/目录下及其子目录、文件 增加可读权限</p></li></ol>
+          </div>
+
+<h1 id="tar-打包（调用压缩）"><a href="#tar-打包（调用压缩）" class="headerlink" title="tar 打包（调用压缩）"></a>tar 打包（调用压缩）</h1><p class="note note-info">是 tape archive 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-c 建立新的压缩文件</li><li>-f 指定压缩文件</li><li>-r 添加文件到已经压缩的文件包中</li><li>-u 添加改动和现有的文件到已经压缩的文件包中</li><li>-x 从压缩包中提取文件</li><li>-t 显示压缩包中的内容</li><li>-z gzip压缩</li><li>-j bzip2压缩</li><li>-Z compress解压缩支持</li><li>-v 显示过程</li></ul>
+          </div>
+
+<div class="note note-danger">
+            <p>关于gzip及bzip2压缩<br><img src=".//Blog29/12.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+
+
+<h1 id="df-查看磁盘空间使用情况"><a href="#df-查看磁盘空间使用情况" class="headerlink" title="df 查看磁盘空间使用情况"></a>df 查看磁盘空间使用情况</h1><p class="note note-info">是 disk free 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-a 全部文件系统列表</li><li>-h 以最方便阅读的方式显示</li><li>-T 列出文件系统类型</li></ul>
+          </div>
+
+<div class="note note-success">
+            <p><img src=".//Blog29/13.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+<h1 id="du-查看文件-目录的使用空间"><a href="#du-查看文件-目录的使用空间" class="headerlink" title="du 查看文件/目录的使用空间"></a>du 查看文件/目录的使用空间</h1><p class="note note-info">是 disk usage 的缩写</p>
+<div class="note note-warning">
+            <ul><li>-a 显示该目录中的所有文件</li><li>-k 以KB为单位</li><li>-m 以MB为单位</li><li>-g 以GB为单位</li><li>-h 以最方便阅读的方式显示</li><li>-s 显示总计</li><li>-c / –total 显示指定的之外，还显示总和</li></ul>
+          </div>
+
+<h1 id="ln-为文件创立链接"><a href="#ln-为文件创立链接" class="headerlink" title="ln 为文件创立链接"></a>ln 为文件创立链接</h1><p class="note note-info">是 link 的缩写</p>
+<div class="note note-danger">
+            <p>分类：</p><ul><li>软链接<ul><li>以路径的形式存在（类似于Windows的快捷方式）</li><li>可跨文件系统</li><li>可对不存在的文件名进行链接</li><li>可对目录进行链接</li></ul></li><li>硬链接<ul><li>以副本的形式存在（不占实际空间）</li><li>不可跨文件系统</li><li>不可对目录进行链接</li></ul></li></ul>
+          </div>
+
+<div class="note note-warning">
+            <ul><li>-b 覆盖以前建立的链接</li><li>-s 软链接（符号链接）</li><li>-v 显示处理过程</li></ul>
+          </div>
+
+<h1 id="date-显示时间"><a href="#date-显示时间" class="headerlink" title="date 显示时间"></a>date 显示时间</h1><h1 id="cal-显示日历"><a href="#cal-显示日历" class="headerlink" title="cal 显示日历"></a>cal 显示日历</h1><p class="note note-info">是 calendar 的缩写</p>
+
+<h1 id="grep-全局正则表达式搜索"><a href="#grep-全局正则表达式搜索" class="headerlink" title="grep 全局正则表达式搜索"></a>grep 全局正则表达式搜索</h1><div class="note note-danger">
+            <p>常与<code>ps</code>命令一起使用</p>
+          </div>
+
+<h1 id="ps-查看进程运行状态"><a href="#ps-查看进程运行状态" class="headerlink" title="ps 查看进程运行状态"></a>ps 查看进程运行状态</h1><p class="note note-info">是 process status 的缩写</p>
+<div class="note note-danger">
+            <p>5种状态码：</p><ul><li>D 不可中断</li><li>R 运行</li><li>S 中断</li><li>T 停止</li><li>Z 僵死</li></ul>
+          </div>
+
+<div class="note note-warning">
+            <ul><li>-A / a 显示所有进程</li><li>-a 显示同一终端下所有进程</li><li>c 进程实际名称</li><li>e 环境变量</li><li>f 进程间关系</li><li>r 当前终端运行的进程</li><li>-aux 所有（包含其它使用的进程）</li></ul>
+          </div>
+
+<div class="note note-success">
+            <blockquote><p>ps -aux | grep apache<br>找到apache的PID</p></blockquote>
+          </div>
+
+<h1 id="top-系统正在执行的进程相关信息"><a href="#top-系统正在执行的进程相关信息" class="headerlink" title="top 系统正在执行的进程相关信息"></a>top 系统正在执行的进程相关信息</h1><p>类Windows任务管理器</p>
+<div class="note note-warning">
+            <p><img src=".//Blog29/14.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+
+<h1 id="kill-强制结束进程"><a href="#kill-强制结束进程" class="headerlink" title="kill 强制结束进程"></a>kill 强制结束进程</h1><div class="note note-danger">
+            <p>9为强制结束</p>
+          </div>
+
+<div class="note note-success">
+            <p><code>kill -9 $ (ps -ef | grep pro1)</code><br>找到并杀死pro1进程</p>
+          </div>
+
+
+<h1 id="free-查看内存"><a href="#free-查看内存" class="headerlink" title="free 查看内存"></a>free 查看内存</h1><div class="note note-warning">
+            <p><img src=".//Blog29/15.jpg" srcset="/img/loading.gif" alt></p>
+          </div>
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    除特别声明外，本站所有文章均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Blog30.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机的启动过程</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Blog28.html">
+                        <span class="hidden-mobile">【笔记】 Android Studio相关问题处理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="/img/vx.jpg" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:250px; height:250px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+<footer class="text-center mt-5 py-3">
+  <div class="translate-style">
+    <a id="translateLink" href="javascript:translatePage();">改為中文（正體）顯示
+    </a>
+    </div>
+    <script type="text/javascript" src="/js/tw_cn.js"></script>
+    <script type="text/javascript">
+    var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+    var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+    var cookieDomain = "https://tding.top/"; //Cookie地址, 一定要设定, 通常为你的网址
+    var msgToTraditionalChinese = "改為中文（正體）顯示"; //此处可以更改为你想要显示的文字
+    var msgToSimplifiedChinese = "改为中文（简体）显示"; //同上，但两处均不建议更改
+    var translateButtonId = "translateLink"; //默认互换id
+    translateInitilization();
+    </script>
+
+    <br/>
+  
+   Powered By <br\>
+<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>  
+  <!-- 添加网站运行时间 -->
+  <div>
+    <span id="timeDate" >载入天数...</span><span id="times" >载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("04/06/2020 21:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "我静伫于此地已有 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
+  </div>
+
+
+  
+  <!-- 统计访问量信息 -->
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            承蒙 
+            <span id="busuanzi_value_site_uv"></span>
+             位朋友
+          </span>
+      
+
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+              共造访 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+
+      
+    
+  </div>
+
+
+
+  <div>
+  	<span class="post-count">本站字数总计：28.3k&nbsp 字</span>
+  </div>
+
+  <!-- 个人和备案信息 -->
+  <div>© 2020-2021  刘永蘅Ryan </a></div>
+   <!-- 
+ -->
+  
+
+  <div id="binft" style="color:#00ffb3"></div>
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["评论区在About页！"].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script>
+
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0a88d0c70d2d3df222cde1dd1a3f6817";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+
+  
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--鼠标星星跟随-->
+<script type="text/javascript" src="/js/fairyDustCursor.js"></script>
+
+<script type="text/javascript" src="/js/firework.js"></script>
+
+
+</body>
+</html>
+
+
