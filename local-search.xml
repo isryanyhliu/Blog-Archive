@@ -4,13 +4,21 @@
   
   
   <entry>
-    <title>NewBlog</title>
+    <title>【笔记】C#相关</title>
     <link href="/Blog31.html"/>
     <url>/Blog31.html</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>&nbsp;</p><a id="more"></a><h1 id="获取当前方法信息（反射-Invoke）"><a href="#获取当前方法信息（反射-Invoke）" class="headerlink" title="获取当前方法信息（反射 Invoke）"></a>获取当前方法信息（反射 Invoke）</h1><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">string</span> <span class="hljs-title">GetMethodInfo</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">string</span> str = <span class="hljs-string">""</span>;<br>    <span class="hljs-comment">//取得当前方法命名空间</span><br>    str += <span class="hljs-string">"命名空间名:"</span> + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-comment">//取得当前方法类全名</span><br>    str += <span class="hljs-string">"类名:"</span> + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.FullName + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-comment">//取得当前方法名</span><br>    str += <span class="hljs-string">"方法名:"</span> + System.Reflection.MethodBase.GetCurrentMethod().Name + <span class="hljs-string">"\n"</span>;<br>    str += <span class="hljs-string">"\n"</span>;<br><br>    StackTrace ss = <span class="hljs-keyword">new</span> StackTrace(<span class="hljs-literal">true</span>);<br>    MethodBase mb = ss.GetFrame(<span class="hljs-number">1</span>).GetMethod();<br>    <span class="hljs-comment">//取得父方法命名空间</span><br>    str += mb.DeclaringType.Namespace + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-comment">//取得父方法类名</span><br>    str += mb.DeclaringType.Name + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-comment">//取得父方法类全名</span><br>    str += mb.DeclaringType.FullName + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-comment">//取得父方法名</span><br>    str += mb.Name + <span class="hljs-string">"\n"</span>;<br>    <span class="hljs-keyword">return</span> str;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>笔记</tag>
+      
+      <tag>C#</tag>
+      
+    </tags>
     
   </entry>
   
@@ -67,7 +75,7 @@
   
   
   <entry>
-    <title>【笔记】 Android Studio相关问题处理</title>
+    <title>【笔记】Android Studio相关问题处理</title>
     <link href="/Blog28.html"/>
     <url>/Blog28.html</url>
     
@@ -80,6 +88,8 @@
       <tag>笔记</tag>
       
       <tag>Android Studio</tag>
+      
+      <tag>IDE</tag>
       
     </tags>
     
