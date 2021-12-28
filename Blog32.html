@@ -17,16 +17,32 @@
   
   <meta name="theme-color" content="#2f4154">
   
-    <meta name="description" content="刘永蘅 个人网站 ryanyhliu">
+    <meta name="description" content="&amp;nbsp;">
   
   <meta name="author" content="刘永蘅Ryan">
   <meta name="keywords" content="刘永蘅,ryanyhliu,个人网站">
   
-  <title>刘永蘅 个人网站</title>
+  <title>Linux文件系统 - 刘永蘅 个人网站</title>
 
   
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/dracula.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -56,7 +72,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -138,22 +154,63 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/Wallpaper.jpg') no-repeat center center;
+         style="background: url('http://fly.atlinker.cn/api/bing/1920.php') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.4)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="Linux文件系统">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-31 12:15" pubdate>
+        Monday, May 31st 2021, PM
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      547 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -162,475 +219,151 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux文件系统</h1>
+            
+              <p class="note note-info">
                 
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog24.html">【杂记】 大连理工大学某研究生遗书</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog24.html">
-          
-          
+                  最后一次更新时间：Saturday, May 22nd 2021, PM
+                
+              </p>
             
-          
-          &nbsp;
-        </a>
-      </p>
 
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-16 22:00" pubdate>
-              2020-10-16
-            </time>
+            
+            <div class="markdown-body">
+              <p>&nbsp;</p>
+<a id="more"></a>
+
+
+<h1 id="bin-二进制文件"><a href="#bin-二进制文件" class="headerlink" title="/bin 二进制文件"></a>/bin 二进制文件</h1><p>系统自带的，可以运行的应用程序（例如 ls，mkdir，rm 等）。</p>
+<h1 id="boot-启动系统所需文件"><a href="#boot-启动系统所需文件" class="headerlink" title="/boot 启动系统所需文件"></a>/boot 启动系统所需文件</h1><h1 id="dev-设备文件"><a href="#dev-设备文件" class="headerlink" title="/dev 设备文件"></a>/dev 设备文件</h1><p>其中很多是系统启动/运行时生成的。</p>
+<h1 id="etc-系统配置文件（主要）"><a href="#etc-系统配置文件（主要）" class="headerlink" title="/etc 系统配置文件（主要）"></a>/etc 系统配置文件（主要）</h1><div class="note note-info">
+            <p><code>etc</code> 这个名字来源于最早的 Unix，其原文为 <em>etcetera</em>，用于放置不便于归类的文件。</p>
           </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9D%82%E8%AE%B0/">杂记</a>
-            
+<p>现在通常解释为 <em>Everything To Configure</em>，即要配置的所有内容，例如系统名称、用户及其密码、硬盘分区等等。</p>
+<h1 id="home-用户文件夹"><a href="#home-用户文件夹" class="headerlink" title="/home 用户文件夹"></a>/home 用户文件夹</h1><p>例如 <code>/home/User01</code>、<code>/home/User02</code>、<code>/home/guest</code>。</p>
+<h1 id="lib-库文件"><a href="#lib-库文件" class="headerlink" title="/lib 库文件"></a>/lib 库文件</h1><p>应用程序可使用的代码文件。通常系统中有其它的<code>lib</code>目录，但挂载在根目录下的<code>/lib</code>是较为特殊的，它的作用偏内核向。例如绘制窗口、控制设备等。是使显卡、声卡、网卡、打印机等设备工作的驱动程序。</p>
+<h1 id="media-挂载外部存储器（自动）"><a href="#media-挂载外部存储器（自动）" class="headerlink" title="/media 挂载外部存储器（自动）"></a>/media 挂载外部存储器（自动）</h1><h1 id="mnt-挂载外部存储器（手动）"><a href="#mnt-挂载外部存储器（手动）" class="headerlink" title="/mnt 挂载外部存储器（手动）"></a>/mnt 挂载外部存储器（手动）</h1><p>现不常用</p>
+<h1 id="opt-软件（自行编译，非正规渠道）"><a href="#opt-软件（自行编译，非正规渠道）" class="headerlink" title="/opt 软件（自行编译，非正规渠道）"></a>/opt 软件（自行编译，非正规渠道）</h1><p>应用程序通常出现在<code>/opt/bin</code>目录</p>
+<h1 id="proc-计算机的信息"><a href="#proc-计算机的信息" class="headerlink" title="/proc 计算机的信息"></a>/proc 计算机的信息</h1><p>例如 CPU 和 Linux 系统内核信息。于计算机启动/运行时生成。</p>
+<h1 id="root-管理员目录"><a href="#root-管理员目录" class="headerlink" title="/root 管理员目录"></a>/root 管理员目录</h1><h1 id="run-系统进程临时数据"><a href="#run-系统进程临时数据" class="headerlink" title="/run 系统进程临时数据"></a>/run 系统进程临时数据</h1><h1 id="sbin-（-bin的sudo版）"><a href="#sbin-（-bin的sudo版）" class="headerlink" title="/sbin （/bin的sudo版）"></a>/sbin （/bin的sudo版）</h1><p>与<code>/bin</code>类似，但是其命令（应用程序）只有超级用户才能执行（<code>sudo</code>），例如install、remove、format等</p>
+<h1 id="usr-软件（符合GNU规范，正规渠道）"><a href="#usr-软件（符合GNU规范，正规渠道）" class="headerlink" title="/usr 软件（符合GNU规范，正规渠道）"></a>/usr 软件（符合GNU规范，正规渠道）</h1><div class="note note-info">
+            <p>早期是Unix用户目录（同<code>/home</code>）</p>
           </div>
-        
-      </div>
-    </article>
-  </div>
+<p>如今，<code>/usr</code>包含了大量目录，而这些目录又包含了应用程序、库、文档、壁纸、图标和许多其他需要应用程序和服务共享的内容。</p>
+<h1 id="srv-服务器数据"><a href="#srv-服务器数据" class="headerlink" title="/srv 服务器数据"></a>/srv 服务器数据</h1><p>例如 <code>/srv/http</code>、<code>/srv/www</code>、<code>/srv/ftp</code>等。</p>
+<h1 id="tmp-临时文件"><a href="#tmp-临时文件" class="headerlink" title="/tmp 临时文件"></a>/tmp 临时文件</h1><p>通常由正在运行的应用程序放置。</p>
+<h1 id="var-频繁更改的文件（例如日志）"><a href="#var-频繁更改的文件（例如日志）" class="headerlink" title="/var 频繁更改的文件（例如日志）"></a>/var 频繁更改的文件（例如日志）</h1><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><table>
+<thead>
+<tr>
+<th align="center">文件类型</th>
+<th align="center">路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">普通执行程序文件</td>
+<td align="center">/usr/bin</td>
+</tr>
+<tr>
+<td align="center">服务器执行程序文件和管理程序文件</td>
+<td align="center">/usr/sbin</td>
+</tr>
+<tr>
+<td align="center">应用程序配置文件</td>
+<td align="center">/etc</td>
+</tr>
+<tr>
+<td align="center">日志文件</td>
+<td align="center">/var/log</td>
+</tr>
+<tr>
+<td align="center">应用程序文档文件</td>
+<td align="center">/usr/share/doc</td>
+</tr>
+<tr>
+<td align="center">应用程序手册页文件</td>
+<td align="center">/usr/share/man</td>
+</tr>
+</tbody></table>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog23.html">Java IO流</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog23.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-20 20:58" pubdate>
-              2020-09-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-              <a href="/tags/IO/">IO</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog20.html">【笔记】Java相关</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog20.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-12 10:40" pubdate>
-              2020-09-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog19.html">Java异常机制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog19.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-11 12:28" pubdate>
-              2020-09-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-              <a href="/tags/%E5%BC%82%E5%B8%B8/">异常</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog18.html">OSI网络模型</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog18.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-06 20:20" pubdate>
-              2020-09-06
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>
-            
-              <a href="/tags/OSI%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">OSI网络模型</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog17.html">设计模式-前序</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog17.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-05 19:10" pubdate>
-              2020-09-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog15.html">HTTP相关 &amp;&amp; 对称/非对称加密简述</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog15.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-30 22:08" pubdate>
-              2020-08-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>
-            
-              <a href="/tags/HTTP/">HTTP</a>
-            
-              <a href="/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">对称加密</a>
-            
-              <a href="/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">非对称加密</a>
-            
-              <a href="/tags/%E7%8A%B6%E6%80%81%E7%A0%81/">状态码</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog14.html">Java创建对象的过程（包含类加载）</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog14.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-24 12:03" pubdate>
-              2020-08-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-              <a href="/tags/%E5%AF%B9%E8%B1%A1/">对象</a>
-            
-              <a href="/tags/%E7%B1%BB/">类</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog13.html">TCP与UDP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog13.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-22 14:31" pubdate>
-              2020-08-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-            
-              <a href="/tags/TCP/">TCP</a>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>
-            
-              <a href="/tags/UDP/">UDP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/Blog12.html">TCP三次握手与四次挥手</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/Blog12.html">
-          
-          
-            
-          
-          &nbsp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-22 11:08" pubdate>
-              2020-08-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-            
-              <a href="/tags/TCP/">TCP</a>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OS/">OS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    除特别声明外，本站所有文章均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Blog31.html">
+                        <span class="hidden-mobile">【笔记】C#相关</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="/img/vx.jpg" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:250px; height:250px;">
+    </div>
+  </div>
+
+
     
 
     
@@ -831,9 +564,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
@@ -852,34 +591,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      $.ajax({
-        type: 'GET',
-        url: 'https://v1.hitokoto.cn/?c=i&amp;encode=json',
-        headers: {},
-        dataType: 'json',
-        success: function (result) {
-          var text;
-          if (result) {
-            var keys = 'hitokoto'.split('.')
-            if (result instanceof Array) {
-              result = result[0]
-            }
-            for (const k of keys) {
-              var value = result[k]
-              if (typeof value === 'string') {
-                text = value
-                break
-              } else if (value instanceof Object) {
-                result = value
-              }
-            }
-          }
-          text ? typing(text) : typing(title);
-        },
-        error: function () {
-          typing(title)
-        }
-      })
+      typing(title)
       
     })(window, document);
   </script>

@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Linux文件系统</title>
+    <link href="/Blog32.html"/>
+    <url>/Blog32.html</url>
+    
+    <content type="html"><![CDATA[<p>&nbsp;</p><a id="more"></a><h1 id="bin-二进制文件"><a href="#bin-二进制文件" class="headerlink" title="/bin 二进制文件"></a>/bin 二进制文件</h1><p>系统自带的，可以运行的应用程序（例如 ls，mkdir，rm 等）。</p><h1 id="boot-启动系统所需文件"><a href="#boot-启动系统所需文件" class="headerlink" title="/boot 启动系统所需文件"></a>/boot 启动系统所需文件</h1><h1 id="dev-设备文件"><a href="#dev-设备文件" class="headerlink" title="/dev 设备文件"></a>/dev 设备文件</h1><p>其中很多是系统启动/运行时生成的。</p><h1 id="etc-系统配置文件（主要）"><a href="#etc-系统配置文件（主要）" class="headerlink" title="/etc 系统配置文件（主要）"></a>/etc 系统配置文件（主要）</h1><div class="note note-info">            <p><code>etc</code> 这个名字来源于最早的 Unix，其原文为 <em>etcetera</em>，用于放置不便于归类的文件。</p>          </div><p>现在通常解释为 <em>Everything To Configure</em>，即要配置的所有内容，例如系统名称、用户及其密码、硬盘分区等等。</p><h1 id="home-用户文件夹"><a href="#home-用户文件夹" class="headerlink" title="/home 用户文件夹"></a>/home 用户文件夹</h1><p>例如 <code>/home/User01</code>、<code>/home/User02</code>、<code>/home/guest</code>。</p><h1 id="lib-库文件"><a href="#lib-库文件" class="headerlink" title="/lib 库文件"></a>/lib 库文件</h1><p>应用程序可使用的代码文件。通常系统中有其它的<code>lib</code>目录，但挂载在根目录下的<code>/lib</code>是较为特殊的，它的作用偏内核向。例如绘制窗口、控制设备等。是使显卡、声卡、网卡、打印机等设备工作的驱动程序。</p><h1 id="media-挂载外部存储器（自动）"><a href="#media-挂载外部存储器（自动）" class="headerlink" title="/media 挂载外部存储器（自动）"></a>/media 挂载外部存储器（自动）</h1><h1 id="mnt-挂载外部存储器（手动）"><a href="#mnt-挂载外部存储器（手动）" class="headerlink" title="/mnt 挂载外部存储器（手动）"></a>/mnt 挂载外部存储器（手动）</h1><p>现不常用</p><h1 id="opt-软件（自行编译，非正规渠道）"><a href="#opt-软件（自行编译，非正规渠道）" class="headerlink" title="/opt 软件（自行编译，非正规渠道）"></a>/opt 软件（自行编译，非正规渠道）</h1><p>应用程序通常出现在<code>/opt/bin</code>目录</p><h1 id="proc-计算机的信息"><a href="#proc-计算机的信息" class="headerlink" title="/proc 计算机的信息"></a>/proc 计算机的信息</h1><p>例如 CPU 和 Linux 系统内核信息。于计算机启动/运行时生成。</p><h1 id="root-管理员目录"><a href="#root-管理员目录" class="headerlink" title="/root 管理员目录"></a>/root 管理员目录</h1><h1 id="run-系统进程临时数据"><a href="#run-系统进程临时数据" class="headerlink" title="/run 系统进程临时数据"></a>/run 系统进程临时数据</h1><h1 id="sbin-（-bin的sudo版）"><a href="#sbin-（-bin的sudo版）" class="headerlink" title="/sbin （/bin的sudo版）"></a>/sbin （/bin的sudo版）</h1><p>与<code>/bin</code>类似，但是其命令（应用程序）只有超级用户才能执行（<code>sudo</code>），例如install、remove、format等</p><h1 id="usr-软件（符合GNU规范，正规渠道）"><a href="#usr-软件（符合GNU规范，正规渠道）" class="headerlink" title="/usr 软件（符合GNU规范，正规渠道）"></a>/usr 软件（符合GNU规范，正规渠道）</h1><div class="note note-info">            <p>早期是Unix用户目录（同<code>/home</code>）</p>          </div><p>如今，<code>/usr</code>包含了大量目录，而这些目录又包含了应用程序、库、文档、壁纸、图标和许多其他需要应用程序和服务共享的内容。</p><h1 id="srv-服务器数据"><a href="#srv-服务器数据" class="headerlink" title="/srv 服务器数据"></a>/srv 服务器数据</h1><p>例如 <code>/srv/http</code>、<code>/srv/www</code>、<code>/srv/ftp</code>等。</p><h1 id="tmp-临时文件"><a href="#tmp-临时文件" class="headerlink" title="/tmp 临时文件"></a>/tmp 临时文件</h1><p>通常由正在运行的应用程序放置。</p><h1 id="var-频繁更改的文件（例如日志）"><a href="#var-频繁更改的文件（例如日志）" class="headerlink" title="/var 频繁更改的文件（例如日志）"></a>/var 频繁更改的文件（例如日志）</h1><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><table><thead><tr><th align="center">文件类型</th><th align="center">路径</th></tr></thead><tbody><tr><td align="center">普通执行程序文件</td><td align="center">/usr/bin</td></tr><tr><td align="center">服务器执行程序文件和管理程序文件</td><td align="center">/usr/sbin</td></tr><tr><td align="center">应用程序配置文件</td><td align="center">/etc</td></tr><tr><td align="center">日志文件</td><td align="center">/var/log</td></tr><tr><td align="center">应用程序文档文件</td><td align="center">/usr/share/doc</td></tr><tr><td align="center">应用程序手册页文件</td><td align="center">/usr/share/man</td></tr></tbody></table>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>OS</tag>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【笔记】C#相关</title>
     <link href="/Blog31.html"/>
     <url>/Blog31.html</url>
